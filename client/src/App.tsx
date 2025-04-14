@@ -1,26 +1,91 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
+import "./App.css"
+import { Routes, Route } from "react-router-dom"
+import Header from "./pages/Header"
+import AddWorkout from "./pages/AddWorkout"
+import Dashboard from "./pages/Dashboard"
+import BirthdayInput from "./pages/Intake Form/AgeForm"
+import GoalInput from "./pages/Intake Form/GoalForm"
+import ReviewIntake from "./pages/Intake Form/ReviewIntake"
+import SexInput from "./pages/Intake Form/SexForm"
+import TargetMuscleInput from "./pages/Intake Form/TargetMuscleForm"
+import WeightInput from "./pages/Intake Form/WeightForm"
+import WhyHereInput from "./pages/Intake Form/WhyHereForm"
+import NavBar from "./pages/NavBar"
+import Profile from "./pages/UserProfile"
+import WorkoutPlanList from "./components/WorkoutPlanList"
+import WelcomeScreen from "./pages/Intake Form/WelcomeScreen"
 import NameForm from "./pages/Intake Form/NameForm"
-import MuscleSelectorPage from "./pages/MuscleSelectorPage"
-import AgeForm from "./pages/Intake Form/AgeForm"
-import SexForm from "./pages/Intake Form/SexForm"
-import WeightForm from "./pages/Intake Form/WeightForm"
-import WhyHereForm from "./pages/Intake Form/WhyHereForm"
-import GoalForm from "./pages/Intake Form/GoalForm"
 
-const App = () => {
-  return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<NameForm />} />
-        <Route path="/age" element={<AgeForm />} />
-        <Route path="/sex" element={<SexForm />} />
-        <Route path="/weight" element={<WeightForm />} />
-        <Route path="/whyhere" element={<WhyHereForm />} />
-        <Route path="/goal" element={<GoalForm />} />
-        <Route path="/select" element={<MuscleSelectorPage />} />
-      </Routes>
-    </Router>
-  )
+function App() {
+	return (
+		<>
+			<Header />
+			<br />
+			<br />
+			<div className="content-wrapper">
+				<Routes>
+					<Route
+						path="/intake/welcome-screen"
+						element={<WelcomeScreen />}
+					/>
+					<Route
+						path="/intake/name"
+						element={<NameForm />}
+					/>
+					<Route
+						path="/intake/age"
+						element={<BirthdayInput />}
+					/>
+					<Route
+						path="/intake/sex"
+						element={<SexInput />}
+					/>
+					<Route
+						path="/intake/weight"
+						element={<WeightInput />}
+					/>
+					<Route
+						path="/intake/why"
+						element={<WhyHereInput />}
+					/>
+					<Route
+						path="/intake/goal"
+						element={<GoalInput />}
+					/>
+					<Route
+						path="/intake/muscle"
+						element={<TargetMuscleInput />}
+					/>
+					<Route
+						path="/intake/review"
+						element={<ReviewIntake />}
+					/>
+					<Route
+						path="/profile"
+						element={<Profile />}
+					/>
+					<Route
+						path="/"
+						element={<Dashboard />}
+					/>
+					<Route
+						path="/workout-plan"
+						element={
+							<WorkoutPlanList
+								exercises={[]}
+								addToCart={function (): void {}}
+							/>
+						}
+					/>
+					<Route
+						path="/add-workout"
+						element={<AddWorkout onSubmit={function (): void {}} />}
+					/>
+				</Routes>
+			</div>
+			<NavBar />
+		</>
+	)
 }
 
 export default App

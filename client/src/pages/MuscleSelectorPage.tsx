@@ -1,17 +1,9 @@
 // pages/MuscleSelectorPage.tsx
 import { useState } from "react";
 import MuscleSelector from "../components/MuscleSelector";
-import WorkoutList from "../components/WorkoutList";
+import WorkoutPlanList from "../components/WorkoutPlanList";
 import { useNavigate } from "react-router-dom";
-
-interface Exercise {
-  id: number;
-  name: string;
-  target: string;
-  equipment: string;
-  gifUrl: string;
-  videos: { title: string; link: string }[];
-}
+import Exercise from "../interfaces/Exercise";
 
 const MuscleSelectorPage = () => {
   const [selectedMuscles, setSelectedMuscles] = useState<string[]>([]);
@@ -20,31 +12,33 @@ const MuscleSelectorPage = () => {
 
   const navigate = useNavigate()
 
-  const handleSubmit = async (muscles: string[]) => {
-    setSelectedMuscles(muscles);
-    setExercises([]);
+	const handleSubmit = async (muscles: string[]) => {
+		setSelectedMuscles(muscles)
+		setExercises([])
 
-    if (muscles.length === 0) return;
+		if (muscles.length === 0) return
 
-    try {
-      const allExercises: Exercise[] = [];
+		try {
+			const allExercises: Exercise[] = []
 
-      for (const muscle of muscles) {
-        const response = await fetch(`http://localhost:5050/api/exercises/${muscle}`);
-        const data = await response.json();
-        allExercises.push(...data);
-      }
+			for (const muscle of muscles) {
+				const response = await fetch(
+					`http://localhost:5050/api/exercises/${muscle}`
+				)
+				const data = await response.json()
+				allExercises.push(...data)
+			}
 
-      setExercises(allExercises);
-      console.log("Fetched exercises:", allExercises);
-    } catch (error) {
-      console.error("Error fetching exercises:", error);
-    }
-  };
+			setExercises(allExercises)
+			console.log("Fetched exercises:", allExercises)
+		} catch (error) {
+			console.error("Error fetching exercises:", error)
+		}
+	}
 
-  const addToCart = (exercise: Exercise) => {
-    setCart((prevCart) => [...prevCart, exercise]);
-  };
+	const addToCart = (exercise: Exercise) => {
+		setCart((prevCart) => [...prevCart, exercise])
+	}
 
   const handleDelete = (id: number) => {
     setCart((prevCart) => prevCart.filter((exercise) => exercise.id !== id));
@@ -127,16 +121,14 @@ const MuscleSelectorPage = () => {
           <h2 style={{ marginTop: "2rem", marginBottom: "1rem" }}>
             Exercise Results
           </h2>
-          <WorkoutList exercises={exercises} addToCart={addToCart} />
+          <WorkoutPlanList exercises={exercises} addToCart={addToCart} />
         </div>
       )}
     </div>
   );
 };
 
-export default MuscleSelectorPage;
-
-
+export default MuscleSelectorPage
 
 /*import { useState } from "react"
 import MuscleSelector from "../components/MuscleSelector"
