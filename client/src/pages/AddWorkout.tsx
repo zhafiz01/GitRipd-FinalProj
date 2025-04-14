@@ -1,12 +1,16 @@
 import { FC } from "react"
 import MuscleSelector from "../components/MuscleSelector"
-import WorkoutListByMuscle from "../components/WorkoutListByMuscle"
+import WorkoutListByMuscle from "../components/WorkoutList"
 
-const AddWorkout: FC = () => {
+interface Props {
+    onSubmit: (selectedMuscles: string[]) => void
+}
+
+const AddWorkout: FC<Props> = ({ onSubmit }) => {
     
     return (
         <>
-        <MuscleSelector />
+        <MuscleSelector onSubmit={onSubmit}/>
         <br/>
         <h2>Exercises:</h2>
         <br/>
