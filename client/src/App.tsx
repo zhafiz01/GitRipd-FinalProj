@@ -25,39 +25,39 @@ function App() {
 			<div className="content-wrapper">
 				<Routes>
 					<Route
-						path="/intake/welcome-screen"
+						path="/welcome"
 						element={<WelcomeScreen />}
 					/>
 					<Route
-						path="/intake/name"
+						path="/name"
 						element={<NameForm />}
 					/>
 					<Route
-						path="/intake/age"
+						path="/age"
 						element={<BirthdayInput />}
 					/>
 					<Route
-						path="/intake/sex"
+						path="/sex"
 						element={<SexInput />}
 					/>
 					<Route
-						path="/intake/weight"
+						path="/weight"
 						element={<WeightInput />}
 					/>
 					<Route
-						path="/intake/why"
+						path="/why"
 						element={<WhyHereInput />}
 					/>
 					<Route
-						path="/intake/goal"
+						path="/goal"
 						element={<GoalInput />}
 					/>
 					<Route
-						path="/intake/muscle"
+						path="/target"
 						element={<TargetMuscleInput />}
 					/>
 					<Route
-						path="/intake/review"
+						path="/review"
 						element={<ReviewIntake />}
 					/>
 					<Route
@@ -65,11 +65,11 @@ function App() {
 						element={<Profile />}
 					/>
 					<Route
-						path="/"
+						path="/dashboard"
 						element={<Dashboard />}
 					/>
 					<Route
-						path="/workout-plan"
+						path="/plans"
 						element={
 							<WorkoutPlanList
 								exercises={[]}
@@ -78,8 +78,8 @@ function App() {
 						}
 					/>
 					<Route
-						path="/add-workout"
-						element={<AddWorkout onSubmit={function (): void {}} />}
+						path="/select"
+						element={<AddWorkout />}
 					/>
 				</Routes>
 			</div>
