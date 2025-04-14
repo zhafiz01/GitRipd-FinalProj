@@ -1,12 +1,15 @@
 import { FC } from "react"
 
-const WhyHereInput: FC = () => {
+const WhyHereForm: FC = () => {
     
+// navigates to "/goal"
+
     return (
         <>
-        Why are you here...
+        What brings you here...
+        <button>Continue</button>
         </>
     )
 }
 
-export default WhyHereInput
+export default WhyHereForm

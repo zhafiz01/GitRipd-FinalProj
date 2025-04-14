@@ -6,15 +6,15 @@ const NavBar: FC = () => {
 	return (
 		<nav className="navbar">
 			<NavLink
-				to="/"
+				to="/dashboard"
 				className={({ isActive }) =>
 					isActive ? "navlink active" : "navlink"
 				}
 			>
-				Home Icon
+				Dashboard Icon
 			</NavLink>
 			<NavLink
-				to="/add-workout"
+				to="/select"
 				className={({ isActive }) =>
 					isActive ? "navlink active" : "navlink"
 				}
@@ -22,7 +22,7 @@ const NavBar: FC = () => {
 				Add Icon
 			</NavLink>
 			<NavLink
-				to="/workout-plan"
+				to="/plans"
 				className={({ isActive }) =>
 					isActive ? "navlink active" : "navlink"
 				}
