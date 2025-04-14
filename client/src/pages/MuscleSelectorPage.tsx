@@ -1,4 +1,139 @@
-import { useState } from "react"
+// pages/MuscleSelectorPage.tsx
+import { useState } from "react";
+import MuscleSelector from "../components/MuscleSelector";
+import WorkoutList from "../components/WorkoutList";
+
+interface Exercise {
+  id: number;
+  name: string;
+  target: string;
+  equipment: string;
+  gifUrl: string;
+  videos: { title: string; link: string }[];
+}
+
+const MuscleSelectorPage = () => {
+  const [selectedMuscles, setSelectedMuscles] = useState<string[]>([]);
+  const [exercises, setExercises] = useState<Exercise[]>([]);
+  const [cart, setCart] = useState<Exercise[]>([]);
+
+  const handleSubmit = async (muscles: string[]) => {
+    setSelectedMuscles(muscles);
+    setExercises([]);
+
+    if (muscles.length === 0) return;
+
+    try {
+      const allExercises: Exercise[] = [];
+
+      for (const muscle of muscles) {
+        const response = await fetch(`http://localhost:5050/api/exercises/${muscle}`);
+        const data = await response.json();
+        allExercises.push(...data);
+      }
+
+      setExercises(allExercises);
+      console.log("Fetched exercises:", allExercises);
+    } catch (error) {
+      console.error("Error fetching exercises:", error);
+    }
+  };
+
+  const addToCart = (exercise: Exercise) => {
+    setCart((prevCart) => [...prevCart, exercise]);
+  };
+
+  const handleDelete = (id: number) => {
+    // Remove the exercise from the cart based on its id
+    setCart((prevCart) => prevCart.filter((exercise) => exercise.id !== id));
+  };
+
+  const saveToWorkoutPlan = async () => {
+    if (cart.length === 0) return;
+
+    try {
+      const response = await fetch("http://localhost:5050/api/workout-plans", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ exercises: cart }), // or other data like user id
+      });
+
+      const data = await response.json();
+      console.log("Saved workout plan:", data);
+      setCart([]); // clear cart after saving
+    } catch (error) {
+      console.error("Error saving workout plan:", error);
+    }
+  };
+
+  return (
+    <div
+      style={{
+        padding: "1rem",
+        fontFamily: "Arial, sans-serif",
+        backgroundColor: "#f0f2f5",
+        color: "#222",
+        minHeight: "100vh",
+      }}
+    >
+      <h1 style={{ textAlign: "center", color: "#111" }}>Workout Planner</h1>
+      <MuscleSelector onSubmit={handleSubmit} />
+      <p style={{ marginTop: "1rem", fontWeight: "bold" }}>
+        Selected: {selectedMuscles.join(", ")}
+      </p>
+      {cart.length > 0 && (
+        <div>
+          <h2 style={{ marginTop: "2rem" }}>Your Workout Plan</h2>
+          <ul>
+            {cart.map((exercise) => (
+              <li key={exercise.id}>{exercise.name} 
+                <button onClick={() => handleDelete(exercise.id)}
+                style={{
+                  backgroundColor: "#f44336",
+                  color: "#fff",
+                  padding: "0.5rem",
+                  border: "none",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  marginLeft: "1rem",
+                }}>Delete</button>
+              </li>
+            ))}
+          </ul>
+          <button
+            onClick={saveToWorkoutPlan}
+            style={{
+              backgroundColor: "#4CAF50",
+              color: "#fff",
+              padding: "1rem",
+              border: "none",
+              borderRadius: "4px",
+              cursor: "pointer",
+            }}
+          >
+            Save to Workout Plan
+          </button>
+        </div>
+      )}
+      {exercises.length > 0 && (
+        <div>
+          <h2 style={{ marginTop: "2rem", marginBottom: "1rem" }}>
+            Exercise Results
+          </h2>
+          <WorkoutList exercises={exercises} addToCart={addToCart} />
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default MuscleSelectorPage;
+
+
+
+/*import { useState } from "react"
 import MuscleSelector from "../components/MuscleSelector"
 
 interface Exercise {
@@ -24,21 +159,23 @@ const MuscleSelectorPage = () => {
     setWorkoutPlan([])
 
     if (muscles.length === 0) return
-
-    try {
-      const allExercises: Exercise[] = []
-
-      for (const muscle of muscles) {
+    const allExercises: Exercise[] = []
+    for (const muscle of muscles) {
+      try {
         const response = await fetch(`http://localhost:5050/api/exercises/${muscle}`)
+        if (!response.ok) {
+          const errText = await response.text()
+          throw new Error(errText)
+        }
+
         const data: Exercise[] = await response.json()
         const filtered = data.filter(ex => !ex.name.toLowerCase().startsWith("assisted"))
         allExercises.push(...filtered.slice(0, 3)) // Limit to 3 per muscle
+      } catch (error) {
+        console.error("Error fetching exercises:", error)
       }
-
-      setExercises(allExercises)
-    } catch (error) {
-      console.error("Error fetching exercises:", error)
     }
+    setExercises(allExercises)
   }
 
   const addToPlan = (exercise: Exercise) => {
@@ -243,4 +380,4 @@ const MuscleSelectorPage = () => {
   )
 }
 
-export default MuscleSelectorPage
+export default MuscleSelectorPage */
