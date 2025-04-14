@@ -16,7 +16,7 @@ app.use(express.json())
 
 // Add routes
 app.use("/api", exerciseRouter)
-app.use("/api", workoutPlanRouter)
+app.use(workoutPlanRouter)
 
 // Default route
 app.get("/", (_req, res) => {
