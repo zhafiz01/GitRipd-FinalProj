@@ -11,7 +11,7 @@ const NameForm = () => {
 		if (!name.trim()) return
 
 		localStorage.setItem("userName", name)
-		navigate("/select") // or navigate to /intake if you're adding that later
+		navigate("/age") // or navigate to /intake if you're adding that later
 	}
 
 	return (

@@ -13,7 +13,7 @@ const WelcomeScreen: FC = () => {
             <br />
             <br />
             <NavLink
-				to="/intake/name"
+				to="/name"
 				className={({ isActive }) =>
 					isActive ? "navlink active" : "navlink"
 				}

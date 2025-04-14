@@ -6,7 +6,7 @@ const Header: FC = () => {
 	return (
 		<div className="header">
 			<NavLink
-				to="/intake/welcome-screen"
+				to="/welcome"
 				className={({ isActive }) =>
 					isActive ? "navlink active" : "navlink"
 				}
