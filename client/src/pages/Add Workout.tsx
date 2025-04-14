@@ -11,7 +11,7 @@ const AddWorkout: FC = () => {
         <h2>Exercises:</h2>
         <br/>
         <WorkoutListByMuscle />
-        </>
+        </> 
     )
 }
 
