@@ -1,12 +1,15 @@
 import { FC } from "react"
 
-const WeightInput: FC = () => {
+const WeightForm: FC = () => {
     
-    return (
-        <>
-        Enter weight here...
-        </>
-    )
+   // navigates to "/whyhere"
+
+   return (
+    <>
+    Please share your weight here...
+    <button>Continue</button>
+    </>
+)
 }
 
-export default WeightInput
+export default WeightForm

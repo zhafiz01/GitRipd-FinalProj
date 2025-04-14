@@ -18,6 +18,8 @@ const Profile: FC = () => {
 			Goal:
 			<br />
 			Target Muscles:
+			<br />
+			Workout Plan (Full UserWorkoutPlan shows here)
 		</>
 	)
 }

@@ -1,12 +1,15 @@
 import { FC } from "react"
 
-const SexInput: FC = () => {
+const SexForm: FC = () => {
     
+// navigates to "/weight"
+
     return (
         <>
         Select sex here...
+        <button>Continue</button>
         </>
     )
 }
 
-export default SexInput
+export default SexForm
