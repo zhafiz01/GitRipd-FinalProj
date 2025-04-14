@@ -7,7 +7,12 @@ const ExerciseSchema = new Schema({
     id: { type: Number },
     name: { type: String, required: true },
     targetMuscle: { type: String, required: true },
-    videos: { type: [String] }
+    videos: [
+        {
+            title: { type: String },
+            link: { type: String }
+        }
+    ]
 }, {
     timestamps: true
 })
