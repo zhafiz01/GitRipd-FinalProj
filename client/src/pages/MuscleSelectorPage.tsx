@@ -1,137 +1,142 @@
-// pages/MuscleSelectorPage.tsx
-import { useState } from "react";
-import MuscleSelector from "../components/MuscleSelector";
-import WorkoutList from "../components/WorkoutList";
-
-interface Exercise {
-  id: number;
-  name: string;
-  target: string;
-  equipment: string;
-  gifUrl: string;
-  videos: { title: string; link: string }[];
-}
+import { useState } from "react"
+import MuscleSelector from "../components/MuscleSelector"
+import Exercise from "../interfaces/Exercise"
+import WorkoutPlanList from "../components/WorkoutPlanList"
 
 const MuscleSelectorPage = () => {
-  const [selectedMuscles, setSelectedMuscles] = useState<string[]>([]);
-  const [exercises, setExercises] = useState<Exercise[]>([]);
-  const [cart, setCart] = useState<Exercise[]>([]);
+	const [selectedMuscles, setSelectedMuscles] = useState<string[]>([])
+	const [exercises, setExercises] = useState<Exercise[]>([])
+	const [cart, setCart] = useState<Exercise[]>([])
 
-  const handleSubmit = async (muscles: string[]) => {
-    setSelectedMuscles(muscles);
-    setExercises([]);
+	const handleSubmit = async (muscles: string[]) => {
+		setSelectedMuscles(muscles)
+		setExercises([])
 
-    if (muscles.length === 0) return;
+		if (muscles.length === 0) return
 
-    try {
-      const allExercises: Exercise[] = [];
+		try {
+			const allExercises: Exercise[] = []
 
-      for (const muscle of muscles) {
-        const response = await fetch(`http://localhost:5050/api/exercises/${muscle}`);
-        const data = await response.json();
-        allExercises.push(...data);
-      }
+			for (const muscle of muscles) {
+				const response = await fetch(
+					`http://localhost:5050/api/exercises/${muscle}`
+				)
+				const data = await response.json()
+				allExercises.push(...data)
+			}
 
-      setExercises(allExercises);
-      console.log("Fetched exercises:", allExercises);
-    } catch (error) {
-      console.error("Error fetching exercises:", error);
-    }
-  };
+			setExercises(allExercises)
+			console.log("Fetched exercises:", allExercises)
+		} catch (error) {
+			console.error("Error fetching exercises:", error)
+		}
+	}
 
-  const addToCart = (exercise: Exercise) => {
-    setCart((prevCart) => [...prevCart, exercise]);
-  };
+	const addToCart = (exercise: Exercise) => {
+		setCart((prevCart) => [...prevCart, exercise])
+	}
 
-  const handleDelete = (id: number) => {
-    // Remove the exercise from the cart based on its id
-    setCart((prevCart) => prevCart.filter((exercise) => exercise.id !== id));
-  };
+	const handleDelete = (id: number) => {
+		setCart((prevCart) =>
+			prevCart.filter((exercise) => exercise.id !== id)
+		)
+	}
 
-  const saveToWorkoutPlan = async () => {
-    if (cart.length === 0) return;
+	const saveToWorkoutPlan = async () => {
+		if (cart.length === 0) return
 
-    try {
-      const response = await fetch("http://localhost:5050/api/workout-plans", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ exercises: cart }), // or other data like user id
-      });
+		try {
+			const response = await fetch(
+				"http://localhost:5050/api/workout-plans",
+				{
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify({ exercises: cart }),
+				}
+			)
 
-      const data = await response.json();
-      console.log("Saved workout plan:", data);
-      setCart([]); // clear cart after saving
-    } catch (error) {
-      console.error("Error saving workout plan:", error);
-    }
-  };
+			const data = await response.json()
+			console.log("Saved workout plan:", data)
+			setCart([])
+		} catch (error) {
+			console.error("Error saving workout plan:", error)
+		}
+	}
 
-  return (
-    <div
-      style={{
-        padding: "1rem",
-        fontFamily: "Arial, sans-serif",
-        backgroundColor: "#f0f2f5",
-        color: "#222",
-        minHeight: "100vh",
-      }}
-    >
-      <h1 style={{ textAlign: "center", color: "#111" }}>Workout Planner</h1>
-      <MuscleSelector onSubmit={handleSubmit} />
-      <p style={{ marginTop: "1rem", fontWeight: "bold" }}>
-        Selected: {selectedMuscles.join(", ")}
-      </p>
-      {cart.length > 0 && (
-        <div>
-          <h2 style={{ marginTop: "2rem" }}>Your Workout Plan</h2>
-          <ul>
-            {cart.map((exercise) => (
-              <li key={exercise.id}>{exercise.name} 
-                <button onClick={() => handleDelete(exercise.id)}
-                style={{
-                  backgroundColor: "#f44336",
-                  color: "#fff",
-                  padding: "0.5rem",
-                  border: "none",
-                  borderRadius: "4px",
-                  cursor: "pointer",
-                  marginLeft: "1rem",
-                }}>Delete</button>
-              </li>
-            ))}
-          </ul>
-          <button
-            onClick={saveToWorkoutPlan}
-            style={{
-              backgroundColor: "#4CAF50",
-              color: "#fff",
-              padding: "1rem",
-              border: "none",
-              borderRadius: "4px",
-              cursor: "pointer",
-            }}
-          >
-            Save to Workout Plan
-          </button>
-        </div>
-      )}
-      {exercises.length > 0 && (
-        <div>
-          <h2 style={{ marginTop: "2rem", marginBottom: "1rem" }}>
-            Exercise Results
-          </h2>
-          <WorkoutList exercises={exercises} addToCart={addToCart} />
-        </div>
-      )}
-    </div>
-  );
-};
+	return (
+		<div
+			style={{
+				padding: "1rem",
+				fontFamily: "Arial, sans-serif",
+				backgroundColor: "#f0f2f5",
+				color: "#222",
+				minHeight: "100vh",
+			}}
+		>
+			<h1 style={{ textAlign: "center", color: "#111" }}>
+				Workout Planner
+			</h1>
+			<MuscleSelector onSubmit={handleSubmit} />
+			<p style={{ marginTop: "1rem", fontWeight: "bold" }}>
+				Selected: {selectedMuscles.join(", ")}
+			</p>
+			{cart.length > 0 && (
+				<div>
+					<h2 style={{ marginTop: "2rem" }}>Your Workout Plan</h2>
+					<ul>
+						{cart.map((exercise) => (
+							<li key={exercise.id}>
+								{exercise.name}
+								<button
+									onClick={() => handleDelete(exercise.id)}
+									style={{
+										backgroundColor: "#f44336",
+										color: "#fff",
+										padding: "0.5rem",
+										border: "none",
+										borderRadius: "4px",
+										cursor: "pointer",
+										marginLeft: "1rem",
+									}}
+								>
+									Delete
+								</button>
+							</li>
+						))}
+					</ul>
+					<button
+						onClick={saveToWorkoutPlan}
+						style={{
+							backgroundColor: "#4CAF50",
+							color: "#fff",
+							padding: "1rem",
+							border: "none",
+							borderRadius: "4px",
+							cursor: "pointer",
+						}}
+					>
+						Save to Workout Plan
+					</button>
+				</div>
+			)}
+			{exercises.length > 0 && (
+				<div>
+					<h2 style={{ marginTop: "2rem", marginBottom: "1rem" }}>
+						Exercise Results
+					</h2>
+					<WorkoutPlanList
+						exercises={exercises}
+						addToCart={addToCart}
+					/>
+				</div>
+			)}
+		</div>
+	)
+}
 
-export default MuscleSelectorPage;
-
-
+export default MuscleSelectorPage
 
 /*import { useState } from "react"
 import MuscleSelector from "../components/MuscleSelector"
