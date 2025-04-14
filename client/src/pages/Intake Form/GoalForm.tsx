@@ -1,7 +1,9 @@
 import { FC } from "react"
 
-const GoalInput: FC = () => {
+const GoalForm: FC = () => {
     
+    // navigates to "/select"
+
     return (
         <>
         Select your fitness goal...
@@ -9,4 +11,4 @@ const GoalInput: FC = () => {
     )
 }
 
-export default GoalInput
+export default GoalForm

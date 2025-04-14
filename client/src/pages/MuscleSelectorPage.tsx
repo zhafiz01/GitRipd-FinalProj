@@ -2,6 +2,7 @@
 import { useState } from "react";
 import MuscleSelector from "../components/MuscleSelector";
 import WorkoutList from "../components/WorkoutList";
+import { useNavigate } from "react-router-dom";
 
 interface Exercise {
   id: number;
@@ -16,6 +17,8 @@ const MuscleSelectorPage = () => {
   const [selectedMuscles, setSelectedMuscles] = useState<string[]>([]);
   const [exercises, setExercises] = useState<Exercise[]>([]);
   const [cart, setCart] = useState<Exercise[]>([]);
+
+  const navigate = useNavigate()
 
   const handleSubmit = async (muscles: string[]) => {
     setSelectedMuscles(muscles);
@@ -44,27 +47,29 @@ const MuscleSelectorPage = () => {
   };
 
   const handleDelete = (id: number) => {
-    // Remove the exercise from the cart based on its id
     setCart((prevCart) => prevCart.filter((exercise) => exercise.id !== id));
   };
 
-  const saveToWorkoutPlan = async () => {
-    if (cart.length === 0) return;
-
+  const handleSave = async () => {
     try {
-      const response = await fetch("http://localhost:5050/api/workout-plans", {
+      const response = await fetch("http://localhost:5050/api/plans", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ exercises: cart }), // or other data like user id
+        body: JSON.stringify({ exercises: cart }), 
       });
 
-      const data = await response.json();
-      console.log("Saved workout plan:", data);
-      setCart([]); // clear cart after saving
-    } catch (error) {
-      console.error("Error saving workout plan:", error);
+      if (!response.ok) throw new Error("Failed to save workout plan");
+
+      const saved = await response.json();
+      console.log("Saved Plan:", saved);
+      alert("✅ Workout plan saved!");
+
+      navigate("/dashboard");
+    } catch (err) {
+      console.error("Save error:", err);
+      alert("❌ Could not save workout plan.");
     }
   };
 
@@ -103,7 +108,7 @@ const MuscleSelectorPage = () => {
             ))}
           </ul>
           <button
-            onClick={saveToWorkoutPlan}
+            onClick={handleSave}
             style={{
               backgroundColor: "#4CAF50",
               color: "#fff",

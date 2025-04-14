@@ -1,7 +1,10 @@
 import { useIntakeForm } from "../../context/IntakeFormContext"
+import { useNavigate } from "react-router-dom"
 
-const BirthdayInput = () => {
+const AgeForm = () => {
 	const { data, updateData } = useIntakeForm()
+
+	const navigate = useNavigate()
 
 	const handleBirthdayChange = (birthday: string) => {
 		const birthDate = new Date(birthday)
@@ -13,6 +16,7 @@ const BirthdayInput = () => {
 		}
 
 		updateData({ birthday, age })
+		navigate("/sex")
 	}
 
 	return (
@@ -25,8 +29,9 @@ const BirthdayInput = () => {
 				onChange={(e) => handleBirthdayChange(e.target.value)}
 			/>
 			{data.age !== undefined && <p>You're {data.age} years old.</p>}
+			<button onClick={() => handleBirthdayChange}>Continue</button>
 		</div>
 	)
 }
 
-export default BirthdayInput
+export default AgeForm
