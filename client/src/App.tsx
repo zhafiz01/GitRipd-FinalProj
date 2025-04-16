@@ -15,6 +15,7 @@ import WeightForm from "./pages/Intake Form/WeightForm"
 import GoalForm from "./pages/Intake Form/GoalForm"
 import TargetMuscleForm from "./pages/Intake Form/TargetMuscleForm"
 import WhyHereForm from "./pages/Intake Form/WhyHereForm"
+import LoginPage from "./pages/LoginPage"
 
 function App() {
 	return (
@@ -27,6 +28,10 @@ function App() {
 					<Route
 						path="/welcome"
 						element={<WelcomeScreen />}
+					/>
+					<Route 
+						path="/login"
+						element={<LoginPage />}
 					/>
 					<Route
 						path="/name"

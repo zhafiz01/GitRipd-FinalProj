@@ -24,10 +24,11 @@ const MuscleSelectorPage = () => {
 			for (const muscle of muscles) {
 				const response = await fetch(
 					`http://localhost:5050/api/exercises/${muscle}`
-				)
-				const data = await response.json()
-				allExercises.push(...data)
-			}
+				);
+        const data: Exercise[] = await response.json();
+        const filtered = data.filter(ex => !ex.name.toLowerCase().startsWith("assisted"));
+        allExercises.push(...filtered.slice(0, 8)); 
+      }
 
 			setExercises(allExercises)
 			console.log("Fetched exercises:", allExercises)

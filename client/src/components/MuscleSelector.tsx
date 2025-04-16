@@ -20,9 +20,9 @@ const MuscleSelector = ({ onSubmit }: MuscleSelectorProps) => {
 	}
 
 	const muscleGroups = {
-		Arms: ["biceps", "deltoids", "forearms", "triceps"],
+		Arms: ["biceps", "delts", "forearms", "triceps"],
 		Back: ["trapezius", "lats"],
-		Core: ["abs", "obliques", "pectorals"],
+		Core: ["abs", "pectorals"],
 		Legs: ["adductors", "calves", "hamstrings", "glutes", "quads"],
 	}
 
