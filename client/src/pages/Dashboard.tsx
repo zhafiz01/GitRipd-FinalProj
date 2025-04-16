@@ -1,19 +1,57 @@
-import { FC, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import Exercise from "../interfaces/Exercise";
 //import { useNavigate } from "react-router-dom";
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
+  import "react-circular-progressbar/dist/styles.css";
 
-interface Exercise {
-  id: number;
-  name: string;
-  target: string;
-  equipment: string;
-  gifUrl: string;
-  videos: { title: string; link: string }[];
-}
-
-const Dashboard: FC = () => {
-  const [workoutPlan, setWorkoutPlan] = useState<Exercise[]>([]);
+const Dashboard = () => {
+  const [workoutPlan, setWorkoutPlan] = useState<Exercise[]>([
+    {
+        id: 1,
+        name: "push ups",
+        target: "pectorals",
+        equipment: "floor",
+        gifUrl: "url",
+        videos: [{ title: "vid title", link: "vid link" }]
+    },
+    {
+        id: 2,
+        name: "squats",
+        target: "glutes",
+        equipment: "barbell",
+        gifUrl: "url",
+        videos: [{ title: "vid title", link: "vid link" }]
+    },
+    {
+        id: 3,
+        name: "pull ups",
+        target: "biceps",
+        equipment: "structure",
+        gifUrl: "url",
+        videos: [{ title: "vid title", link: "vid link" }]
+    }
+  ]);
   //const [userName, setUserName] = useState<string>("User Name"); // Placeholder for user name
   //const navigate = useNavigate();
+  const [completedWorkouts, setCompletedWorkouts] = useState<number[]>([])
+  const [progress, setProgress] = useState(0);
+
+  const getCustomWelcome = (progress: number) => {
+    if (progress === 100) return "It's giving BOSS"
+    if (progress >= 80) return "You're almost there! Stick with it!"
+    if (progress >= 50) return "Every day you try is a day you succeed!"
+    else return "Let git it!"
+  }
+
+  const handleComplete = (id: number) => {
+    if (!completedWorkouts.includes(id)) {
+      const updatedCompleted = [...completedWorkouts, id]
+      setCompletedWorkouts(updatedCompleted)
+  
+      const percentage = Math.round((updatedCompleted.length / workoutPlan.length) * 100)
+      setProgress(percentage)
+    }
+  }
 
   useEffect(() => {
     const fetchWorkoutPlan = async () => {
@@ -53,12 +91,25 @@ const Dashboard: FC = () => {
 
   return (
     <div style={{ padding: "1rem", backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
-      <h1>User - You're Crushing it!</h1>
+      <h1>User - {getCustomWelcome(progress)}</h1>
       <br />
       <h2>Progress Tracker:</h2>
       <br />
-      {/* Placeholder for progress tracker */}
-      <div>(Insert progress tracker diagram here)</div>
+      <div style={{ width: 200, margin: "2rem auto" }}>
+        <CircularProgressbar
+          value={progress}
+          text={`${progress}%`}
+          styles={buildStyles({
+            textSize: "16px",
+            pathColor: 
+                progress >= 80 ? "#4caf50" :
+                progress >= 50 ? "#f4c542" :
+                "#00bcd4",
+            textColor: "#333",
+            trailColor: "#ddd",
+          })}
+        />
+      </div>
       <br />
       <h3>Tips for success:</h3>
       <ul>
@@ -78,8 +129,13 @@ const Dashboard: FC = () => {
       {workoutPlan.length > 0 ? (
         <ul>
           {workoutPlan.map((exercise) => (
-            <li key={exercise.id}>
+            <li key={exercise.id} style={{ 
+                opacity: completedWorkouts.includes(exercise.id) ? 0.5 : 1
+            }}>
               {exercise.name}{" "}
+              {completedWorkouts.includes(exercise.id) && " ✅"}
+              <button className="mark-complete-button"
+                onClick={() => handleComplete(exercise.id)}>Mark as Complete!</button>
               <button
                 onClick={() => handleDelete(exercise.id)}
                 style={{

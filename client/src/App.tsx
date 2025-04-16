@@ -15,6 +15,7 @@ import Profile from "./pages/UserProfile"
 import WorkoutPlanList from "./components/WorkoutPlanList"
 import WelcomeScreen from "./pages/Intake Form/WelcomeScreen"
 import NameForm from "./pages/Intake Form/NameForm"
+import LoginPage from "./pages/LoginPage"
 
 function App() {
 	return (
@@ -27,6 +28,10 @@ function App() {
 					<Route
 						path="/welcome"
 						element={<WelcomeScreen />}
+					/>
+					<Route 
+						path="/login"
+						element={<LoginPage />}
 					/>
 					<Route
 						path="/name"
