@@ -3,18 +3,18 @@ import { Routes, Route } from "react-router-dom"
 import Header from "./pages/Header"
 import AddWorkout from "./pages/AddWorkout"
 import Dashboard from "./pages/Dashboard"
-import BirthdayInput from "./pages/Intake Form/AgeForm"
-import GoalInput from "./pages/Intake Form/GoalForm"
 import ReviewIntake from "./pages/Intake Form/ReviewIntake"
-import SexInput from "./pages/Intake Form/SexForm"
-import TargetMuscleInput from "./pages/Intake Form/TargetMuscleForm"
-import WeightInput from "./pages/Intake Form/WeightForm"
-import WhyHereInput from "./pages/Intake Form/WhyHereForm"
 import NavBar from "./pages/NavBar"
 import Profile from "./pages/UserProfile"
 import WorkoutPlanList from "./components/WorkoutPlanList"
 import WelcomeScreen from "./pages/Intake Form/WelcomeScreen"
 import NameForm from "./pages/Intake Form/NameForm"
+import AgeForm from "./pages/Intake Form/AgeForm"
+import SexForm from "./pages/Intake Form/SexForm"
+import WeightForm from "./pages/Intake Form/WeightForm"
+import GoalForm from "./pages/Intake Form/GoalForm"
+import TargetMuscleForm from "./pages/Intake Form/TargetMuscleForm"
+import WhyHereForm from "./pages/Intake Form/WhyHereForm"
 import LoginPage from "./pages/LoginPage"
 
 function App() {
@@ -39,27 +39,27 @@ function App() {
 					/>
 					<Route
 						path="/age"
-						element={<BirthdayInput />}
+						element={<AgeForm />}
 					/>
 					<Route
 						path="/sex"
-						element={<SexInput />}
+						element={<SexForm />}
 					/>
 					<Route
 						path="/weight"
-						element={<WeightInput />}
+						element={<WeightForm />}
 					/>
 					<Route
 						path="/why"
-						element={<WhyHereInput />}
+						element={<WhyHereForm />}
 					/>
 					<Route
 						path="/goal"
-						element={<GoalInput />}
+						element={<GoalForm />}
 					/>
 					<Route
 						path="/target"
-						element={<TargetMuscleInput />}
+						element={<TargetMuscleForm />}
 					/>
 					<Route
 						path="/review"
