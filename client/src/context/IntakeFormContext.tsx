@@ -4,11 +4,11 @@ type IntakeFormData = {
 	name?: string
 	birthday?: string
 	age?: number
-	weight?: number
 	sex?: string
+	weight?: number
+	why?: string
 	goal?: string
 	targetMuscle?: string
-	reason?: string
 }
 
 type IntakeFormContextType = {
@@ -16,7 +16,7 @@ type IntakeFormContextType = {
 	updateData: (newData: Partial<IntakeFormData>) => void
 }
 
-const IntakeFormContext = createContext<
+export const IntakeFormContext = createContext<
 	IntakeFormContextType | undefined
 >(undefined)
 
