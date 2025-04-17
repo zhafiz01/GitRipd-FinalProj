@@ -12,9 +12,9 @@
 }
 
 .navlink {
-    color: rgb(57, 57, 57);
+    color: rgb(105, 104, 104);
 }
 
-.navlink .active {
-    color: red;
+.navlink-active {
+    color: rgb(10, 9, 9);
 }

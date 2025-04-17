@@ -1,4 +1,3 @@
-// pages/MuscleSelectorPage.tsx
 import { useState } from "react";
 import MuscleSelector from "../components/MuscleSelector";
 import WorkoutPlanList from "../components/WorkoutPlanList";
@@ -70,13 +69,13 @@ const MuscleSelectorPage = () => {
 
   return (
     <div
-      style={{
-        padding: "1rem",
-        fontFamily: "Arial, sans-serif",
-        backgroundColor: "#f0f2f5",
-        color: "#222",
-        minHeight: "100vh",
-      }}
+      // style={{
+      //   padding: "1rem",
+      //   fontFamily: "Arial, sans-serif",
+      //   backgroundColor: "#f0f2f5",
+      //   color: "#222",
+      //   minHeight: "100vh",
+      // }}
     >
       <h1 style={{ textAlign: "center", color: "#111" }}>Workout Planner</h1>
       <MuscleSelector onSubmit={handleSubmit} />

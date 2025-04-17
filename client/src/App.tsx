@@ -3,18 +3,17 @@ import { Routes, Route } from "react-router-dom"
 import Header from "./pages/Header"
 import AddWorkout from "./pages/AddWorkout"
 import Dashboard from "./pages/Dashboard"
-import ReviewIntake from "./pages/Intake Form/ReviewIntake"
 import NavBar from "./pages/NavBar"
 import Profile from "./pages/UserProfile"
 import WorkoutPlanList from "./components/WorkoutPlanList"
-import WelcomeScreen from "./pages/Intake Form/WelcomeScreen"
-import NameForm from "./pages/Intake Form/NameForm"
-import AgeForm from "./pages/Intake Form/AgeForm"
-import SexForm from "./pages/Intake Form/SexForm"
-import WeightForm from "./pages/Intake Form/WeightForm"
-import GoalForm from "./pages/Intake Form/GoalForm"
-import TargetMuscleForm from "./pages/Intake Form/TargetMuscleForm"
-import WhyHereForm from "./pages/Intake Form/WhyHereForm"
+import WelcomeScreen from "./pages/IntakeForms/WelcomeScreen"
+import NameForm from "./pages/IntakeForms/NameForm"
+import AgeForm from "./pages/IntakeForms/AgeForm"
+import SexForm from "./pages/IntakeForms/SexForm"
+import WeightForm from "./pages/IntakeForms/WeightForm"
+import GoalForm from "./pages/IntakeForms/GoalForm"
+import TargetMuscleForm from "./pages/IntakeForms/TargetMuscleForm"
+import WhyHereForm from "./pages/IntakeForms/WhyHereForm"
 import LoginPage from "./pages/LoginPage"
 
 function App() {
@@ -29,7 +28,7 @@ function App() {
 						path="/welcome"
 						element={<WelcomeScreen />}
 					/>
-					<Route 
+					<Route
 						path="/login"
 						element={<LoginPage />}
 					/>
@@ -60,10 +59,6 @@ function App() {
 					<Route
 						path="/target"
 						element={<TargetMuscleForm />}
-					/>
-					<Route
-						path="/review"
-						element={<ReviewIntake />}
 					/>
 					<Route
 						path="/profile"

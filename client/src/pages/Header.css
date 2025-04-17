@@ -12,10 +12,10 @@
     font-size: 20px;
 }
 
-/* .navlink {
-    color: rgb(57, 57, 57);
+.navlink {
+    color: rgb(105, 104, 104);
 }
 
-.navlink .active {
-    color: red;
-} */
+.navlink-active {
+    color: rgb(10, 9, 9);
+}
