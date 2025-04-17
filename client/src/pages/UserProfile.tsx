@@ -1,21 +1,30 @@
 import { FC } from "react"
 
-const Profile: FC = () => {
+/*interface Props {
+	name: string 
+    age: number
+    sex: string
+    weight: number
+    whyHere: string
+    goal: string
+}*/
+
+const Profile: FC = ({/* name, age, sex, weight, whyHere, goal */}) => {
 	return (
 		<>
 			Personal Profile
 			<br />
 			Name:
 			<br />
-			Birthday:
+			Birthday: 
 			<br />
-			Sex:
+			Sex: 
 			<br />
-			Current Weight:
+			Current weight:  lbs
 			<br />
-			Why you're here:
+			Why you're here: 
 			<br />
-			Goal:
+			Goal: 
 			<br />
 			Target Muscles:
 			<br />

@@ -1,9 +1,8 @@
 export default interface User {
-    userName: string 
-    userAge: number
-    userSex: string
-    userWeight: number
-    userWhyHere: string
-    userGoal: string 
-    
+    name: string 
+    age: number
+    sex: string
+    weight: number
+    whyHere: string
+    goal: string 
 }

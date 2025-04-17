@@ -1,5 +1,3 @@
-// MuscleSelectorPage.tsx
-
 import { useState } from "react";
 import MuscleSelector from "../components/MuscleSelector";
 import WorkoutPlanList from "../components/WorkoutPlanList";
@@ -40,6 +38,7 @@ const MuscleSelectorPage = () => {
         : [...prev, muscle]
     );
   };
+
 
   const handleSubmit = async () => {
     const translatedMuscles = selectedMuscles
@@ -123,8 +122,6 @@ const MuscleSelectorPage = () => {
 <p style={{ marginTop: "1rem", fontWeight: "bold" }}>
   Selected: {selectedMuscles.filter((m) => m !== "Front-Muscles" && m !== "Back-Muscles").join(", ")}
 </p>
-
-
       {cart.length > 0 && (
         <div>
           <h2 style={{ marginTop: "2rem" }}>Your Workout Plan</h2>

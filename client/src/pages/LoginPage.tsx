@@ -1,44 +1,49 @@
 import { FormEvent, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { signInWithEmailAndPassword } from "firebase/auth"
+import { auth } from "../config/firebase"
+import { Link, useNavigate } from "react-router-dom"
 
-const LoginPage = () => {
+const Login = () => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const navigate = useNavigate()
 
-    const handleLogin = (e: FormEvent) => {
+    const handleSubmit = async (e: FormEvent) => {
         e.preventDefault()
-
-        if (!email || !password) {
-            alert("Please enter both email and password")
-            return
+        try {
+            await signInWithEmailAndPassword(auth, email, password)
+            navigate("/dashboard")
+        } catch (err) {
+            alert("Login failed")
+            console.error(err)
         }
-
-        localStorage.setItem("userEmail", email)
-        navigate("/dashboard")
     }
 
     return (
-        <form onSubmit={handleLogin}>
-            <label htmlFor="email">Email: </label>
-            <input 
-                type="email"
-                id="email"
-                name="email"
-                value={email}
-                onChange={(e) => (setEmail(e.target.value))}
-            />
-            <label htmlFor="password">Password: </label>
-            <input 
-                type="password"
-                id="password"
-                name="password"
-                value={password}
-                onChange={(e) => (setPassword(e.target.value))}
-            />
-            <button type="submit">Log in</button>
-        </form>
+        <div>
+            <h2>Sign in to use the App</h2>
+            <form onSubmit={handleSubmit}>
+                <label htmlFor="email">Email:</label>
+                <input 
+                    type="email"
+                    placeholder="Email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                />
+                <label htmlFor="password">Password:</label>
+                <input 
+                    type="password"
+                    placeholder="Password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                />
+                <button type="submit">
+                    Login
+                </button>
+                <p>Don't have an account? <Link to="/signup">Sign up here!</Link></p>
+            </form>
+        </div>
     )
 }
 
-export default LoginPage
+export default Login
