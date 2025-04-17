@@ -3,7 +3,6 @@ import { Routes, Route } from "react-router-dom"
 import Header from "./pages/Header"
 import AddWorkout from "./pages/AddWorkout"
 import Dashboard from "./pages/Dashboard"
-import ReviewIntake from "./pages/Intake Form/ReviewIntake"
 import NavBar from "./pages/NavBar"
 import Profile from "./pages/UserProfile"
 import WorkoutPlanList from "./components/WorkoutPlanList"
@@ -75,10 +74,6 @@ const App: FC = ({/* name, age, sex, whyHere, weight, goal */}) => {
 					<Route
 						path="/target"
 						element={<TargetMuscleForm />}
-					/>
-					<Route
-						path="/review"
-						element={<ReviewIntake />}
 					/>
 					<Route
 						path="/profile"
