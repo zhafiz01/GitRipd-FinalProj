@@ -30,7 +30,7 @@ const Profile = () => {
 				<br />
 				<p>
 					<strong>Why you're here:</strong>{" "}
-					{data.why || "Not provided"}
+					{data.whyHere || "Not provided"}
 				</p>
 				<br />
 				<p>

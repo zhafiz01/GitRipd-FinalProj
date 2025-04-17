@@ -15,8 +15,19 @@ import GoalForm from "./pages/IntakeForms/GoalForm"
 import TargetMuscleForm from "./pages/IntakeForms/TargetMuscleForm"
 import WhyHereForm from "./pages/IntakeForms/WhyHereForm"
 import LoginPage from "./pages/LoginPage"
+import { FC } from "react"
+import Signup from "./pages/SignupPage"
 
-function App() {
+/*interface Props {
+	name: string 
+    age: number
+    sex: string
+    weight: number
+    whyHere: string
+    goal: string
+}*/
+
+const App: FC = ({/* name, age, sex, whyHere, weight, goal */}) => {
 	return (
 		<>
 			<Header />
@@ -25,12 +36,16 @@ function App() {
 			<div>
 				<Routes>
 					<Route
-						path="/welcome"
+						path="/"
 						element={<WelcomeScreen />}
 					/>
 					<Route
 						path="/login"
 						element={<LoginPage />}
+					/>
+					<Route 
+						path="/signup"
+						element={<Signup />}
 					/>
 					<Route
 						path="/name"
@@ -63,6 +78,7 @@ function App() {
 					<Route
 						path="/profile"
 						element={<Profile />}
+						/*element={<Profile name={name} sex={sex} age={age} weight={weight} whyHere={whyHere} goal={goal} />}*/
 					/>
 					<Route
 						path="/dashboard"
