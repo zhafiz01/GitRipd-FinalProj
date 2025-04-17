@@ -3,116 +3,126 @@ import { useNavigate } from "react-router-dom"
 import { useIntakeForm } from "../../context/IntakeFormContext"
 
 const TargetMuscleForm = () => {
-    const { data, updateData } = useIntakeForm()
+	const { data, updateData } = useIntakeForm()
 	const [targetMuscle, setTargetMuscle] = useState(data.targetMuscle || "")
 	const navigate = useNavigate()
 
-	const handleSubmit = (e: FormEvent<HTMLFormElement>) => { // what is FormEvent/HTMLFormElement?
+	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-        if (!targetMuscle) return
+		if (!targetMuscle) return
 
 		updateData({ targetMuscle })
 		navigate("/profile")
 	}
 
-	const handleTargetMuscleChange = (e: React.ChangeEvent<HTMLInputElement>) => { // what is React.ChangeEvent<HTMLInputElement>?
+	const handleTargetMuscleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 		setTargetMuscle(e.target.value)
 	}
 
 	return (
 		<form onSubmit={handleSubmit}>
 			<h2>What muscles would you like to target?</h2>
+
 			<label>
 				<input
 					type="radio"
 					name="targetMuscle"
-					value="targetMuscle1"
-					checked={targetMuscle === "targetMuscle1"}
+					value="abs"
+					checked={targetMuscle === "abs"}
 					onChange={handleTargetMuscleChange}
 				/>
 				Abs
 			</label>
 			<br />
+
 			<label>
 				<input
 					type="radio"
 					name="targetMuscle"
-					value="targetMuscle2"
-					checked={targetMuscle === "targetMuscle2"}
+					value="quads"
+					checked={targetMuscle === "quads"}
 					onChange={handleTargetMuscleChange}
 				/>
 				Quads
 			</label>
 			<br />
-            <label>
+
+			<label>
 				<input
 					type="radio"
 					name="targetMuscle"
-					value="targetMuscle3"
-					checked={targetMuscle === "targetMuscle3"}
+					value="lats"
+					checked={targetMuscle === "lats"}
 					onChange={handleTargetMuscleChange}
 				/>
 				Lats
 			</label>
 			<br />
-            <label>
+
+			<label>
 				<input
 					type="radio"
 					name="targetMuscle"
-					value="targetMuscle4"
-					checked={targetMuscle === "targetMuscle4"}
+					value="legs"
+					checked={targetMuscle === "legs"}
 					onChange={handleTargetMuscleChange}
 				/>
 				Legs
 			</label>
 			<br />
-            <label>
+
+			<label>
 				<input
 					type="radio"
 					name="targetMuscle"
-					value="targetMuscle5"
-					checked={targetMuscle === "targetMuscle5"}
+					value="glutes"
+					checked={targetMuscle === "glutes"}
 					onChange={handleTargetMuscleChange}
 				/>
 				Glutes
 			</label>
 			<br />
-            <label>
+
+			<label>
 				<input
 					type="radio"
 					name="targetMuscle"
-					value="targetMuscle6"
-					checked={targetMuscle === "targetMuscle6"}
+					value="cardio"
+					checked={targetMuscle === "cardio"}
 					onChange={handleTargetMuscleChange}
 				/>
 				Cardio
 			</label>
 			<br />
-            <label>
+
+			<label>
 				<input
 					type="radio"
 					name="targetMuscle"
-					value="targetMuscle6"
-					checked={targetMuscle === "targetMuscle6"}
+					value="back"
+					checked={targetMuscle === "back"}
 					onChange={handleTargetMuscleChange}
 				/>
 				Back
 			</label>
 			<br />
-            <label>
+
+			<label>
 				<input
 					type="radio"
 					name="targetMuscle"
-					value="targetMuscle6"
-					checked={targetMuscle === "targetMuscle6"}
+					value="biceps"
+					checked={targetMuscle === "biceps"}
 					onChange={handleTargetMuscleChange}
 				/>
 				Biceps
 			</label>
 			<br />
+
 			<button type="submit">Continue</button>
 		</form>
 	)
 }
 
 export default TargetMuscleForm
+
