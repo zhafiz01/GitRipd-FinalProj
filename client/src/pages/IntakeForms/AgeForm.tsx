@@ -2,7 +2,11 @@ import { FormEvent, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useIntakeForm } from "../../context/IntakeFormContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircleArrowLeft, faCircleArrowRight } from "@fortawesome/free-solid-svg-icons"
+import {
+	faCircleArrowLeft,
+	faCircleArrowRight,
+} from "@fortawesome/free-solid-svg-icons"
+import "./IntakeForms.css"
 
 const months = [
 	"January",
@@ -60,80 +64,107 @@ const AgeForm = () => {
 		navigate("/sex")
 	}
 	return (
-		<form onSubmit={handleSubmit}>
-			<label>When is your birthday?</label>
-			<div>
-				<select
-					value={birthDate.month}
-					onChange={(e) =>
-						setBirthDate((prev) => ({
-							...prev,
-							month: e.target.value,
-						}))
-					}
+		<div className="form-wrapper">
+			<form
+				className="form-page"
+				onSubmit={handleSubmit}
+			>
+				<label
+					className="form-label"
+					htmlFor="birthday"
 				>
-					{months.map((month) => (
-						<option
-							key={month}
-							value={month}
-						>
-							{month}
-						</option>
-					))}
-				</select>
-				<input
-					type="number"
-					placeholder="Day"
-					min="1"
-					max="31"
-					value={birthDate.day}
-					onChange={(e) =>
-						setBirthDate((prev) => ({ ...prev, day: e.target.value }))
-					}
-				/>
-				<input
-					type="number"
-					placeholder="Year"
-					min="1900"
-					max={currentYear}
-					value={birthDate.year}
-					onChange={(e) =>
-						setBirthDate((prev) => ({
-							...prev,
-							year: e.target.value,
-						}))
-					}
-				/>
-			</div>
+					When is your birthday?
+				</label>
+				<br />
+				<div className="date-selectors">
+					<select
+						className="form-input"
+						id="birthday"
+						value={birthDate.month}
+						onChange={(e) =>
+							setBirthDate((prev) => ({
+								...prev,
+								month: e.target.value,
+							}))
+						}
+					>
+						{months.map((month) => (
+							<option
+								key={month}
+								value={month}
+							>
+								{month}
+							</option>
+						))}
+					</select>
+					<input
+						style={{ width: 75 }}
+						className="form-input"
+						id="birthday"
+						type="number"
+						placeholder="Day"
+						min="1"
+						max="31"
+						value={birthDate.day}
+						onChange={(e) =>
+							setBirthDate((prev) => ({
+								...prev,
+								day: e.target.value,
+							}))
+						}
+					/>
+					<input
+						style={{ width: 100 }}
+						className="form-input"
+						id="birthday"
+						type="number"
+						placeholder="Year"
+						min="1900"
+						max={currentYear}
+						value={birthDate.year}
+						onChange={(e) =>
+							setBirthDate((prev) => ({
+								...prev,
+								year: e.target.value,
+							}))
+						}
+					/>
+				</div>
 
-			{/* Show age if valid */}
-			{birthDate.day && birthDate.month && birthDate.year && (
-				<p>
-					You’re{" "}
-					{calculateAge(
-						new Date(
-							Number(birthDate.year),
-							months.indexOf(birthDate.month),
-							Number(birthDate.day)
-						)
-					)}{" "}
-					years old.
-				</p>
-			)}
-			<br />
-			<button>
-				<FontAwesomeIcon
-					icon={faCircleArrowLeft}
-					style={{ fontSize: "36px", color: "#333" }}
-				/>
-			</button>
-			<button type="submit">
-				<FontAwesomeIcon
-					icon={faCircleArrowRight}
-					style={{ fontSize: "36px", color: "#333" }}
-				/>
-			</button>
-		</form>
+				{/* Show age if valid */}
+				{birthDate.day && birthDate.month && birthDate.year && (
+					<p>
+						You’re{" "}
+						{calculateAge(
+							new Date(
+								Number(birthDate.year),
+								months.indexOf(birthDate.month),
+								Number(birthDate.day)
+							)
+						)}{" "}
+						years old.
+					</p>
+				)}
+				<br />
+				<div className="arrow-btns">
+					<button
+						type="button"
+						onClick={() => navigate("/name")}
+					>
+						<FontAwesomeIcon
+							icon={faCircleArrowLeft}
+							style={{ fontSize: "36px", color: "#333" }}
+						/>
+					</button>
+					<button type="submit">
+						<FontAwesomeIcon
+							icon={faCircleArrowRight}
+							style={{ fontSize: "36px", color: "#333" }}
+						/>
+					</button>
+				</div>
+			</form>
+		</div>
 	)
 }
 

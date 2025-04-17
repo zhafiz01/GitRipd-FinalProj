@@ -21,7 +21,7 @@ const Header: FC = () => {
 					isActive ? "navlink-active" : "navlink"
 				}
 			>
-				<FontAwesomeIcon style={{ fontSize: "36px" }} icon={faUser} />
+				<FontAwesomeIcon style={{ fontSize: "41px" }} icon={faUser} />
 			</NavLink>
 		</div>
 	)

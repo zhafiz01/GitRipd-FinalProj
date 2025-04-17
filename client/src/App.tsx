@@ -22,7 +22,7 @@ function App() {
 			<Header />
 			<br />
 			<br />
-			<div className="content-wrapper">
+			<div>
 				<Routes>
 					<Route
 						path="/welcome"

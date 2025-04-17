@@ -1,26 +1,48 @@
-import { FC } from "react"
+import { useIntakeForm } from "../context/IntakeFormContext"
+import "./UserProfile.css"
 
-const Profile: FC = () => {
+const Profile = () => {
+	const { data } = useIntakeForm()
+
 	return (
-		<>
-			Personal Profile
-			<br />
-			Name:
-			<br />
-			Birthday:
-			<br />
-			Sex:
-			<br />
-			Current Weight:
-			<br />
-			Why you're here:
-			<br />
-			Goal:
-			<br />
-			Target Muscles:
-			<br />
-			Workout Plan (Full UserWorkoutPlan shows here)
-		</>
+		<div className="form-wrapper">
+			<div className="form-page">
+				<h2>Personal Profile</h2>
+				<br />
+				<br />
+				<p>
+					<strong>Name:</strong> {data.name || "Not provided"}
+				</p>
+				<br />
+				<p>
+					<strong>Age:</strong>{" "}
+					{data.age + " years old" || "Not provided"}
+				</p>
+				<br />
+				<p>
+					<strong>Sex:</strong> {data.sex || "Not provided"}
+				</p>
+				<br />
+				<p>
+					<strong>Current Weight:</strong>{" "}
+					{data.weight ? `${data.weight} kg` : "Not provided"}
+				</p>
+				<br />
+				<p>
+					<strong>Why you're here:</strong>{" "}
+					{data.why || "Not provided"}
+				</p>
+				<br />
+				<p>
+					<strong>Goal:</strong> {data.goal || "Not provided"}
+				</p>
+				<br />
+				<p>
+					<strong>Target Muscles:</strong>{" "}
+					{data.targetMuscle || "Not provided"}
+				</p>
+			</div>
+		</div>
 	)
 }
 

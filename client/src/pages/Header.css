@@ -6,9 +6,9 @@
     background-color: rgb(195, 206, 196); 
     justify-content: space-between;
     align-items: center;
-    height: 50px;
+    height: 80px;
     width: 100vw;
-    padding: 3px;
+    padding: 3px 10px;
     font-size: 20px;
 }
 
