@@ -1,4 +1,3 @@
-// pages/MuscleSelectorPage.tsx
 import { useState } from "react";
 import MuscleSelector from "../components/MuscleSelector";
 import WorkoutPlanList from "../components/WorkoutPlanList";
@@ -6,24 +5,24 @@ import { useNavigate } from "react-router-dom";
 import Exercise from "../interfaces/Exercise";
 
 const MuscleSelectorPage = () => {
-  const [selectedMuscles, setSelectedMuscles] = useState<string[]>([]);
+  const [selectedTargets, setSelectedTargets] = useState<string[]>([]);
   const [exercises, setExercises] = useState<Exercise[]>([]);
   const [cart, setCart] = useState<Exercise[]>([]);
 
   const navigate = useNavigate()
 
-	const handleSubmit = async (muscles: string[]) => {
-		setSelectedMuscles(muscles)
+	const handleSubmit = async (targets: string[]) => {
+		setSelectedTargets(targets)
 		setExercises([])
 
-		if (muscles.length === 0) return
+		if (targets.length === 0) return
 
 		try {
 			const allExercises: Exercise[] = []
 
-			for (const muscle of muscles) {
+			for (const target of targets) {
 				const response = await fetch(
-					`http://localhost:5050/api/exercises/${muscle}`
+					`${import.meta.env.VITE_API_BASE_URL}/api/exercises/${target}`
 				);
         const data: Exercise[] = await response.json();
         const filtered = data.filter(ex => !ex.name.toLowerCase().startsWith("assisted"));
@@ -47,7 +46,7 @@ const MuscleSelectorPage = () => {
 
   const handleSave = async () => {
     try {
-      const response = await fetch("http://localhost:5050/api/plans", {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/plans`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -81,7 +80,7 @@ const MuscleSelectorPage = () => {
       <h1 style={{ textAlign: "center", color: "#111" }}>Workout Planner</h1>
       <MuscleSelector onSubmit={handleSubmit} />
       <p style={{ marginTop: "1rem", fontWeight: "bold" }}>
-        Selected: {selectedMuscles.join(", ")}
+        Selected: {selectedTargets.join(", ")}
       </p>
       {cart.length > 0 && (
         <div>

@@ -36,6 +36,9 @@ const Dashboard = () => {
   const [completedWorkouts, setCompletedWorkouts] = useState<number[]>([])
   const [progress, setProgress] = useState(0);
 
+  // conditional function for an inspirational/encouraging message to display
+  // depending on their specified fitness goal??????
+
   const getCustomWelcome = (progress: number) => {
     if (progress === 100) return "It's giving BOSS"
     if (progress >= 80) return "You're almost there! Stick with it!"
@@ -56,7 +59,7 @@ const Dashboard = () => {
   useEffect(() => {
     const fetchWorkoutPlan = async () => {
       try {
-        const response = await fetch("http://localhost:5050/api/plans");
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/plans`);
         if (!response.ok) {
           throw new Error("Error fetching workout plan");
         }
@@ -73,7 +76,7 @@ const Dashboard = () => {
 
   const handleDelete = async (id: number) => {
     try {
-      const response = await fetch(`http://localhost:5050/api/plans/exercise/${id}`, {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/plans/exercise/${id}`, {
         method: "DELETE",
       });
 

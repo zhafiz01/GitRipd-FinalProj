@@ -12,7 +12,7 @@ const TargetMuscleForm = () => {
         if (!targetMuscle) return
 
 		updateData({ targetMuscle })
-		navigate("/profile")
+		navigate("/dashboard")
 	}
 
 	const handleTargetMuscleChange = (e: React.ChangeEvent<HTMLInputElement>) => { // what is React.ChangeEvent<HTMLInputElement>?
