@@ -1,21 +1,3 @@
-import mongoose from "mongoose"
-import * as functions from "firebase-functions"
-
-export const establishConnection = async () => {
-	try {
-		const uri = functions.config().mongo.uri // ✅ Pull from Firebase config
-		const conn = await mongoose.connect(uri)
-		console.log("✅ MongoDB connected")
-		conn
-	} catch (err) {
-		console.error("❌ MongoDB connection error:", err)
-	}
-}
-
-
-
-/*
-
 import type {
 	Request,
 	Response,
@@ -55,5 +37,3 @@ const establishConnection = async (
 	}
 }
 export default establishConnection
-
-*/

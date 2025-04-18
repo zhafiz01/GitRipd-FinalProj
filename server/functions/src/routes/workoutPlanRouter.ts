@@ -5,4 +5,4 @@ const router = express.Router()
 
 router.post("/api/plans", saveWorkoutPlan)
 
-export default routersev
+export default router
