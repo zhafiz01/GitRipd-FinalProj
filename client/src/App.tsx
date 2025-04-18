@@ -6,14 +6,14 @@ import Dashboard from "./pages/Dashboard"
 import NavBar from "./pages/NavBar"
 import Profile from "./pages/UserProfile"
 import WorkoutPlanList from "./components/WorkoutPlanList"
-import WelcomeScreen from "./pages/Intake Form/WelcomeScreen"
-import NameForm from "./pages/Intake Form/NameForm"
-import AgeForm from "./pages/Intake Form/AgeForm"
-import SexForm from "./pages/Intake Form/SexForm"
-import WeightForm from "./pages/Intake Form/WeightForm"
-import GoalForm from "./pages/Intake Form/GoalForm"
-import TargetMuscleForm from "./pages/Intake Form/TargetMuscleForm"
-import WhyHereForm from "./pages/Intake Form/WhyHereForm"
+import WelcomeScreen from "./pages/IntakeForms/WelcomeScreen"
+import NameForm from "./pages/IntakeForms/NameForm"
+import AgeForm from "./pages/IntakeForms/AgeForm"
+import SexForm from "./pages/IntakeForms/SexForm"
+import WeightForm from "./pages/IntakeForms/WeightForm"
+import GoalForm from "./pages/IntakeForms/GoalForm"
+import TargetMuscleForm from "./pages/IntakeForms/TargetMuscleForm"
+import WhyHereForm from "./pages/IntakeForms/WhyHereForm"
 import LoginPage from "./pages/LoginPage"
 import { FC } from "react"
 import Signup from "./pages/SignupPage"
@@ -33,13 +33,13 @@ const App: FC = ({/* name, age, sex, whyHere, weight, goal */}) => {
 			<Header />
 			<br />
 			<br />
-			<div className="content-wrapper">
+			<div>
 				<Routes>
 					<Route
 						path="/"
 						element={<WelcomeScreen />}
 					/>
-					<Route 
+					<Route
 						path="/login"
 						element={<LoginPage />}
 					/>
