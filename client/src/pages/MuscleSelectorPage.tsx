@@ -1,11 +1,10 @@
-
 import { useState } from "react";
 import MuscleSelector from "../components/MuscleSelector";
 import WorkoutPlanList from "../components/WorkoutPlanList";
 import { useNavigate } from "react-router-dom";
 import Exercise from "../interfaces/Exercise";
 
-const muscleIdToZylaName: Record<string, string> = {
+const targetIdToZylaName: Record<string, string> = {
   Pectorals: "pectorals",
   Triceps: "triceps",
   Biceps: "biceps",
@@ -32,29 +31,29 @@ const MuscleSelectorPage = () => {
   const [cart, setCart] = useState<Exercise[]>([]);
   const navigate = useNavigate();
 
-  const toggleMuscle = (muscle: string) => {
-    setSelectedMuscles((prev) =>
-      prev.includes(muscle)
-        ? prev.filter((m) => m !== muscle)
-        : [...prev, muscle]
+  const toggleMuscle = (target: string) => {
+    setSelectedTargets((prev) =>
+      prev.includes(target)
+        ? prev.filter((m) => m !== target)
+        : [...prev, target]
     );
   };
 
 
   const handleSubmit = async () => {
-    const translatedMuscles = selectedMuscles
-      .map((m) => muscleIdToZylaName[m])
+    const translatedTargets = selectedTargets
+      .map((m) => targetIdToZylaName[m])
       .filter((name) => !!name);
 
     setExercises([]);
 
-    if (translatedMuscles.length === 0) return;
+    if (translatedTargets.length === 0) return;
 
     try {
       const allExercises: Exercise[] = [];
 
-      for (const muscle of translatedMuscles) {
-        const response = await fetch(`http://localhost:5050/api/exercises/${muscle}`);
+      for (const target of translatedTargets) {
+        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/exercises/${target}`);
         const data = await response.json();
 
         if (!Array.isArray(data)) {
@@ -91,7 +90,7 @@ const MuscleSelectorPage = () => {
         return;
       }
 
-      const response = await fetch("http://localhost:5050/api/plans", {
+      const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/plans`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ userId: userEmail, exercises: cart }),
@@ -115,13 +114,13 @@ const MuscleSelectorPage = () => {
 
       {/* Pass selectedMuscles and toggleMuscle as props */}
       <MuscleSelector
-        selectedMuscles={selectedMuscles}
+        selectedTargets={selectedTargets}
         toggleMuscle={toggleMuscle}
         onSubmit={handleSubmit}
       />
 
 <p style={{ marginTop: "1rem", fontWeight: "bold" }}>
-  Selected: {selectedMuscles.filter((m) => m !== "Front-Muscles" && m !== "Back-Muscles").join(", ")}
+  Selected: {selectedTargets.filter((m) => m !== "Front-Muscles" && m !== "Back-Muscles").join(", ")}
 </p>
       {cart.length > 0 && (
         <div>
@@ -177,4 +176,3 @@ const MuscleSelectorPage = () => {
 };
 
 export default MuscleSelectorPage;
-

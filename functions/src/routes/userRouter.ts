@@ -6,6 +6,6 @@ import { verifyFirebaseToken } from "middleware/auth"
 const router = express.Router()
 
 router.get("/api/plans/:userId", getWorkoutPlansByUser)
-router.post("/api/profile", verifyFirebaseToken, saveUserProfile)
+router.post("/api/user/profile", verifyFirebaseToken, saveUserProfile)
 
 export default router

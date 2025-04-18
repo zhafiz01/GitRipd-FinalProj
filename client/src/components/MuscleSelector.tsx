@@ -12,12 +12,12 @@ const blockedIds = new Set([
 ])
 
 interface MuscleSelectorProps {
-	selectedMuscles: string[]
-	toggleMuscle: (muscle: string) => void
+	selectedTargets: string[]
+	toggleMuscle: (target: string) => void
 	onSubmit: () => void
 }
 
-const MuscleSelector = ({ selectedMuscles, toggleMuscle, onSubmit }: MuscleSelectorProps) => {
+const MuscleSelector = ({ selectedTargets, toggleMuscle, onSubmit }: MuscleSelectorProps) => {
 	const svgRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
@@ -56,10 +56,10 @@ const MuscleSelector = ({ selectedMuscles, toggleMuscle, onSubmit }: MuscleSelec
 			if (blockedIds.has(id)) return
 
 			// Default to light gray and full fill if not selected
-			path.style.opacity = selectedMuscles.includes(id) ? "1" : "0.4"
-			path.style.fill = selectedMuscles.includes(id) ? "#000" : ""
+			path.style.opacity = selectedTargets.includes(id) ? "1" : "0.4"
+			path.style.fill = selectedTargets.includes(id) ? "#000" : ""
 		})
-	}, [selectedMuscles])
+	}, [selectedTargets])
 
 	return (
 		<div style={{ textAlign: "center" }}>
@@ -78,5 +78,3 @@ const MuscleSelector = ({ selectedMuscles, toggleMuscle, onSubmit }: MuscleSelec
 }
 
 export default MuscleSelector
-
-
