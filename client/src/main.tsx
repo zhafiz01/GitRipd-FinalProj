@@ -4,13 +4,16 @@ import "./index.css"
 import App from './App.tsx'
 import { BrowserRouter } from 'react-router-dom'
 import { IntakeFormProvider } from './context/IntakeFormContext.tsx'
+import AuthProvider from './context/AuthProvider.tsx'
 
 createRoot(document.getElementById('root')!).render(
 	<StrictMode>
 		<BrowserRouter>
-			<IntakeFormProvider>
-				<App />
-			</IntakeFormProvider>
+			<AuthProvider>
+				<IntakeFormProvider>
+					<App />
+				</IntakeFormProvider>
+			</AuthProvider>
 		</BrowserRouter>
 	</StrictMode>
 )

@@ -17,6 +17,7 @@ import WhyHereForm from "./pages/IntakeForms/WhyHereForm"
 import LoginPage from "./pages/LoginPage"
 import { FC } from "react"
 import Signup from "./pages/SignupPage"
+import ProtectedRoute from "./components/ProtectedRoute"
 
 /*interface Props {
 	name: string 
@@ -47,56 +48,78 @@ const App: FC = ({/* name, age, sex, whyHere, weight, goal */}) => {
 						path="/signup"
 						element={<Signup />}
 					/>
-					<Route
-						path="/name"
-						element={<NameForm />}
-					/>
-					<Route
-						path="/age"
-						element={<AgeForm />}
-					/>
-					<Route
-						path="/sex"
-						element={<SexForm />}
-					/>
-					<Route
-						path="/weight"
-						element={<WeightForm />}
-					/>
-					<Route
-						path="/why"
-						element={<WhyHereForm />}
-					/>
-					<Route
-						path="/goal"
-						element={<GoalForm />}
-					/>
-					<Route
-						path="/target"
-						element={<TargetMuscleForm />}
-					/>
-					<Route
-						path="/profile"
-						element={<Profile />}
-						/*element={<Profile name={name} sex={sex} age={age} weight={weight} whyHere={whyHere} goal={goal} />}*/
-					/>
-					<Route
-						path="/dashboard"
-						element={<Dashboard />}
-					/>
-					<Route
-						path="/plans"
-						element={
-							<WorkoutPlanList
-								exercises={[]}
-								addToCart={function (): void {}}
-							/>
-						}
-					/>
-					<Route
-						path="/select"
-						element={<AddWorkout />}
-					/>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/name"
+							element={<NameForm />}
+						/>
+					</Route>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/age"
+							element={<AgeForm />}
+						/>
+					</Route>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/sex"
+							element={<SexForm />}
+						/>
+					</Route>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/weight"
+							element={<WeightForm />}
+						/>
+					</Route>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/whyHere"
+							element={<WhyHereForm />}
+						/>
+					</Route>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/goal"
+							element={<GoalForm />}
+						/>
+					</Route>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/target"
+							element={<TargetMuscleForm />}
+						/>
+					</Route>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/profile"
+							element={<Profile />}
+							/*element={<Profile name={name} sex={sex} age={age} weight={weight} whyHere={whyHere} goal={goal} />}*/
+						/>
+					</Route>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/dashboard"
+							element={<Dashboard />}
+						/>
+					</Route>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/plans"
+							element={
+								<WorkoutPlanList
+									exercises={[]}
+									addToCart={function (): void {}}
+								/>
+							}
+						/>
+					</Route>
+					<Route element={<ProtectedRoute />}>
+						<Route
+							path="/select"
+							element={<AddWorkout />}
+						/>
+					</Route>
 				</Routes>
 			</div>
 			<NavBar />

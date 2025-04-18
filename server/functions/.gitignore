@@ -7,7 +7,5 @@ typings/
 
 # Node.js dependency directory
 node_modules/
-*.local
 .env
-firebase-key
-.runtimeconfig.json
+*.local

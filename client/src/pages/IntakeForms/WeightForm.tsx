@@ -21,7 +21,7 @@ const WeightForm = () => {
 			return
 
 		updateData({ weight: weightNumber })
-		navigate("/why")
+		navigate("/whyHere")
 	}
 
 	return (
