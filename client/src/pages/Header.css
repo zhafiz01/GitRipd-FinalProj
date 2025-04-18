@@ -6,16 +6,16 @@
     background-color: rgb(195, 206, 196); 
     justify-content: space-between;
     align-items: center;
-    height: 50px;
+    height: 80px;
     width: 100vw;
-    padding: 3px;
+    padding: 3px 10px;
     font-size: 20px;
 }
 
-/* .navlink {
-    color: rgb(57, 57, 57);
+.navlink {
+    color: rgb(105, 104, 104);
 }
 
-.navlink .active {
-    color: red;
-} */
+.navlink-active {
+    color: rgb(10, 9, 9);
+}

@@ -1,6 +1,8 @@
 import { FC } from "react"
 import { NavLink } from "react-router-dom"
 import "./Header.css"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { faUser } from "@fortawesome/free-solid-svg-icons"
 
 const Header: FC = () => {
 	return (
@@ -8,7 +10,7 @@ const Header: FC = () => {
 			<NavLink
 				to="/welcome"
 				className={({ isActive }) =>
-					isActive ? "navlink active" : "navlink"
+					isActive ? "navlink-active" : "navlink"
 				}
 			>
 				Intake Form
@@ -16,10 +18,10 @@ const Header: FC = () => {
 			<NavLink
 				to="/profile"
 				className={({ isActive }) =>
-					isActive ? "navlink active" : "navlink"
+					isActive ? "navlink-active" : "navlink"
 				}
 			>
-				Profile Icon
+				<FontAwesomeIcon style={{ fontSize: "41px" }} icon={faUser} />
 			</NavLink>
 		</div>
 	)

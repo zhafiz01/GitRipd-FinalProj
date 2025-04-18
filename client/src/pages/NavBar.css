@@ -3,18 +3,18 @@
     display: flex;
     bottom: 0; 
     left: 0;
-    background-color: rgb(120, 190, 76); 
+    background-color: rgb(135, 189, 102); 
     justify-content: space-around;
     align-items: center; 
-    height: 70px;
+    height: 100px;
     width: 100vw;
     font-size: 20px;
 }
 
 .navlink {
-    color: rgb(57, 57, 57);
+    color: rgb(105, 104, 104);
 }
 
-.navlink .active {
-    color: red;
+.navlink-active {
+    color: rgb(10, 9, 9);
 }
