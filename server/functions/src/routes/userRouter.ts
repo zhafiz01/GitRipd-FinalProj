@@ -1,18 +1,13 @@
 // ROUTER FOR USER AUTHENTICATION, IF NEEDED
 import express from "express"
-import {
-	getWorkoutPlansByUser,
-	saveUserProfile
-} from "../controllers/users"
-import { verifyFirebaseToken } from "../middleware/auth"
+import { getUserProfile, getWorkoutPlansByUser, saveUserProfile } from "../controllers/users"
+import checkAuth from "../middleware/auth"
+
 
 const router = express.Router()
 
-router.get("/api/plans/:userId", getWorkoutPlansByUser)
-router.post(
-	"/api/user/profile",
-	verifyFirebaseToken,
-	saveUserProfile
-)
+router.get("/plans", checkAuth, getWorkoutPlansByUser)
+router.get("/profile", checkAuth, getUserProfile)
+router.post("/profile", checkAuth, saveUserProfile)
 
 export default router

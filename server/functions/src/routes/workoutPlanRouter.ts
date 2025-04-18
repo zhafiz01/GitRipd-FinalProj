@@ -3,6 +3,6 @@ import { saveWorkoutPlan } from "../controllers/workoutPlans"
 
 const router = express.Router()
 
-router.post("/api/plans", saveWorkoutPlan)
+router.post("/plans", saveWorkoutPlan)
 
 export default router

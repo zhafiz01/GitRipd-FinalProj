@@ -2,30 +2,34 @@ import { useState, FormEvent } from "react"
 import { useNavigate } from "react-router-dom"
 import { useIntakeForm } from "../../context/IntakeFormContext"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {
-	faCircleArrowRight,
-	faCircleArrowLeft,
-} from "@fortawesome/free-solid-svg-icons"
+import { faCircleArrowLeft } from "@fortawesome/free-solid-svg-icons"
 import "./IntakeForms.css"
+import { saveUserProfile } from "../../services/userService"
 
 const GoalForm = () => {
 	const { data, updateData } = useIntakeForm()
 	const [goal, setGoal] = useState(data.goal || "")
 	const navigate = useNavigate()
 
-	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-		// what is FormEvent/HTMLFormElement?
+	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
 		if (!goal) return
 
-		updateData({ goal })
-		navigate("/target")
+		const updatedData = {...data, goal}
+		updateData(updatedData)
+
+		try {
+			await saveUserProfile(updatedData)
+			navigate("/dashboard")
+		} catch (err) {
+			console.error("Failed to save profile data", err)
+			alert("There was a problem saving your profile")
+		}
 	}
 
 	const handleGoalChange = (
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
-		// what is React.ChangeEvent<HTMLInputElement>?
 		setGoal(e.target.value)
 	}
 
@@ -125,10 +129,7 @@ const GoalForm = () => {
 						/>
 					</button>
 					<button type="submit">
-						<FontAwesomeIcon
-							icon={faCircleArrowRight}
-							style={{ fontSize: "36px", color: "#333" }}
-						/>
+						Submit Your Results
 					</button>
 				</div>
 			</form>

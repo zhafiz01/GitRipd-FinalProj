@@ -1,6 +1,6 @@
 import { FormEvent, useState } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth"
-import { auth } from "../config/firebase"
+import { auth } from "../utils/firebase"
 import { Link, useNavigate } from "react-router-dom"
 
 const Login = () => {

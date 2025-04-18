@@ -10,7 +10,7 @@ import "./IntakeForms.css"
 
 const WhyHereForm = () => {
 	const { data, updateData } = useIntakeForm()
-	const [whyHere, setWhyHere] = useState(data.why || "")
+	const [whyHere, setWhyHere] = useState(data.whyHere || "")
 	const navigate = useNavigate()
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -18,7 +18,7 @@ const WhyHereForm = () => {
 		e.preventDefault()
 		if (!whyHere) return
 
-		updateData({ why: whyHere })
+		updateData({ whyHere: whyHere })
 		navigate("/goal")
 	}
 

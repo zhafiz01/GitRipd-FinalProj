@@ -26,7 +26,7 @@ const WelcomeScreen = () => {
 					</div>
 					<div className="btn-select">
 						<p style={{ fontSize: "18px" }}>First Time?</p>
-						<NavLink to="/name">
+						<NavLink to="/signup">
 							<button className="welcome-btn">
 								Create an Account!
 							</button>

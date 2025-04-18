@@ -1,8 +1,30 @@
+import { useEffect, useState } from "react"
 import { useIntakeForm } from "../context/IntakeFormContext"
 import "./UserProfile.css"
+import User from "../interfaces/User"
+import { getUserProfile } from "../services/userService"
 
 const Profile = () => {
 	const { data } = useIntakeForm()
+	const [profile, setProfile] = useState<User | null>(null)
+	const [isLoading, setIsLoading] = useState(true)
+
+	useEffect(() => {
+		const fetchProfile = async () => {
+			try {
+				const userData = await getUserProfile()
+				setProfile(userData)
+			} catch (err: any) {
+				console.error("Failed to load profile", err)
+			} setIsLoading(false)
+		}
+
+		fetchProfile()
+	}, [])
+
+	if (isLoading) return <div>Loading profile...</div>
+
+	const displayData = profile || data
 
 	return (
 		<div className="form-wrapper">
@@ -11,36 +33,32 @@ const Profile = () => {
 				<br />
 				<br />
 				<p>
-					<strong>Name:</strong> {data.name || "Not provided"}
+					<strong>Name:</strong> {displayData.name || "Not provided"}
 				</p>
 				<br />
 				<p>
 					<strong>Age:</strong>{" "}
-					{data.age + " years old" || "Not provided"}
+					{displayData.age + " years old" || "Not provided"}
 				</p>
 				<br />
 				<p>
-					<strong>Sex:</strong> {data.sex || "Not provided"}
+					<strong>Sex:</strong> {displayData.sex || "Not provided"}
 				</p>
 				<br />
 				<p>
 					<strong>Current Weight:</strong>{" "}
-					{data.weight ? `${data.weight} kg` : "Not provided"}
+					{displayData.weight ? `${displayData.weight} kg` : "Not provided"}
 				</p>
 				<br />
 				<p>
 					<strong>Why you're here:</strong>{" "}
-					{data.whyHere || "Not provided"}
+					{displayData.whyHere || "Not provided"}
 				</p>
 				<br />
 				<p>
-					<strong>Goal:</strong> {data.goal || "Not provided"}
+					<strong>Goal:</strong> {displayData.goal || "Not provided"}
 				</p>
 				<br />
-				<p>
-					<strong>Target Muscles:</strong>{" "}
-					{data.targetMuscle || "Not provided"}
-				</p>
 			</div>
 		</div>
 	)

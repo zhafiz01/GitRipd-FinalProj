@@ -1,7 +1,7 @@
 // components/Signup.tsx
 import { useState, FormEvent } from "react"
 import { createUserWithEmailAndPassword } from "firebase/auth"
-import { auth } from "../config/firebase"
+import { auth } from "../utils/firebase"
 import { useNavigate } from "react-router-dom"
 
 const Signup = () => {
