@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import MuscleSelector from "../components/MuscleSelector";
 import WorkoutPlanList from "../components/WorkoutPlanList";
@@ -26,7 +27,7 @@ const muscleIdToZylaName: Record<string, string> = {
 };
 
 const MuscleSelectorPage = () => {
-  const [selectedMuscles, setSelectedMuscles] = useState<string[]>([]);
+  const [selectedTargets, setSelectedTargets] = useState<string[]>([]);
   const [exercises, setExercises] = useState<Exercise[]>([]);
   const [cart, setCart] = useState<Exercise[]>([]);
   const navigate = useNavigate();
