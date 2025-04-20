@@ -17,8 +17,7 @@ body {
 .form-page {
   display: flex;
   flex-direction: column;
-  color: #141414;
-  background-color: #00c897;
-  border: 5px solid #36f3c0;
+  background-color: #141414;
+  border: 5px solid var(--lime-green);
   padding: 100px;
 }
