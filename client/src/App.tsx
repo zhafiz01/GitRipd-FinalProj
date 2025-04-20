@@ -73,7 +73,7 @@ const App: FC = ({/* name, age, sex, whyHere, weight, goal */}) => {
 					</Route>
 					<Route element={<ProtectedRoute />}>
 						<Route
-							path="/whyHere"
+							path="/why"
 							element={<WhyHereForm />}
 						/>
 					</Route>

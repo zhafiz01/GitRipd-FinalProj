@@ -1,0 +1,40 @@
+.form-wrapper {
+    position: relative;
+    top: 40px;
+    height: calc(100vh - 180px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .form-page--muscle {
+    display: flex;
+    flex-direction: column;
+    padding: 100px;
+    background-color: #cfcfcf;
+    height: 100vh;
+    width: 100vw;
+    color: var(--off-black);
+  }
+
+  .workout-plan__list {
+    color: var(--off-black);
+  }
+
+  .muscle-selector {
+    text-align: center;
+  }
+
+  .add-muscle__header {
+    font-size: 38px;
+    color: var(--off-black);
+  }
+
+  .add-muscle__btn {
+    background-color: var(--lime-green);
+    padding: 20px;
+    border-radius: 30px;
+    color: var(--off-black);
+    /* border: 2px solid black; */
+  }

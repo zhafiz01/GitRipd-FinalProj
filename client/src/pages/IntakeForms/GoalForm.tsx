@@ -120,10 +120,10 @@ const GoalForm = () => {
 					>
 						<FontAwesomeIcon
 							icon={faCircleArrowLeft}
-							style={{ fontSize: "36px", color: "#333" }}
+							size="2x"
 						/>
 					</button>
-					<button type="submit">
+					<button className="submit-btn" type="submit">
 						Submit Your Results
 					</button>
 				</div>

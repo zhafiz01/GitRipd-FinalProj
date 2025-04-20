@@ -8,19 +8,28 @@ button {
     justify-content: space-between;
 }
 
+.arrow-btns path {
+    color: var(--lime-green);
+}
+
 .form-label {
-    font-size: 30px;
+    font-size: 40px;
+    color: var(--lime-green)
 }
 
 .form-input {
-    color: #cfcfcf;
     padding: 10px;
     font-size: 16px;
     border: 1px solid gray;
     border-radius: 30px;
+    color: #0b0c0c;
 }
 
 .date-selectors {
     display: flex;
     justify-content: space-between;
+}
+
+.submit-btn {
+background-color: var(--lime-green);
 }

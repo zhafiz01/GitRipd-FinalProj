@@ -9,16 +9,16 @@ const Signup = () => {
 	const [password, setPassword] = useState("")
 	const navigate = useNavigate()
 
-  const handleSignup = async (e: FormEvent) => {
-    e.preventDefault()
-    try {
-      await createUserWithEmailAndPassword(auth, email, password)
-      navigate("/name") // Redirect to form after signup
-    } catch (err) {
-      alert("Signup failed")
-      console.error(err)
-    }
-  }
+	const handleSignup = async (e: FormEvent) => {
+		e.preventDefault()
+		try {
+			await createUserWithEmailAndPassword(auth, email, password)
+			navigate("/name") // Redirect to form after signup
+		} catch (err) {
+			alert("Signup failed")
+			console.error(err)
+		}
+	}
 
 	return (
 		<div className="form-wrapper">
@@ -28,6 +28,7 @@ const Signup = () => {
 					<div>
 						<label>Email:</label>
 						<input
+							className="form-input"
 							type="email"
 							value={email}
 							onChange={(e) => setEmail(e.target.value)}
@@ -38,6 +39,7 @@ const Signup = () => {
 					<div>
 						<label>Password (6+ chars):</label>
 						<input
+							className="form-input"
 							type="password"
 							value={password}
 							onChange={(e) => setPassword(e.target.value)}

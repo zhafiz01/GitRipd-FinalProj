@@ -16,5 +16,5 @@
 }
 
 .navlink-active {
-    color: #1ed490;
+    color: var(--lime-green);
 }
