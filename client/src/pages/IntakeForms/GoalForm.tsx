@@ -43,14 +43,12 @@ const GoalForm = () => {
 			>
 				<label
 					className="form-label"
-					htmlFor="goal"
 				>
 					What are your goals?
 				</label>
 				<br />
-				<label>
+				<div>
 					<input
-						id="goal"
 						type="radio"
 						name="goal"
 						value="Weight Loss"
@@ -58,11 +56,10 @@ const GoalForm = () => {
 						onChange={handleGoalChange}
 					/>
 					Weight Loss
-				</label>
+				</div>
 				<br />
-				<label>
+				<div>
 					<input
-						id="goal"
 						type="radio"
 						name="goal"
 						value="Muscle Gain"
@@ -70,11 +67,10 @@ const GoalForm = () => {
 						onChange={handleGoalChange}
 					/>
 					Muscle Gain
-				</label>
+				</div>
 				<br />
-				<label>
+				<div>
 					<input
-						id="goal"
 						type="radio"
 						name="goal"
 						value="Strength Training"
@@ -82,11 +78,10 @@ const GoalForm = () => {
 						onChange={handleGoalChange}
 					/>
 					Strength Training
-				</label>
+				</div>
 				<br />
-				<label>
+				<div>
 					<input
-						id="goal"
 						type="radio"
 						name="goal"
 						value="Flexibility"
@@ -94,11 +89,10 @@ const GoalForm = () => {
 						onChange={handleGoalChange}
 					/>
 					Flexibility
-				</label>
+				</div>
 				<br />
-				<label>
+				<div>
 					<input
-						id="goal"
 						type="radio"
 						name="goal"
 						value="Cardiovascular Endurance"
@@ -106,11 +100,10 @@ const GoalForm = () => {
 						onChange={handleGoalChange}
 					/>
 					Cardiovascular Endurance
-				</label>
+				</div>
 				<br />
-				<label>
+				<div>
 					<input
-						id="goal"
 						type="radio"
 						name="goal"
 						value="General Fitness"
@@ -118,7 +111,7 @@ const GoalForm = () => {
 						onChange={handleGoalChange}
 					/>
 					General Fitness
-				</label>
+				</div>
 				<br />
 				<div className="arrow-btns">
 					<button

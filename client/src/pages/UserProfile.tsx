@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useIntakeForm } from "../context/IntakeFormContext"
-import "./UserProfile.css"
 import User from "../interfaces/User"
 import { getUserProfile } from "../services/userService"
 
@@ -16,7 +15,8 @@ const Profile = () => {
 				setProfile(userData)
 			} catch (err: any) {
 				console.error("Failed to load profile", err)
-			} setIsLoading(false)
+			}
+			setIsLoading(false)
 		}
 
 		fetchProfile()
@@ -47,7 +47,9 @@ const Profile = () => {
 				<br />
 				<p>
 					<strong>Current Weight:</strong>{" "}
-					{displayData.weight ? `${displayData.weight} kg` : "Not provided"}
+					{displayData.weight
+						? `${displayData.weight} kg`
+						: "Not provided"}
 				</p>
 				<br />
 				<p>

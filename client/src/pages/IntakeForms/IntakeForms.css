@@ -3,24 +3,6 @@ button {
     display: inline-block;
 }
 
-.form-wrapper {
-    position: relative;
-    top: 40px;
-    height: calc(100vh - 180px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-
-.form-page {
-    background-color: rgb(139, 187, 106, 50%);
-    border: 5px solid rgba(36, 49, 27, 0.5);
-    padding: 100px;
-    display: flex;
-    flex-direction: column;
-}
-
 .arrow-btns {
     display: flex;
     justify-content: space-between;
@@ -31,6 +13,7 @@ button {
 }
 
 .form-input {
+    color: #cfcfcf;
     padding: 10px;
     font-size: 16px;
     border: 1px solid gray;
@@ -41,26 +24,3 @@ button {
     display: flex;
     justify-content: space-between;
 }
-
-/* .form-page--welcome {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.user-selection {
-    display: flex;
-    flex-direction: column;
-}
-
-.btn-select {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-button.welcome-btn {
-    font-size: 16px;
-    border-radius: 5px;
-    padding: 8px 20px;
-} */

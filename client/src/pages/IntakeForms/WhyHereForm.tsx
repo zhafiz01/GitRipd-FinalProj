@@ -37,14 +37,12 @@ const WhyHereForm = () => {
 			>
 				<label
 					className="form-label"
-					htmlFor="whyHere"
 				>
 					Why are you here?
 				</label>
 				<br />
-				<label>
+				<div>
 					<input
-						id="whyHere"
 						type="radio"
 						name="whyHere"
 						value="Build a solid workout routine that helps me feel the difference"
@@ -56,11 +54,10 @@ const WhyHereForm = () => {
 					/>
 					Build a solid workout routine that helps me feel the
 					difference
-				</label>
+				</div>
 				<br />
-				<label>
+				<div>
 					<input
-						id="whyHere"
 						type="radio"
 						name="whyHere"
 						value="Long-term accountability on my fitness journey"
@@ -71,11 +68,10 @@ const WhyHereForm = () => {
 						onChange={handleWhyHereChange}
 					/>
 					Long-term accountability on my fitness journey
-				</label>
+				</div>
 				<br />
-				<label>
+				<div>
 					<input
-						id="whyHere"
 						type="radio"
 						name="whyHere"
 						value="Personalized workout routine made for me without the hassle of planning"
@@ -87,9 +83,9 @@ const WhyHereForm = () => {
 					/>
 					Personalized workout routine made for me without the hassle
 					of planning
-				</label>
+				</div>
 				{/* <br />
-            <label>
+            <div>
 				<input
 					type="radio"
 					name="whyHere"
@@ -98,7 +94,7 @@ const WhyHereForm = () => {
 					onChange={handleWhyHereChange}
 				/>
 				reason 4
-			</label> */}
+			</div> */}
 				<br />
 				<div className="arrow-btns">
 					<button

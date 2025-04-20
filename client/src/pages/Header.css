@@ -3,7 +3,7 @@
     display: flex;
     top: 0; 
     right: 0;
-    background-color: rgb(195, 206, 196); 
+    background-color: #141414;
     justify-content: space-between;
     align-items: center;
     height: 80px;
@@ -13,9 +13,9 @@
 }
 
 .navlink {
-    color: rgb(105, 104, 104);
+    color: #ffffff;
 }
 
 .navlink-active {
-    color: rgb(10, 9, 9);
+    color: #024433;
 }
