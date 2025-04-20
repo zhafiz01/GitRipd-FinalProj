@@ -15,12 +15,14 @@ const Header = () => {
 		await signOut(auth)
 		navigate("/login")
 	}
-	
-	
+
 	return (
 		<div className="header">
 			{user && (
-				<button className="navlink" onClick={handleLogout}>
+				<button
+					className="navlink"
+					onClick={handleLogout}
+				>
 					Log Out
 				</button>
 			)}
@@ -30,7 +32,10 @@ const Header = () => {
 					isActive ? "navlink-active" : "navlink"
 				}
 			>
-				<FontAwesomeIcon style={{ fontSize: "41px" }} icon={faUser} />
+				<FontAwesomeIcon
+					style={{ fontSize: "41px" }}
+					icon={faUser}
+				/>
 			</NavLink>
 		</div>
 	)

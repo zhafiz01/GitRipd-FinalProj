@@ -11,15 +11,16 @@ const Dashboard = () => {
   const [completedWorkouts, setCompletedWorkouts] = useState<string[]>([])
   const [progress, setProgress] = useState(0)
 
-  // conditional function for an inspirational/encouraging message to display
-  // depending on their specified fitness goal??????
+	// conditional function for an inspirational/encouraging message to display
+	// depending on their specified fitness goal??????
 
-  const getCustomWelcome = (progress: number) => {
-    if (progress === 100) return "It's giving BOSS"
-    if (progress >= 80) return "You're almost there! Stick with it!"
-    if (progress >= 50) return "Every day you try is a day you succeed!"
-    else return "Let git it!"
-  }
+	const getCustomWelcome = (progress: number) => {
+		if (progress === 100) return "It's giving BOSS"
+		if (progress >= 80) return "You're almost there! Stick with it!"
+		if (progress >= 50)
+			return "Every day you try is a day you succeed!"
+		else return "Let git it!"
+	}
 
   useEffect(() => {
     const today = new Date().toDateString()

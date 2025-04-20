@@ -5,9 +5,9 @@ import { auth } from "../utils/firebase"
 import { useNavigate } from "react-router-dom"
 
 const Signup = () => {
-  const [email, setEmail] = useState("")
-  const [password, setPassword] = useState("")
-  const navigate = useNavigate()
+	const [email, setEmail] = useState("")
+	const [password, setPassword] = useState("")
+	const navigate = useNavigate()
 
   const handleSignup = async (e: FormEvent) => {
     e.preventDefault()
@@ -20,34 +20,36 @@ const Signup = () => {
     }
   }
 
-  return (
-    <div style={{ padding: "2rem" }}>
-      <h2>Sign Up</h2>
-      <form onSubmit={handleSignup}>
-        <div>
-          <label>Email:</label>
-          <input
-            type="email"
-            value={email}
-            onChange={e => setEmail(e.target.value)}
-            required
-          />
-        </div>
+	return (
+		<div className="form-wrapper">
+			<div className="form-page">
+				<h2>Sign Up</h2>
+				<form onSubmit={handleSignup}>
+					<div>
+						<label>Email:</label>
+						<input
+							type="email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+						/>
+					</div>
 
-        <div>
-          <label>Password (6+ chars):</label>
-          <input
-            type="password"
-            value={password}
-            onChange={e => setPassword(e.target.value)}
-            required
-          />
-        </div>
+					<div>
+						<label>Password (6+ chars):</label>
+						<input
+							type="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required
+						/>
+					</div>
 
-        <button type="submit">Create Account</button>
-      </form>
-    </div>
-  )
+					<button type="submit">Create Account</button>
+				</form>
+			</div>
+		</div>
+	)
 }
 
 export default Signup
