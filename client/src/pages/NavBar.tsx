@@ -17,7 +17,10 @@ const NavBar: FC = () => {
 					isActive ? "navlink-active" : "navlink"
 				}
 			>
-				<FontAwesomeIcon style={{ fontSize: "46px" }} icon={faHouse} />
+				<FontAwesomeIcon
+					style={{ fontSize: "46px" }}
+					icon={faHouse}
+				/>
 			</NavLink>
 			<NavLink
 				to="/select"
@@ -25,7 +28,10 @@ const NavBar: FC = () => {
 					isActive ? "navlink-active" : "navlink"
 				}
 			>
-				<FontAwesomeIcon style={{ fontSize: "46px" }} icon={faPlus} />
+				<FontAwesomeIcon
+					style={{ fontSize: "46px" }}
+					icon={faPlus}
+				/>
 			</NavLink>
 			<NavLink
 				to="/plans"
@@ -33,7 +39,10 @@ const NavBar: FC = () => {
 					isActive ? "navlink-active" : "navlink"
 				}
 			>
-				<FontAwesomeIcon style={{ fontSize: "46px" }} icon={faDumbbell} />
+				<FontAwesomeIcon
+					style={{ fontSize: "46px" }}
+					icon={faDumbbell}
+				/>
 			</NavLink>
 		</nav>
 	)

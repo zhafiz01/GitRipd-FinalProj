@@ -22,30 +22,27 @@ const targetIdToZylaName: Record<string, string> = {
 	// "Front-Muscles": "",
 	// "Back-Muscles": "",
 	Front: "",
-	Back: ""
+	Back: "",
 }
 
 const MuscleSelectorPage = () => {
-	const [selectedTargets, setSelectedTargets] =
-		useState<string[]>([])
-	const [exercises, setExercises] = useState<
-		Exercise[]
-	>([])
+	const [selectedTargets, setSelectedTargets] = useState<string[]>([])
+	const [exercises, setExercises] = useState<Exercise[]>([])
 	const [cart, setCart] = useState<Exercise[]>([])
 	const navigate = useNavigate()
 
 	const toggleMuscle = (target: string) => {
-		setSelectedTargets(prev =>
+		setSelectedTargets((prev) =>
 			prev.includes(target)
-				? prev.filter(m => m !== target)
+				? prev.filter((m) => m !== target)
 				: [...prev, target]
 		)
 	}
 
 	const handleSubmit = async () => {
 		const translatedTargets = selectedTargets
-			.map(m => targetIdToZylaName[m])
-			.filter(name => !!name)
+			.map((m) => targetIdToZylaName[m])
+			.filter((name) => !!name)
 
 		setExercises([])
 
@@ -56,56 +53,41 @@ const MuscleSelectorPage = () => {
 
 			for (const target of translatedTargets) {
 				const response = await fetch(
-					`${
-						import.meta.env.VITE_API_BASE_URL
-					}/exercises/${target}`
+					`${import.meta.env.VITE_API_BASE_URL}/exercises/${target}`
 				)
 				const data = await response.json()
 
 				if (!Array.isArray(data)) {
-					console.error(
-						"❌ API response is not an array:",
-						data
-					)
+					console.error("❌ API response is not an array:", data)
 					continue
 				}
 
 				const filtered = data.filter(
-					ex =>
-						!ex.name
-							.toLowerCase()
-							.startsWith("assisted")
+					(ex) => !ex.name.toLowerCase().startsWith("assisted")
 				)
 				allExercises.push(...filtered.slice(0, 8))
 			}
 
 			setExercises(allExercises)
-			console.log(
-				"✅ Fetched exercises:",
-				allExercises
-			)
+			console.log("✅ Fetched exercises:", allExercises)
 		} catch (error) {
-			console.error(
-				"❌ Error fetching exercises:",
-				error
-			)
+			console.error("❌ Error fetching exercises:", error)
 		}
 	}
 
 	const addToCart = (exercise: Exercise) => {
-		setCart(prevCart => [...prevCart, exercise])
+		setCart((prevCart) => [...prevCart, exercise])
 	}
 
 	const handleDelete = (id: number) => {
-		setCart(prevCart =>
-			prevCart.filter(exercise => exercise.id !== id)
+		setCart((prevCart) =>
+			prevCart.filter((exercise) => exercise.id !== id)
 		)
 	}
 
 	const handleSave = async () => {
 		try {
-			const userEmail =
-				localStorage.getItem("userEmail")
+			const userEmail = localStorage.getItem("userEmail")
 			if (!userEmail) {
 				alert("❌ User not logged in.")
 				return
@@ -116,17 +98,16 @@ const MuscleSelectorPage = () => {
 				{
 					method: "POST",
 					headers: {
-						"Content-Type": "application/json"
+						"Content-Type": "application/json",
 					},
 					body: JSON.stringify({
 						userId: userEmail,
-						exercises: cart
-					})
+						exercises: cart,
+					}),
 				}
 			)
 
-			if (!response.ok)
-				throw new Error("Failed to save workout plan")
+			if (!response.ok) throw new Error("Failed to save workout plan")
 
 			const saved = await response.json()
 			console.log("✅ Saved Plan:", saved)
@@ -145,7 +126,7 @@ const MuscleSelectorPage = () => {
 				fontFamily: "Arial, sans-serif",
 				backgroundColor: "#f0f2f5",
 				color: "#222",
-				minHeight: "100vh"
+				minHeight: "100vh",
 			}}
 		>
 			{/* <h1 style={{ textAlign: "center", color: "#111" }}>Workout Planner</h1> */}
@@ -160,31 +141,25 @@ const MuscleSelectorPage = () => {
 			<p
 				style={{
 					marginTop: "1rem",
-					fontWeight: "bold"
+					fontWeight: "bold",
 				}}
 			>
 				Selected:{" "}
 				{selectedTargets
 					.filter(
-						m =>
-							m !== "Front-Muscles" &&
-							m !== "Back-Muscles"
+						(m) => m !== "Front-Muscles" && m !== "Back-Muscles"
 					)
 					.join(", ")}
 			</p>
 			{cart.length > 0 && (
 				<div>
-					<h2 style={{ marginTop: "2rem" }}>
-						Your Workout Plan
-					</h2>
+					<h2 style={{ marginTop: "2rem" }}>Your Workout Plan</h2>
 					<ul>
-						{cart.map(exercise => (
+						{cart.map((exercise) => (
 							<li key={exercise.id}>
 								{exercise.name}
 								<button
-									onClick={() =>
-										handleDelete(exercise.id)
-									}
+									onClick={() => handleDelete(exercise.id)}
 									style={{
 										backgroundColor: "#f44336",
 										color: "#fff",
@@ -192,7 +167,7 @@ const MuscleSelectorPage = () => {
 										border: "none",
 										borderRadius: "4px",
 										cursor: "pointer",
-										marginLeft: "1rem"
+										marginLeft: "1rem",
 									}}
 								>
 									Delete
@@ -209,7 +184,7 @@ const MuscleSelectorPage = () => {
 							border: "none",
 							borderRadius: "4px",
 							cursor: "pointer",
-							marginTop: "1rem"
+							marginTop: "1rem",
 						}}
 					>
 						Save to Workout Plan
@@ -222,7 +197,7 @@ const MuscleSelectorPage = () => {
 					<h2
 						style={{
 							marginTop: "2rem",
-							marginBottom: "1rem"
+							marginBottom: "1rem",
 						}}
 					>
 						Exercise Results
