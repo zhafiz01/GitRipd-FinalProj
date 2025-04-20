@@ -16,11 +16,8 @@ interface Props {
 }
 const AuthProvider: FC<Props> = ({ children }) => {
 	const [user, setUser] = useState<User | null>(null)
-	const [token, setToken] = useState<string | null>(
-		null
-	)
-	const [isLoading, setIsLoading] =
-		useState<boolean>(true)
+	const [token, setToken] = useState<string | null>(null)
+	const [isLoading, setIsLoading] = useState<boolean>(true)
 
 	useEffect(() => {
 		const unsub = onAuthStateChanged(
