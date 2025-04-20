@@ -1,40 +1,15 @@
-import { useEffect, useState } from "react";
-import Exercise from "../interfaces/Exercise";
-//import { useNavigate } from "react-router-dom";
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
-  import "react-circular-progressbar/dist/styles.css";
+import { useEffect, useState } from "react"
+import Exercise from "../interfaces/Exercise"
+//import { useNavigate } from "react-router-dom"
+import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
+  import "react-circular-progressbar/dist/styles.css"
+import { getUserWorkoutPlan } from "../services/workoutPlanService"
+import WorkoutPlan from "../interfaces/WorkoutPlan"
 
 const Dashboard = () => {
-  const [workoutPlan, setWorkoutPlan] = useState<Exercise[]>([
-    {
-        id: 1,
-        name: "push ups",
-        target: "pectorals",
-        equipment: "floor",
-        gifUrl: "url",
-        videos: [{ title: "vid title", link: "vid link" }]
-    },
-    {
-        id: 2,
-        name: "squats",
-        target: "glutes",
-        equipment: "barbell",
-        gifUrl: "url",
-        videos: [{ title: "vid title", link: "vid link" }]
-    },
-    {
-        id: 3,
-        name: "pull ups",
-        target: "biceps",
-        equipment: "structure",
-        gifUrl: "url",
-        videos: [{ title: "vid title", link: "vid link" }]
-    }
-  ]);
-  //const [userName, setUserName] = useState<string>("User Name"); // Placeholder for user name
-  //const navigate = useNavigate();
-  const [completedWorkouts, setCompletedWorkouts] = useState<number[]>([])
-  const [progress, setProgress] = useState(0);
+  const [exercises, setExercises] = useState<Exercise[]>([])
+  const [completedWorkouts, setCompletedWorkouts] = useState<string[]>([])
+  const [progress, setProgress] = useState(0)
 
   // conditional function for an inspirational/encouraging message to display
   // depending on their specified fitness goal??????
@@ -46,51 +21,57 @@ const Dashboard = () => {
     else return "Let git it!"
   }
 
-  const handleComplete = (id: number) => {
+  const handleComplete = (id: string) => {
     if (!completedWorkouts.includes(id)) {
       const updatedCompleted = [...completedWorkouts, id]
       setCompletedWorkouts(updatedCompleted)
   
-      const percentage = Math.round((updatedCompleted.length / workoutPlan.length) * 100)
+      const percentage = Math.round((updatedCompleted.length / exercises.length) * 100)
       setProgress(percentage)
     }
   }
 
   useEffect(() => {
+    const savedDate = localStorage.getItem("lastResetDate")
+    const today = new Date().toDateString()
+
+    if (savedDate !== today) {
+      setCompletedWorkouts([])
+      setProgress(0)
+      localStorage.setItem("lastResetDate", today)
+    }
+    
     const fetchWorkoutPlan = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/plans`);
-        if (!response.ok) {
-          throw new Error("Error fetching workout plan");
-        }
-        const data = await response.json();
-        setWorkoutPlan(data.exercises);
+        const plans: WorkoutPlan[] = await getUserWorkoutPlan()
+        if (plans.length > 0)
+          setExercises(plans[0].exercises)
       } catch (err) {
-        console.error("Error fetching workout plan:", err);
-        alert("❌ Could not fetch workout plan");
+        console.error("Error fetching workout plan:", err)
+        alert("Could not fetch workout plan")
       }
-    };
+    }
 
-    fetchWorkoutPlan();
-  }, []);
+    fetchWorkoutPlan()
+  }, [])
 
-  const handleDelete = async (id: number) => {
+  const handleDelete = async (id: string) => {
     try {
       const response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/plans/exercise/${id}`, {
         method: "DELETE",
-      });
+      })
 
       if (!response.ok) {
-        throw new Error("Failed to delete exercise from plan");
+        throw new Error("Failed to delete exercise from plan")
       }
 
-      const updatedPlan = await response.json();
-      setWorkoutPlan(updatedPlan.exercises);
+      const updatedPlan = await response.json()
+      setExercises(updatedPlan.exercises)
     } catch (err) {
-      console.error("Error deleting exercise:", err);
-      alert("❌ Could not delete exercise from plan");
+      console.error("Error deleting exercise:", err)
+      alert("❌ Could not delete exercise from plan")
     }
-  };
+  }
 
   return (
     <div style={{ padding: "1rem", backgroundColor: "#f0f2f5", minHeight: "100vh" }}>
@@ -129,18 +110,18 @@ const Dashboard = () => {
       </ul>
       <br />
       <h2>Your Workout Plan</h2>
-      {workoutPlan.length > 0 ? (
+      {exercises.length > 0 ? (
         <ul>
-          {workoutPlan.map((exercise) => (
-            <li key={exercise.id} style={{ 
-                opacity: completedWorkouts.includes(exercise.id) ? 0.5 : 1
+          {exercises.map((exercise) => (
+            <li key={exercise._id} style={{ 
+                opacity: completedWorkouts.includes(exercise._id) ? 0.5 : 1
             }}>
               {exercise.name}{" "}
-              {completedWorkouts.includes(exercise.id) && " ✅"}
+              {completedWorkouts.includes(exercise._id) && " ✅"}
               <button className="mark-complete-button"
-                onClick={() => handleComplete(exercise.id)}>Mark as Complete!</button>
+                onClick={() => handleComplete(exercise._id)}>Mark as Complete!</button>
               <button
-                onClick={() => handleDelete(exercise.id)}
+                onClick={() => handleDelete(exercise._id)}
                 style={{
                   marginLeft: "1rem",
                   backgroundColor: "red",
@@ -160,7 +141,7 @@ const Dashboard = () => {
         <p>No workout plan available.</p>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

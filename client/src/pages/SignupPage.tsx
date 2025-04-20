@@ -13,7 +13,7 @@ const Signup = () => {
     e.preventDefault()
     try {
       await createUserWithEmailAndPassword(auth, email, password)
-      navigate("/name") // Redirect to dashboard after signup
+      navigate("/name") // Redirect to form after signup
     } catch (err) {
       alert("Signup failed")
       console.error(err)

@@ -1,5 +1,6 @@
 interface Exercise {
-	id: number
+	id?: number
+	_id: string
 	name: string
 	target: string
 	equipment: string

@@ -27,7 +27,7 @@ export const saveExercises = async (
 
 	for (const exercise of exercises) {
 		const existingExercise = await Exercise.findOne({
-			name: exercise.name
+			id: exercise.id
 		})
 		if (existingExercise) {
 			// check if existing

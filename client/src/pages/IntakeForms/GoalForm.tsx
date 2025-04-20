@@ -19,7 +19,9 @@ const GoalForm = () => {
 		updateData(updatedData)
 
 		try {
+			console.log("Submitting profile data...", updatedData)
 			await saveUserProfile(updatedData)
+			console.log("Successfully saved profile data")
 			navigate("/dashboard")
 		} catch (err) {
 			console.error("Failed to save profile data", err)

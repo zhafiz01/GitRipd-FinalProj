@@ -5,8 +5,11 @@ import type {
 } from "express"
 import mongoose from "mongoose"
 import * as dotenv from "dotenv"
+
 dotenv.config()
+
 let isConnected = false
+
 const connectToDatabase = async (): Promise<void> => {
 	if (
 		isConnected ||
