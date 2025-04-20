@@ -9,16 +9,16 @@ const Signup = () => {
 	const [password, setPassword] = useState("")
 	const navigate = useNavigate()
 
-	const handleSignup = async (e: FormEvent) => {
-		e.preventDefault()
-		try {
-			await createUserWithEmailAndPassword(auth, email, password)
-			navigate("/name") // Redirect to dashboard after signup
-		} catch (err) {
-			alert("Signup failed")
-			console.error(err)
-		}
-	}
+  const handleSignup = async (e: FormEvent) => {
+    e.preventDefault()
+    try {
+      await createUserWithEmailAndPassword(auth, email, password)
+      navigate("/name") // Redirect to form after signup
+    } catch (err) {
+      alert("Signup failed")
+      console.error(err)
+    }
+  }
 
 	return (
 		<div className="form-wrapper">

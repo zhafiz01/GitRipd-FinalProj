@@ -1,8 +1,8 @@
-import { Schema, model, Types } from "mongoose"
+import { Schema, model } from "mongoose"
 
 const WorkoutPlanSchema = new Schema(
   {
-    userId: { type: Types.ObjectId, ref: "User", required: true },
+    userId: { type: String, ref: "User", required: true },
     exercises: [{ type: Schema.Types.ObjectId, ref: "Exercise" }],
     createdAt: { type: Date, default: Date.now },
   },

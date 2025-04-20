@@ -1,5 +1,4 @@
 // CONTROLLER FUNCTIONS FOR ADDING A NEW USER TO THE SYSTEM - AUTHENTICATION STAGE
-import WorkoutPlan from "../models/WorkoutPlan"
 import HTTPHandler from "../helpers/HTTPHandler"
 import User from "../models/User"
 
@@ -8,7 +7,7 @@ export const saveUserProfile: HTTPHandler = async (
 	req,
 	res
 ) => {
-	const userId = (req as any).user.uid
+	const userId = (req as any).body.loggedInUser.uid
 	const {
 		name,
 		age,
@@ -34,7 +33,7 @@ export const saveUserProfile: HTTPHandler = async (
 				target
 			})
 			await user.save()
-			res.status(201).json(user)
+			res.status(201).json({ message: "Profile saved", user})
 		} else {
 			user.name = name
 			user.age = age
@@ -58,7 +57,7 @@ export const saveUserProfile: HTTPHandler = async (
 // GET user profile
 export const getUserProfile: HTTPHandler = async (req, res) => {
 	try {
-		const userId = (req as any).user.uid
+		const userId = (req as any).body.loggedInUser.uid
 		const user = await User.findOne({ userId })
 
 		if (!user) res.status(404).json({ message: "User profile not found" })
@@ -69,30 +68,3 @@ export const getUserProfile: HTTPHandler = async (req, res) => {
 		res.status(500).json({ message: "Server error while fetching user profile" })
 	}
 }
-
-// GET workout plans by user
-export const getWorkoutPlansByUser: HTTPHandler =
-	async (req, res) => {
-		try {
-			const userId = (req as any).user.uid
-
-			const workoutPlan = await WorkoutPlan.find({
-				userId
-			}).populate("exercises")
-
-			if (!workoutPlan) {
-				res
-					.status(404)
-					.json({ message: "No workout plans found" })
-			}
-
-			res.status(200).json(workoutPlan)
-		} catch (err) {
-			console.error(err)
-			res
-				.status(500)
-				.json({
-					message: "Error retrieving workout plans"
-				})
-		}
-	}

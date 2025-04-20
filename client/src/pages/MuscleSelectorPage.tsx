@@ -3,6 +3,7 @@ import MuscleSelector from "../components/MuscleSelector"
 import WorkoutPlanList from "../components/WorkoutPlanList"
 import { useNavigate } from "react-router-dom"
 import Exercise from "../interfaces/Exercise"
+import { saveUserWorkoutPlan } from "../services/workoutPlanService"
 
 const targetIdToZylaName: Record<string, string> = {
 	Pectorals: "pectorals",
@@ -79,44 +80,21 @@ const MuscleSelectorPage = () => {
 		setCart((prevCart) => [...prevCart, exercise])
 	}
 
-	const handleDelete = (id: number) => {
-		setCart((prevCart) =>
-			prevCart.filter((exercise) => exercise.id !== id)
+	const handleDelete = (id: string) => {
+		setCart(prevCart =>
+			prevCart.filter(exercise => exercise._id !== id)
 		)
 	}
 
 	const handleSave = async () => {
 		try {
-			const userEmail = localStorage.getItem("userEmail")
-			if (!userEmail) {
-				alert("❌ User not logged in.")
-				return
+			  await saveUserWorkoutPlan(cart)
+			  console.log("✅ Workout plan saved!")
+			  navigate("/dashboard")
+			} catch (err) {
+			  console.error("Save error:", err)
+			  alert("Could not save workout plan.")
 			}
-
-			const response = await fetch(
-				`${import.meta.env.VITE_API_BASE_URL}/plans`,
-				{
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify({
-						userId: userEmail,
-						exercises: cart,
-					}),
-				}
-			)
-
-			if (!response.ok) throw new Error("Failed to save workout plan")
-
-			const saved = await response.json()
-			console.log("✅ Saved Plan:", saved)
-			alert("✅ Workout plan saved!")
-			navigate("/dashboard")
-		} catch (err) {
-			console.error("❌ Save error:", err)
-			alert("❌ Could not save workout plan.")
-		}
 	}
 
 	return (
@@ -159,7 +137,9 @@ const MuscleSelectorPage = () => {
 							<li key={exercise.id}>
 								{exercise.name}
 								<button
-									onClick={() => handleDelete(exercise.id)}
+									onClick={() =>
+										handleDelete(exercise._id)
+									}
 									style={{
 										backgroundColor: "#f44336",
 										color: "#fff",
