@@ -194,6 +194,7 @@ const MuscleSelectorPage = () => {
 					<WorkoutPlanList
 						exercises={exercises}
 						addToCart={addToCart}
+						showAddButton={true}
 					/>
 				</div>
 			)}
