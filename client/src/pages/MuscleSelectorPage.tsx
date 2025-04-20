@@ -94,12 +94,21 @@ const MuscleSelectorPage = () => {
 	}
 
 	const addToCart = (exercise: Exercise) => {
-		setCart(prevCart => [...prevCart, exercise])
-	}
-
-	const handleDelete = (id: string) => {
+		const normalized = {
+		  ...exercise,
+		  _id: exercise._id || exercise.id?.toString() || crypto.randomUUID()
+		}
+	  
 		setCart(prevCart =>
-			prevCart.filter(exercise => exercise._id !== id)
+		  prevCart.find(e => e._id === normalized._id)
+			? prevCart
+			: [...prevCart, normalized]
+		)
+	  }
+
+	const handleDelete = (_id: string) => {
+		setCart(prevCart =>
+			prevCart.filter(exercise => exercise._id !== _id)
 		)
 	}
 
@@ -155,7 +164,7 @@ const MuscleSelectorPage = () => {
 					</h2>
 					<ul>
 						{cart.map(exercise => (
-							<li key={exercise.id}>
+							<li key={exercise._id}>
 								{exercise.name}
 								<button
 									onClick={() =>
