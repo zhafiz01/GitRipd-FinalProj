@@ -21,7 +21,7 @@ const WeightForm = () => {
 			return
 
 		updateData({ weight: weightNumber })
-		navigate("/whyHere")
+		navigate("/why")
 	}
 
 	return (
@@ -55,13 +55,13 @@ const WeightForm = () => {
 					>
 						<FontAwesomeIcon
 							icon={faCircleArrowLeft}
-							style={{ fontSize: "36px", color: "#333" }}
+							size="2x"
 						/>
 					</button>
 					<button type="submit">
 						<FontAwesomeIcon
 							icon={faCircleArrowRight}
-							style={{ fontSize: "36px", color: "#333" }}
+							size="2x"
 						/>
 					</button>
 				</div>

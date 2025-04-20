@@ -103,13 +103,13 @@ const WhyHereForm = () => {
 					>
 						<FontAwesomeIcon
 							icon={faCircleArrowLeft}
-							style={{ fontSize: "36px", color: "#333" }}
+							size="2x"
 						/>
 					</button>
 					<button type="submit">
 						<FontAwesomeIcon
 							icon={faCircleArrowRight}
-							style={{ fontSize: "36px", color: "#333" }}
+							size="2x"
 						/>
 					</button>
 				</div>

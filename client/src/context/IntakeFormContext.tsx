@@ -26,7 +26,7 @@ export const IntakeFormProvider = ({
 	children: ReactNode
 }) => {
 	const [data, setData] = useState<IntakeFormData>({})
-
+	console.log(data)
 	const updateData = (newData: Partial<IntakeFormData>) => {
 		setData((prev) => ({ ...prev, ...newData }))
 	}

@@ -4,6 +4,7 @@ import WorkoutPlanList from "../components/WorkoutPlanList"
 import { useNavigate } from "react-router-dom"
 import Exercise from "../interfaces/Exercise"
 import { saveUserWorkoutPlan } from "../services/workoutPlanService"
+import "./MuscleSelector.css"
 
 const targetIdToZylaName: Record<string, string> = {
 	Pectorals: "pectorals",
@@ -81,47 +82,31 @@ const MuscleSelectorPage = () => {
 	}
 
 	const handleDelete = (id: string) => {
-		setCart(prevCart =>
-			prevCart.filter(exercise => exercise._id !== id)
+		setCart((prevCart) =>
+			prevCart.filter((exercise) => exercise._id !== id)
 		)
 	}
 
 	const handleSave = async () => {
 		try {
-			  await saveUserWorkoutPlan(cart)
-			  console.log("✅ Workout plan saved!")
-			  navigate("/dashboard")
-			} catch (err) {
-			  console.error("Save error:", err)
-			  alert("Could not save workout plan.")
-			}
+			await saveUserWorkoutPlan(cart)
+			console.log("✅ Workout plan saved!")
+			navigate("/dashboard")
+		} catch (err) {
+			console.error("Save error:", err)
+			alert("Could not save workout plan.")
+		}
 	}
 
 	return (
-		<div
-			style={{
-				padding: "1rem",
-				fontFamily: "Arial, sans-serif",
-				backgroundColor: "#f0f2f5",
-				color: "#222",
-				minHeight: "100vh",
-			}}
-		>
-			{/* <h1 style={{ textAlign: "center", color: "#111" }}>Workout Planner</h1> */}
-
-			{/* Pass selectedMuscles and toggleMuscle as props */}
+		<div className="form-page--muscle">
 			<MuscleSelector
 				selectedTargets={selectedTargets}
 				toggleMuscle={toggleMuscle}
 				onSubmit={handleSubmit}
 			/>
 
-			<p
-				style={{
-					marginTop: "1rem",
-					fontWeight: "bold",
-				}}
-			>
+			<p>
 				Selected:{" "}
 				{selectedTargets
 					.filter(
@@ -130,58 +115,25 @@ const MuscleSelectorPage = () => {
 					.join(", ")}
 			</p>
 			{cart.length > 0 && (
-				<div>
-					<h2 style={{ marginTop: "2rem" }}>Your Workout Plan</h2>
+				<div className="workout-plan__list">
+					<h2>Your Workout Plan</h2>
 					<ul>
 						{cart.map((exercise) => (
 							<li key={exercise.id}>
 								{exercise.name}
-								<button
-									onClick={() =>
-										handleDelete(exercise._id)
-									}
-									style={{
-										backgroundColor: "#f44336",
-										color: "#fff",
-										padding: "0.5rem",
-										border: "none",
-										borderRadius: "4px",
-										cursor: "pointer",
-										marginLeft: "1rem",
-									}}
-								>
+								<button onClick={() => handleDelete(exercise._id)}>
 									Delete
 								</button>
 							</li>
 						))}
 					</ul>
-					<button
-						onClick={handleSave}
-						style={{
-							backgroundColor: "#4CAF50",
-							color: "#fff",
-							padding: "1rem",
-							border: "none",
-							borderRadius: "4px",
-							cursor: "pointer",
-							marginTop: "1rem",
-						}}
-					>
-						Save to Workout Plan
-					</button>
+					<button onClick={handleSave}>Save to Workout Plan</button>
 				</div>
 			)}
 
 			{exercises.length > 0 && (
 				<div>
-					<h2
-						style={{
-							marginTop: "2rem",
-							marginBottom: "1rem",
-						}}
-					>
-						Exercise Results
-					</h2>
+					<h2>Exercise Results</h2>
 					<WorkoutPlanList
 						exercises={exercises}
 						addToCart={addToCart}
