@@ -30,27 +30,46 @@ const Dashboard = () => {
 		else return "Let's git it!"
 	}
 
-	const handleComplete = (id: string) => {
-		if (!completedWorkouts.includes(id)) {
-			const updatedCompleted = [...completedWorkouts, id]
-			setCompletedWorkouts(updatedCompleted)
+  useEffect(() => {
+    const today = new Date().toDateString()
+    const savedDate = localStorage.getItem("lastResetDate")
+    console.log("🕒 Saved date:", savedDate, "| Today:", today)
 
-			const percentage = Math.round(
-				(updatedCompleted.length / exercises.length) * 100
-			)
-			setProgress(percentage)
-		}
-	}
+    if (savedDate !== today) {
+      console.log("🔁 New day — resetting workouts")
+      localStorage.setItem("lastResetDate", today)
+      localStorage.removeItem("completedWorkouts")
+      setCompletedWorkouts([])
+      setProgress(0)
+    } else {
+      const savedCompleted = localStorage.getItem("completedWorkouts")
+      if (savedCompleted) {
+        const parsed = JSON.parse(savedCompleted)
+        setCompletedWorkouts(parsed)
+      }
+    }
 
-	useEffect(() => {
-		const savedDate = localStorage.getItem("lastResetDate")
-		const today = new Date().toDateString()
+    const fetchWorkoutPlan = async () => {
+      try {
+        const plans: WorkoutPlan[] = await getUserWorkoutPlan()
+        if (plans.length > 0) {
+          setExercises(plans[0].exercises)
 
-		if (savedDate !== today) {
-			setCompletedWorkouts([])
-			setProgress(0)
-			localStorage.setItem("lastResetDate", today)
-		}
+          // Recalculate progress based on saved completedWorkouts
+          const savedCompleted = localStorage.getItem("completedWorkouts")
+          if (savedCompleted) {
+            const parsed = JSON.parse(savedCompleted)
+            const percentage = Math.round(
+              (parsed.length / plans[0].exercises.length) * 100
+            )
+            setProgress(percentage)
+          }
+        }
+      } catch (err) {
+        console.error("Error fetching workout plan:", err)
+        alert("Could not fetch workout plan")
+      }
+    }
 
 		const fetchWorkoutPlan = async () => {
 			try {
@@ -62,8 +81,24 @@ const Dashboard = () => {
 			}
 		}
 
-		fetchWorkoutPlan()
-	}, [])
+  const handleComplete = (id: string) => {
+    if (!completedWorkouts.includes(id)) {
+      const updatedCompleted = [...completedWorkouts, id]
+      setCompletedWorkouts(updatedCompleted)
+      localStorage.setItem("completedWorkouts", JSON.stringify(updatedCompleted))
+
+      const percentage = Math.round((updatedCompleted.length / exercises.length) * 100)
+      setProgress(percentage)
+      console.log("✅ Completed:", updatedCompleted)
+    }
+  }
+
+  const handleDelete = async (id: string) => {
+    try {
+      const response = await fetch(
+        `${import.meta.env.VITE_API_BASE_URL}/plans/exercise/${id}`,
+        { method: "DELETE" }
+      )
 
 	const handleDelete = async (id: string) => {
 		try {
@@ -74,17 +109,22 @@ const Dashboard = () => {
 				}
 			)
 
-			if (!response.ok) {
-				throw new Error("Failed to delete exercise from plan")
-			}
+      const updatedPlan = await response.json()
+      setExercises(updatedPlan.exercises)
 
-			const updatedPlan = await response.json()
-			setExercises(updatedPlan.exercises)
-		} catch (err) {
-			console.error("Error deleting exercise:", err)
-			alert("❌ Could not delete exercise from plan")
-		}
-	}
+      // Remove from completed if deleted
+      const updatedCompleted = completedWorkouts.filter(exId => exId !== id)
+      setCompletedWorkouts(updatedCompleted)
+      localStorage.setItem("completedWorkouts", JSON.stringify(updatedCompleted))
+
+      const percentage = Math.round((updatedCompleted.length / updatedPlan.exercises.length) * 100)
+      setProgress(percentage)
+
+    } catch (err) {
+      console.error("Error deleting exercise:", err)
+      alert("❌ Could not delete exercise from plan")
+    }
+  }
 
 	return (
 		<div className="form-wrapper">

@@ -78,12 +78,22 @@ const MuscleSelectorPage = () => {
 	}
 
 	const addToCart = (exercise: Exercise) => {
-		setCart((prevCart) => [...prevCart, exercise])
-	}
+		const normalized = {
+		  ...exercise,
+		  _id: exercise._id || exercise.id?.toString() || crypto.randomUUID()
+		}
+	  
+		setCart(prevCart =>
+		  prevCart.find(e => e._id === normalized._id)
+			? prevCart
+			: [...prevCart, normalized]
+		)
+	  }
 
-	const handleDelete = (id: string) => {
-		setCart((prevCart) =>
-			prevCart.filter((exercise) => exercise._id !== id)
+	const handleDelete = (_id: string) => {
+		setCart(prevCart =>
+			prevCart.filter(exercise => exercise._id !== _id)
+
 		)
 	}
 
@@ -118,8 +128,8 @@ const MuscleSelectorPage = () => {
 				<div className="workout-plan__list">
 					<h2>Your Workout Plan</h2>
 					<ul>
-						{cart.map((exercise) => (
-							<li key={exercise.id}>
+						{cart.map(exercise => (
+							<li key={exercise._id}>
 								{exercise.name}
 								<button onClick={() => handleDelete(exercise._id)}>
 									Delete
