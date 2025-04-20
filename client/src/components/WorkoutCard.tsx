@@ -4,9 +4,10 @@ import Exercise from "../interfaces/Exercise"
 interface WorkoutCardProps {
 	exercise: Exercise
 	addToCart: (exercise: Exercise) => void
+	showAddButton?: boolean
 }
 
-const WorkoutCard: FC<WorkoutCardProps> = ({ exercise, addToCart }) => {
+const WorkoutCard: FC<WorkoutCardProps> = ({ exercise, addToCart, showAddButton }) => {
 	return (
 		<div
 			style={{
@@ -54,19 +55,21 @@ const WorkoutCard: FC<WorkoutCardProps> = ({ exercise, addToCart }) => {
 					</ul>
 				</div>
 			)}
-			<button
-				onClick={() => addToCart(exercise)}
-				style={{
-					backgroundColor: "#4CAF50",
-					color: "#fff",
-					padding: "0.5rem",
-					border: "none",
-					borderRadius: "4px",
-					cursor: "pointer",
-				}}
-			>
-				Add Exercise to Your Workout Plan!
-			</button>
+			{showAddButton && (
+				<button
+					onClick={() => addToCart(exercise)}
+					style={{
+						backgroundColor: "#4CAF50",
+						color: "#fff",
+						padding: "0.5rem",
+						border: "none",
+						borderRadius: "4px",
+						cursor: "pointer",
+					}}
+				>
+					Add Exercise to Your Workout Plan!
+				</button>
+			)}
 		</div>
 	)
 }
