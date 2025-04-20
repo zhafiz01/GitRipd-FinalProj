@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react"
 import { useIntakeForm } from "../context/IntakeFormContext"
-import "./UserProfile.css"
 import User from "../interfaces/User"
 import { getUserProfile } from "../services/userService"
 

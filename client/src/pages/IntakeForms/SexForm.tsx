@@ -35,34 +35,31 @@ const SexForm = () => {
 			>
 				<label
 					className="form-label"
-					htmlFor="sex"
 				>
 					What is your sex?
 				</label>
 				<br />
-				<label>
+				<div>
 					<input
 						type="radio"
-						id="sex"
 						name="sex"
 						value="male"
 						checked={sex === "male"}
 						onChange={handleSexChange}
 					/>
 					Male
-				</label>
+				</div>
 				<br />
-				<label>
+				<div>
 					<input
 						type="radio"
-						id="sex"
 						name="sex"
 						value="female"
 						checked={sex === "female"}
 						onChange={handleSexChange}
 					/>
 					Female
-				</label>
+				</div>
 				<br />
 				<br />
 				<div className="arrow-btns">

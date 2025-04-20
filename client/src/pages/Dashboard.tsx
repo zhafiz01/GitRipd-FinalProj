@@ -6,7 +6,6 @@ import {
 	buildStyles,
 } from "react-circular-progressbar"
 import "react-circular-progressbar/dist/styles.css"
-import "./Dashboard.css"
 
 const Dashboard = () => {
 	const [workoutPlan, setWorkoutPlan] = useState<Exercise[]>([
