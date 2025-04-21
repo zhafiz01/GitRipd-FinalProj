@@ -13,12 +13,17 @@
 
 .login-btn {
     background-color: var(--lime-green);
-	color: var(--off-black);
-	padding: 8px 15px;
+	color: #393838;
+	padding: 12px 40px;
 	border-radius: 30px;
 	cursor: pointer;
 	font-size: 14px;
 	font-weight: 600;
+}
+
+.login-btn:hover {
+	background-color: #393838;
+    color: var(--lime-green);
 }
 
 .login-btn__form {
@@ -28,13 +33,18 @@
 
 .signup-btn {
     background-color: var(--lime-green);
-	color: var(--off-black);
-	padding: 8px 15px;
+	color: #393838;
+	padding: 12px 20px;
 	border-radius: 30px;
 	cursor: pointer;
 	font-size: 14px;
 	font-weight: 600;
     margin-top: 6px;
+}
+
+.signup-btn:hover {
+	background-color: #393838;
+    color: var(--lime-green);
 }
 
 .sign-up__link {

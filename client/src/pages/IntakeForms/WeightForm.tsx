@@ -34,7 +34,7 @@ const WeightForm = () => {
 					className="form-label"
 					htmlFor="weight"
 				>
-					Enter your weight (kg):
+					Enter your weight (lb):
 				</label>
 				<br />
 				<input

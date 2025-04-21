@@ -31,4 +31,10 @@
     padding: 16px 30px;
     text-shadow: none;
     margin: 10px;
+    cursor: pointer;
+}
+
+.welcome-btn:hover {
+    background-color: var(--lime-green);
+    color: #393838;
 }

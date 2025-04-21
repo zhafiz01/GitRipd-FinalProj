@@ -1,4 +1,4 @@
-/*.form-wrapper {
+.form-wrapper {
 	position: relative;
 	top: 40px;
 	height: 100%;
@@ -18,7 +18,7 @@
 	height: 100%;
   }
 
-  */
+
 
 .workout-card {
 	display: flex;
@@ -62,11 +62,17 @@
 
 .add-exercise-btn {
 	background-color: var(--lime-green);
-	color: var(--off-black);
+	color: #393838;
 	padding: 16px 30px;
+	text-align: center;
 	border-radius: 30px;
 	cursor: pointer;
-	margin-top: 16px;
+	margin: 10px;
+}
+
+.add-exercise-btn:hover {
+	color: var(--lime-green);
+    background-color: #393838;
 }
 
 .workout-cards--list {

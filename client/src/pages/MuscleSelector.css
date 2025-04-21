@@ -25,6 +25,14 @@
   margin: 50px 0px;
 }
 
+.muscle-selector-page--cart h3 {
+  padding-bottom: 10px;
+}
+
+.muscle-selector-page--cart li {
+  padding-bottom: 5px;
+}
+
 .workout-delete-btn {
   margin-left: 5px;
 }
@@ -42,12 +50,31 @@
   background-color: var(--lime-green);
   padding: 16px 30px;
   border-radius: 30px;
-  color: var(--off-black);
+  color: #393838;
   font-size: 22px;
   margin-top: 10px;
+}
+
+.add-muscle__btn:hover {
+  color: var(--lime-green);
+  background-color: #393838;
 }
 
 h6 {
   color: var(--off-black);
   text-align: center;
+}
+
+.save-plan-btn {
+  background-color: var(--lime-green);
+  padding: 12px 20px;
+  border-radius: 30px;
+  color: #393838;
+  font-size: 18px;
+  margin-top: 10px;
+}
+
+.save-plan-btn:hover {
+  color: var(--lime-green);
+  background-color: #393838;
 }

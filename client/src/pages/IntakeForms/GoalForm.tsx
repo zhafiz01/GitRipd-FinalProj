@@ -51,7 +51,7 @@ const GoalForm = () => {
 						checked={goal === "Weight Loss"}
 						onChange={handleGoalChange}
 					/>
-					Weight Loss
+					{""} Weight Loss
 				</div>
 				<br />
 				<div>
@@ -62,7 +62,7 @@ const GoalForm = () => {
 						checked={goal === "Muscle Gain"}
 						onChange={handleGoalChange}
 					/>
-					Muscle Gain
+					{""} Muscle Gain
 				</div>
 				<br />
 				<div>
@@ -73,7 +73,7 @@ const GoalForm = () => {
 						checked={goal === "Strength Training"}
 						onChange={handleGoalChange}
 					/>
-					Strength Training
+					{""} Strength Training
 				</div>
 				<br />
 				<div>
@@ -84,7 +84,7 @@ const GoalForm = () => {
 						checked={goal === "Flexibility"}
 						onChange={handleGoalChange}
 					/>
-					Flexibility
+					{""} Flexibility
 				</div>
 				<br />
 				<div>
@@ -95,7 +95,7 @@ const GoalForm = () => {
 						checked={goal === "Cardiovascular Endurance"}
 						onChange={handleGoalChange}
 					/>
-					Cardiovascular Endurance
+					{""} Cardiovascular Endurance
 				</div>
 				<br />
 				<div>
@@ -106,7 +106,7 @@ const GoalForm = () => {
 						checked={goal === "General Fitness"}
 						onChange={handleGoalChange}
 					/>
-					General Fitness
+					{""} General Fitness
 				</div>
 				<br />
 				<div className="arrow-btns">

@@ -63,43 +63,25 @@ export const getWorkoutPlansByUser: HTTPHandler =
 		}
 	}
 
-
-
-
-/*import HTTPHandler from "../helpers/HTTPHandler";
-import WorkoutPlan from "../models/WorkoutPlan"
-import { establishConnection } from "../middleware/establishConnection"
-
-export const saveWorkoutPlan: HTTPHandler = async (req, res) => {
-  await establishConnection()
-  const { exercises } = req.body;
-
+// DELETE exercise from user's plan 
+export const deleteExerciseFromPlan: HTTPHandler = async (req, res) => {
   try {
-    const newPlan = new WorkoutPlan({ exercises });
+    const { exerciseId } = req.params
+    const userId = (req as any).body.loggedInUser.uid
 
-    await newPlan.save();
-
-    res.status(201).json({ message: "Workout plan saved successfully", plan: newPlan });
-  } catch (error) {
-    res.status(500).json({ message: "Error saving workout plan", error });
-  }
-};
-
-export const saveWorkoutPlan = async (req: Request, res: Response): Promise<void> => {
-  try {
-    await establishConnection()
-
-    const { exercises } = req.body
-
-    if (!exercises || !Array.isArray(exercises)) {
-      res.status(400).json({ message: "Invalid workout plan data" })
-      return
+    const workoutPlan = await WorkoutPlan.findOne({ userId }).populate("exercises")
+    if (!workoutPlan) {
+      res.status(404).json({ message: "Workout plan not found" })
     }
-
-    const saved = await WorkoutPlan.create({ exercises })
-    res.status(201).json(saved)
-  } catch (error) {
-    console.error("Error saving workout plan:", error)
-    res.status(500).json({ message: "Error saving workout plan" })
+    else {
+      workoutPlan.exercises = workoutPlan.exercises.filter(
+        ex => ex._id.toString() !== exerciseId
+      )
+      await workoutPlan.save()
+      res.status(200).json({ message: "Exercise removed", exercises: workoutPlan.exercises })
+    }
+  } catch (err) {
+    console.error("Error deleting exercise:", err)
+    res.status(500).json({ message: "Server error" })
   }
-} */
+}

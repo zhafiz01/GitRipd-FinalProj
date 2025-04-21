@@ -17,6 +17,7 @@ import { getUserProfile } from "../services/userService"
 import User from "../interfaces/User"
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import { useNavigate } from "react-router-dom"
 
 const Dashboard = () => {
 	const [exercises, setExercises] = useState<Exercise[]>([])
@@ -27,6 +28,7 @@ const Dashboard = () => {
 	const { user, token, isLoading } = useContext(AuthContext)
 	const { data } = useIntakeForm()
 	const [profile, setProfile] = useState<User | null>(null)
+	const navigate = useNavigate()
 
 	const getCustomWelcome = (progress: number) => {
 		if (progress === 100)
@@ -34,7 +36,7 @@ const Dashboard = () => {
 				<>
 					Beast mode!
 					<>
-						<i style={{ color: "#024433" }}>Commit</i> to a break,
+						<i style={{ color: "#024433" }}> Commit</i> to a break,
 						you’ve earned it.
 					</>
 				</>
@@ -152,11 +154,10 @@ const Dashboard = () => {
 			if (!token) throw new Error("No token available")
 			const updated = await deleteExerciseFromPlan(id, token)
 
-			console.log("updated exercises from backend", updated.exercises)
 			setExercises(updated.exercises)
 
 			const updatedCompleted = completedWorkouts.filter(
-				(exId) => exId !== id
+				exId => exId !== id
 			)
 			setCompletedWorkouts(updatedCompleted)
 			localStorage.setItem(
@@ -172,6 +173,10 @@ const Dashboard = () => {
 			console.error("Error deleting exercise:", err)
 			alert("Could not delete exercise from plan")
 		}
+	}
+
+	const handleClick = () => {
+		navigate("/select")
 	}
 
 	if (isLoading || !user) return <div>Loading user data...</div>
@@ -215,9 +220,12 @@ const Dashboard = () => {
 					<br />
 					<ul>
 						<li>Stay consistent with your workouts.</li>
+						<br />
 						<li>Focus on form over weight to avoid injury.</li>
+						<br />
 						<li>Eat a balanced diet to fuel your gains.</li>
 					</ul>
+					<br />
 				</div>
 				<br />
 				<h2>Your Workout Plan</h2>
@@ -256,7 +264,10 @@ const Dashboard = () => {
 							))}
 						</ul>
 					) : (
-						<p>No workout plan available.</p>
+						<div className="no-plan">
+							<button className="to-select-btn" onClick={handleClick}>Click Here</button>
+							<p>to start building your own workout routine!</p>
+						</div>
 					)}
 				</div>
 			</div>
