@@ -22,3 +22,11 @@ export const getUserWorkoutPlan = async (): Promise<WorkoutPlan[]> => {
 		},
 	})).data
 }
+
+export const deleteExerciseFromPlan = async (exerciseId: string, token: string) => {
+	return (await axios.delete(baseUrl + `/exercise/${exerciseId}`, {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	})).data
+}

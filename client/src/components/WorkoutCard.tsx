@@ -5,12 +5,11 @@ import "./WorkoutCard.css"
 interface WorkoutCardProps {
 	exercise: Exercise
 	addToCart: (exercise: Exercise) => void
+	showAddButton?: boolean
 }
 
-const WorkoutCard: FC<WorkoutCardProps> = ({
-	exercise,
-	addToCart,
-}) => {
+const WorkoutCard: FC<WorkoutCardProps> = ({ exercise, addToCart, showAddButton }) => {
+
 	return (
 		<div
 			style={{
@@ -32,6 +31,7 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 					marginBottom: "0.5rem",
 				}}
 			/>
+
 			<div className="workout--card">
 				<h6>
 					<strong>Target:</strong> {exercise.target}
@@ -59,12 +59,22 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 						</ul>
 					</div>
 				)}
+			{showAddButton && (
 				<button
-					className="add-exercise-btn"
+          className="add-exercise-btn"
 					onClick={() => addToCart(exercise)}
+					style={{
+						backgroundColor: "#4CAF50",
+						color: "#fff",
+						padding: "0.5rem",
+						border: "none",
+						borderRadius: "4px",
+						cursor: "pointer",
+					}}
 				>
 					Add Exercise
 				</button>
+			)}
 			</div>
 		</div>
 	)
