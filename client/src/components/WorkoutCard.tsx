@@ -1,5 +1,6 @@
 import { FC } from "react"
 import Exercise from "../interfaces/Exercise"
+import "./WorkoutCard.css"
 
 interface WorkoutCardProps {
 	exercise: Exercise
@@ -8,15 +9,14 @@ interface WorkoutCardProps {
 }
 
 const WorkoutCard: FC<WorkoutCardProps> = ({ exercise, addToCart, showAddButton }) => {
+
 	return (
 		<div
 			style={{
-				border: "1px solid #ccc",
 				borderRadius: "8px",
 				padding: "1rem",
 				width: "300px",
 				backgroundColor: "#fff",
-				boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
 				color: "#333",
 			}}
 		>
@@ -31,32 +31,37 @@ const WorkoutCard: FC<WorkoutCardProps> = ({ exercise, addToCart, showAddButton 
 					marginBottom: "0.5rem",
 				}}
 			/>
-			<p>
-				<strong>Target:</strong> {exercise.target}
-			</p>
-			<p>
-				<strong>Equipment:</strong> {exercise.equipment}
-			</p>
-			{exercise.videos.length > 0 && (
-				<div>
-					<strong>Videos:</strong>
-					<ul style={{ paddingLeft: "1rem" }}>
-						{exercise.videos.slice(0, 2).map((vid, i) => (
-							<li key={i}>
-								<a
-									href={vid.link}
-									target="_blank"
-									rel="noopener noreferrer"
-								>
-									{vid.title}
-								</a>
-							</li>
-						))}
-					</ul>
-				</div>
-			)}
+
+			<div className="workout--card">
+				<h6>
+					<strong>Target:</strong> {exercise.target}
+				</h6>
+				<h6>
+					<strong>Equipment:</strong> {exercise.equipment}
+				</h6>
+				{exercise.videos.length > 0 && (
+					<div>
+						<h6>
+						<strong>Videos:</strong>
+						</h6>
+						<ul style={{ paddingLeft: "1rem", marginTop: "5px" }}>
+							{exercise.videos.slice(0, 2).map((vid, i) => (
+								<li key={i}>
+									<a
+										href={vid.link}
+										target="_blank"
+										rel="noopener noreferrer"
+									>
+										{vid.title}
+									</a>
+								</li>
+							))}
+						</ul>
+					</div>
+				)}
 			{showAddButton && (
 				<button
+          className="add-exercise-btn"
 					onClick={() => addToCart(exercise)}
 					style={{
 						backgroundColor: "#4CAF50",
@@ -67,9 +72,10 @@ const WorkoutCard: FC<WorkoutCardProps> = ({ exercise, addToCart, showAddButton 
 						cursor: "pointer",
 					}}
 				>
-					Add Exercise to Your Workout Plan!
+					Add Exercise
 				</button>
 			)}
+			</div>
 		</div>
 	)
 }

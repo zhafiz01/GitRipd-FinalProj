@@ -20,4 +20,5 @@ body {
   background-color: #141414;
   border: 5px solid var(--lime-green);
   padding: 100px;
+  color: white;
 }

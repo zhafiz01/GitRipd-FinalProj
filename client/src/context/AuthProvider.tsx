@@ -11,10 +11,10 @@ import {
 } from "react"
 import { auth } from "../utils/firebase"
 
-interface Props {
+interface AuthProviderProps {
 	children: ReactNode
 }
-const AuthProvider: FC<Props> = ({ children }) => {
+const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 	const [user, setUser] = useState<User | null>(null)
 	const [token, setToken] = useState<string | null>(null)
 	const [isLoading, setIsLoading] = useState<boolean>(true)

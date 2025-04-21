@@ -1,0 +1,18 @@
+.form-wrapper--dashboard {
+    position: relative;
+    top: 40px;
+    height: calc(100vh - 180px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  
+  .form-page--dashboard {
+    display: flex;
+    flex-direction: column;
+    background-color: #141414;
+    border: 5px solid var(--lime-green);
+    padding: 100px;
+    color: white;
+  }

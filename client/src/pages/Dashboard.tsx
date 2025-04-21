@@ -6,6 +6,7 @@ import { deleteExerciseFromPlan, getUserWorkoutPlan } from "../services/workoutP
 import WorkoutPlan from "../interfaces/WorkoutPlan"
 import AuthContext from "../context/AuthContext"
 import { useIntakeForm } from "../context/IntakeFormContext"
+import "./Dashboard.css"
 import { getUserProfile } from "../services/userService"
 import User from "../interfaces/User"
 
@@ -123,8 +124,8 @@ const Dashboard = () => {
   const displayData = profile || data
 
   return (
-    <div className="form-wrapper">
-      <div className="form-page">
+    <div className="form-wrapper--dashboard">
+      <div className="form-page--dashboard">
         <h1>Hey {displayData.name}!</h1> 
         <h3>{getCustomWelcome(progress)}</h3>
         <br />

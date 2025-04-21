@@ -67,7 +67,7 @@ const MuscleSelector = ({
 	}, [selectedTargets])
 
 	return (
-		<div className="muscle-selector">
+		<div className="muscle-selector__svg">
 			<h2 className="add-muscle__header">Select Muscle Groups</h2>
 			<div
 				ref={svgRef}
