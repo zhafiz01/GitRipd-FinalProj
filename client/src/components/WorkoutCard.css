@@ -1,4 +1,26 @@
-.workout--card {
+
+.workout--card__container {
+	border-radius: 8px;
+	padding: 1rem;
+	background-color: #fff;
+	/* width: 300px; */
+	color: #333;
+
+	max-width: 300px;
+	display: flex;
+	flex-direction: column;
+	flex: 1 0 30%;
+
+}
+
+.workout--card__image {
+	width: 100%;
+	height: auto;
+	border-radius: 4px;
+	margin-bottom: .5rem;
+}
+
+.workout--card__content {
 	text-align: center;
 }
 
@@ -13,4 +35,11 @@
 
 .workout-plan--cards__list {
 	background-color: #cfcfcf;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	justify-content: center;
+	padding: 20px 0 100px 0; 
 }
+
+

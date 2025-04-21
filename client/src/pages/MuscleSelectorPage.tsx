@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom"
 import Exercise from "../interfaces/Exercise"
 import { saveUserWorkoutPlan } from "../services/workoutPlanService"
 import "./MuscleSelector.css"
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const targetIdToZylaName: Record<string, string> = {
 	Pectorals: "pectorals",
@@ -125,14 +127,21 @@ const MuscleSelectorPage = () => {
 					.join(", ")}
 			</h6>
 			{cart.length > 0 && (
-				<div className="workout-plan__list">
-					<h3>Your Workout Plan</h3>
-					<ul>
+				<div className="workout-plan">
+					<h2>Your Workout Plan</h2>
+					<ul className="workout-plan--list">
 						{cart.map((exercise) => (
 							<li key={exercise._id}>
 								{exercise.name}
-								<button onClick={() => handleDelete(exercise._id)}>
-									Delete
+								<button
+									className="workout-delete-btn"
+									onClick={() => handleDelete(exercise._id)}
+								>
+									<FontAwesomeIcon
+										icon={faTrashCan}
+										size="sm"
+										color="grey"
+									/>
 								</button>
 							</li>
 						))}
@@ -144,13 +153,12 @@ const MuscleSelectorPage = () => {
 			{exercises.length > 0 && (
 				<div>
 					<h2>Exercise Results</h2>
-					<div>
-						<WorkoutPlanList
-							exercises={exercises}
-							addToCart={addToCart}
-							showAddButton={true}
-						/>
-					</div>
+
+					<WorkoutPlanList
+						exercises={exercises}
+						addToCart={addToCart}
+						showAddButton={true}
+					/>
 				</div>
 			)}
 		</div>

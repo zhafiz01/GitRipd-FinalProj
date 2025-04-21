@@ -9,16 +9,13 @@ interface WorkoutPlanListProps {
 	showAddButton?: boolean
 }
 
-const WorkoutList: FC<WorkoutPlanListProps> = ({
+const WorkoutPlanList: FC<WorkoutPlanListProps> = ({
 	exercises,
 	addToCart,
 	showAddButton,
 }) => {
 	return (
-		<div
-			className="workout-plan--cards__list"
-			style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}
-		>
+		<div className="workout-plan--cards__list">
 			{exercises.map((exercise) => (
 				<WorkoutCard
 					key={exercise.id}
@@ -31,4 +28,4 @@ const WorkoutList: FC<WorkoutPlanListProps> = ({
 	)
 }
 
-export default WorkoutList
+export default WorkoutPlanList
