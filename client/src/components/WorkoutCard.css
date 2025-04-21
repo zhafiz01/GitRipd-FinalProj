@@ -1,3 +1,38 @@
+/*.form-wrapper {
+	position: relative;
+	top: 40px;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	overflow: hidden;
+  }
+  
+  .form-page {
+	display: flex;
+	flex-direction: column;
+	background-color: #141414;
+	border: 5px solid var(--dark-green);
+	padding: 100px;
+	color: white;
+	height: 100%;
+  }
+
+  */
+
+.workout-card {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	height: 300px;
+	border-radius: 8px;
+	padding: 1rem;
+	width: 100%;
+	background-color: #141414;
+	border: 5px solid var(--dark-green);
+	box-shadow: 0px 0px 20px #024433;
+	color: #fff;
+}
 
 .workout--card__container {
 	border-radius: 8px;
@@ -14,14 +49,15 @@
 }
 
 .workout--card__image {
-	width: 100%;
+	width: 80%;
 	height: auto;
 	border-radius: 4px;
 	margin-bottom: .5rem;
 }
 
-.workout--card__content {
+.workout-card--description {
 	text-align: center;
+	width: 40%;
 }
 
 .add-exercise-btn {
@@ -33,13 +69,12 @@
 	margin-top: 16px;
 }
 
-.workout-plan--cards__list {
-	background-color: #cfcfcf;
+.workout-cards--list {
 	display: flex;
-	flex-wrap: wrap;
-	gap: 1rem;
-	justify-content: center;
-	padding: 20px 0 100px 0; 
+	flex-direction: column;
+	width: 100%;
 }
 
-
+.message-boxes {
+	text-align: center;
+}

@@ -14,24 +14,24 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 	showAddButton,
 }) => {
 	return (
-		<div className="workout--card__container">
-			<h3>{exercise.name}</h3>
-			<img
-				src={exercise.gifUrl.trim()}
-				alt={exercise.name}
-				className="workout--card__image"
-			/>
-
-			<div className="workout--card__content">
-				<h6>
+		<div className="workout-card">
+			<h2 style={{paddingRight: "30px", width: "40%"}}>{exercise.name}</h2> 
+			<div>
+				<img
+					className="workout--card__image"
+					src={exercise.gifUrl.trim()}
+					alt={exercise.name} />
+			</div>
+			<div className="workout-card--description">
+				<h6 style={{color: "#fff"}}>
 					<strong>Target:</strong> {exercise.target}
 				</h6>
-				<h6>
+				<h6 style={{color: "#fff"}}>
 					<strong>Equipment:</strong> {exercise.equipment}
 				</h6>
 				{exercise.videos.length > 0 && (
 					<div>
-						<h6>
+						<h6 style={{color: "#fff"}}>
 							<strong>Videos:</strong>
 						</h6>
 						<ul style={{ marginTop: "5px" }}>
@@ -49,6 +49,8 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 						</ul>
 					</div>
 				)}
+			</div>
+			<div>
 				{showAddButton && (
 					<button
 						className="add-exercise-btn"

@@ -5,6 +5,7 @@ import "react-circular-progressbar/dist/styles.css"
 import AuthContext from "../context/AuthContext"
 import { getUserWorkoutPlan } from "../services/workoutPlanService"
 import WorkoutPlan from "../interfaces/WorkoutPlan"
+import "../components/WorkoutCard.css"
 
 const ViewWorkout = () => {
 	const [workoutPlan, setWorkoutPlan] = useState<Exercise[]>([])
@@ -67,20 +68,21 @@ const ViewWorkout = () => {
 	return (
 		<div className="form-wrapper">
 			<div className="form-page">
-				<h2>Today's Focus:</h2>
-				<ul>
-					<li>Strength Training: Focus on upper body today.</li>
-					<li>Cardio: Aim for at least 20 minutes of cardio.</li>
-					<li>
-						Stretching: Don’t forget to cool down with stretches.
-					</li>
-				</ul>
+				<div className="message-boxes">
+					<h2 style={{padding: "5px"}}>Today's Focus:</h2>
+					<ul>
+						<li style={{padding: "5px"}}><u>Strength Training</u>: follow the 12-10-8 rep rule! As move through your sets, add a little weight each time!</li>
+						<li style={{padding: "5px"}}><u>Cardio</u>: Aim for at least 20 minutes of cardio. Focus on your breath.</li>
+						<li style={{padding: "5px"}}>
+							<u>Stretching</u>: Don’t forget to warm up AND cool down with stretches.
+						</li>
+					</ul>
+				</div>
 				<br />
 				<h3>Your Workout Plan</h3>
 				{workoutPlan.length > 0 ? (
 					<div
-						className="workout-list" // no css style rule
-						style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}
+						className="workout-cards--list"
 					>
 						{workoutPlan.map((exercise) => (
 							<div
@@ -90,6 +92,7 @@ const ViewWorkout = () => {
 										? 0.5
 										: 1,
 									position: "relative",
+									paddingBottom: "20px"
 								}}
 							>
 								<WorkoutCard
@@ -103,7 +106,6 @@ const ViewWorkout = () => {
 										position: "absolute",
 										top: "10px",
 										right: "10px",
-										backgroundColor: "#4CAF50",
 										color: "#fff",
 										border: "none",
 										borderRadius: "4px",
@@ -112,7 +114,7 @@ const ViewWorkout = () => {
 									}}
 								>
 									{completedWorkouts.includes(exercise._id)
-										? "Undo"
+										? "↩️"
 										: "✅"}
 								</button>
 							</div>

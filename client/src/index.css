@@ -103,6 +103,10 @@ h3, i {
   color: var(--off-black);
 }
 
+a {
+  color: var(--lime-green)
+}
+
 button svg {
   cursor: pointer;
 }

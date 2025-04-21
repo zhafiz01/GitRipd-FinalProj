@@ -15,7 +15,9 @@ const WorkoutPlanList: FC<WorkoutPlanListProps> = ({
 	showAddButton,
 }) => {
 	return (
-		<div className="workout-plan--cards__list">
+		<div
+			style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
+		>
 			{exercises.map((exercise) => (
 				<WorkoutCard
 					key={exercise.id}
