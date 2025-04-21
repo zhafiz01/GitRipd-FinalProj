@@ -37,6 +37,7 @@
     border-radius: 30px;
     color: var(--off-black);
     font-size: 22px;
+    margin-top: 10px;
   }
 
   h6 {
