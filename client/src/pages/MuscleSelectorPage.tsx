@@ -21,8 +21,6 @@ const targetIdToZylaName: Record<string, string> = {
 	Glutes: "glutes",
 	Forearms: "forearms",
 	Adductors: "adductors",
-	// "Front-Muscles": "",
-	// "Back-Muscles": "",
 	Front: "",
 	Back: "",
 }
@@ -79,21 +77,23 @@ const MuscleSelectorPage = () => {
 
 	const addToCart = (exercise: Exercise) => {
 		const normalized = {
-		  ...exercise,
-		  _id: exercise._id || exercise.id?.toString() || crypto.randomUUID()
+			...exercise,
+			_id:
+				exercise._id ||
+				exercise.id?.toString() ||
+				crypto.randomUUID(),
 		}
-	  
-		setCart(prevCart =>
-		  prevCart.find(e => e._id === normalized._id)
-			? prevCart
-			: [...prevCart, normalized]
+
+		setCart((prevCart) =>
+			prevCart.find((e) => e._id === normalized._id)
+				? prevCart
+				: [...prevCart, normalized]
 		)
-	  }
+	}
 
 	const handleDelete = (_id: string) => {
-		setCart(prevCart =>
-			prevCart.filter(exercise => exercise._id !== _id)
-
+		setCart((prevCart) =>
+			prevCart.filter((exercise) => exercise._id !== _id)
 		)
 	}
 
@@ -128,7 +128,7 @@ const MuscleSelectorPage = () => {
 				<div className="workout-plan__list">
 					<h3>Your Workout Plan</h3>
 					<ul>
-						{cart.map(exercise => (
+						{cart.map((exercise) => (
 							<li key={exercise._id}>
 								{exercise.name}
 								<button onClick={() => handleDelete(exercise._id)}>
@@ -145,11 +145,11 @@ const MuscleSelectorPage = () => {
 				<div>
 					<h2>Exercise Results</h2>
 					<div>
-					<WorkoutPlanList
-						exercises={exercises}
-						addToCart={addToCart}
-						showAddButton={true}
-					/>
+						<WorkoutPlanList
+							exercises={exercises}
+							addToCart={addToCart}
+							showAddButton={true}
+						/>
 					</div>
 				</div>
 			)}

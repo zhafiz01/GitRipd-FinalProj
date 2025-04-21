@@ -108,6 +108,25 @@ const MuscleSelector = ({ selectedTargets, toggleMuscle, onSubmit }: MuscleSelec
 	}, [selectedTargets])
   
 	return (
+
+<!-- 		<div className="muscle-selector__svg">
+			<h2 className="add-muscle__header">Select Muscle Groups</h2>
+			<div
+				ref={svgRef}
+				dangerouslySetInnerHTML={{ __html: svgContent }}
+				style={{
+					maxWidth: "500px",
+					margin: "1rem auto",
+				}}
+			/>
+			<button
+				className="add-muscle__btn"
+				onClick={onSubmit}
+			>
+				Submit Selection
+			</button>
+		</div> -->
+
 	  <div style={{ textAlign: "center", padding: "1rem" }}>
 		<h2 style={{ fontSize: "32px", color: "#111", marginBottom: "1rem" }}>
 		  Select Muscle Groups
@@ -138,6 +157,7 @@ const MuscleSelector = ({ selectedTargets, toggleMuscle, onSubmit }: MuscleSelec
 		  Submit Selection
 		</button>
 	  </div>
+
 	)
   }
   

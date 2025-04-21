@@ -28,7 +28,6 @@ export const getTargetMuscles = async () => {
   }
 }
 
-// 🧠 Map SVG muscle IDs to Zyla target muscle names
 const muscleNameMap: Record<string, string> = {
   abs: "abs",
   biceps: "biceps",

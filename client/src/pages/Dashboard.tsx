@@ -1,194 +1,260 @@
 import { useContext, useEffect, useState } from "react"
 import Exercise from "../interfaces/Exercise"
-import { CircularProgressbar, buildStyles } from "react-circular-progressbar"
-  import "react-circular-progressbar/dist/styles.css"
-import { deleteExerciseFromPlan, getUserWorkoutPlan } from "../services/workoutPlanService"
+import {
+	CircularProgressbar,
+	buildStyles,
+} from "react-circular-progressbar"
+import "react-circular-progressbar/dist/styles.css"
+import {
+	deleteExerciseFromPlan,
+	getUserWorkoutPlan,
+} from "../services/workoutPlanService"
 import WorkoutPlan from "../interfaces/WorkoutPlan"
 import AuthContext from "../context/AuthContext"
 import { useIntakeForm } from "../context/IntakeFormContext"
 import "./Dashboard.css"
 import { getUserProfile } from "../services/userService"
 import User from "../interfaces/User"
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
 const Dashboard = () => {
-  const [exercises, setExercises] = useState<Exercise[]>([])
-  const [completedWorkouts, setCompletedWorkouts] = useState<string[]>([])
-  const [progress, setProgress] = useState(0)
-  const { user, token, isLoading } = useContext(AuthContext)
-  const { data } = useIntakeForm()
-  const [profile, setProfile] = useState<User | null>(null)
-
-	// conditional function for an inspirational/encouraging message to display
-	// depending on their specified fitness goal??????
+	const [exercises, setExercises] = useState<Exercise[]>([])
+	const [completedWorkouts, setCompletedWorkouts] = useState<
+		string[]
+	>([])
+	const [progress, setProgress] = useState(0)
+	const { user, token, isLoading } = useContext(AuthContext)
+	const { data } = useIntakeForm()
+	const [profile, setProfile] = useState<User | null>(null)
 
 	const getCustomWelcome = (progress: number) => {
-		if (progress === 100) return <>Beast mode!<h5><i>Commit</i> to a break, you’ve earned it.</h5></>
-		if (progress >= 80) return <><i>Push</i> a little further - you're crushing it!</>
-		if (progress >= 50) return <>You're halfway there and already looking <i>full-stack</i>ed!</>
-		if (progress >= 30) return <><i>Compile</i> that energy and keep at it!</>
-    else return <>Ready? <i>Get setter? </i>Git RiPD!</>
+		if (progress === 100)
+			return (
+				<>
+					Beast mode!
+					<>
+						<i style={{ color: "#024433" }}>Commit</i> to a break,
+						you’ve earned it.
+					</>
+				</>
+			)
+		if (progress >= 80)
+			return (
+				<>
+					<i style={{ color: "#024433" }}>Push</i> a little further -
+					you're crushing it!
+				</>
+			)
+		if (progress >= 50)
+			return (
+				<>
+					You're halfway there and already looking{" "}
+					<i style={{ color: "#024433" }}>full-stack</i>
+					ed!
+				</>
+			)
+		if (progress >= 30)
+			return (
+				<>
+					<i style={{ color: "#024433" }}>Compile</i> that energy and
+					keep at it!
+				</>
+			)
+		else
+			return (
+				<>
+					Ready? <i style={{ color: "#024433" }}>Get setter? </i>Git
+					RiPD!
+				</>
+			)
 	}
 
-  useEffect(() => {
-    const today = new Date().toDateString()
-    const completedKey = `completedWorkouts_${user?.uid}`
-    const dateKey = `lastResetDate_${user?.uid}`
-    const savedDate = localStorage.getItem(dateKey)
+	useEffect(() => {
+		const today = new Date().toDateString()
+		const completedKey = `completedWorkouts_${user?.uid}`
+		const dateKey = `lastResetDate_${user?.uid}`
+		const savedDate = localStorage.getItem(dateKey)
 
-    if (savedDate !== today) {
-      console.log("New day — resetting workout completion")
-      localStorage.setItem(dateKey, today)
-      localStorage.removeItem(completedKey)
-      setCompletedWorkouts([])
-      setProgress(0)
-    } else {
-      const savedCompleted = localStorage.getItem(completedKey)
-      if (savedCompleted) {
-        const parsed = JSON.parse(savedCompleted) 
-        setCompletedWorkouts(parsed) // see if this just works with (savedCompleted)
-      }
-    }
+		if (savedDate !== today) {
+			console.log("New day — resetting workout completion")
+			localStorage.setItem(dateKey, today)
+			localStorage.removeItem(completedKey)
+			setCompletedWorkouts([])
+			setProgress(0)
+		} else {
+			const savedCompleted = localStorage.getItem(completedKey)
+			if (savedCompleted) {
+				const parsed = JSON.parse(savedCompleted)
+				setCompletedWorkouts(parsed)
+			}
+		}
 
-    const fetchWorkoutPlan = async () => {
-      try {
-        const plans: WorkoutPlan[] = await getUserWorkoutPlan()
-        if (plans.length > 0) {
-          setExercises(plans[0].exercises)
+		const fetchWorkoutPlan = async () => {
+			try {
+				const plans: WorkoutPlan[] = await getUserWorkoutPlan()
+				if (plans.length > 0) {
+					setExercises(plans[0].exercises)
 
-          const savedCompleted = localStorage.getItem(completedKey)
-          if (savedCompleted) {
-            const parsed = JSON.parse(savedCompleted)
-            const percentage = Math.round(
-              (parsed.length / plans[0].exercises.length) * 100
-            )
-            setProgress(percentage)
-          }
-        }
-      } catch (err) {
-        console.error("Error fetching workout plan:", err)
-        alert("Could not fetch workout plan")
-      }
-    }
+					const savedCompleted = localStorage.getItem(completedKey)
+					if (savedCompleted) {
+						const parsed = JSON.parse(savedCompleted)
+						const percentage = Math.round(
+							(parsed.length / plans[0].exercises.length) * 100
+						)
+						setProgress(percentage)
+					}
+				}
+			} catch (err) {
+				console.error("Error fetching workout plan:", err)
+				alert("Could not fetch workout plan")
+			}
+		}
 
-    fetchWorkoutPlan()
+		fetchWorkoutPlan()
 
-    const fetchProfile = async () => {
-      try {
-        const userData = await getUserProfile()
-        setProfile(userData as User)
-      } catch (err) {
-        console.error("Failed to load profile:", err)
-      }
-    }
-  
-    fetchProfile()
-  }, [user])
+		const fetchProfile = async () => {
+			try {
+				const userData = await getUserProfile()
+				setProfile(userData as User)
+			} catch (err) {
+				console.error("Failed to load profile:", err)
+			}
+		}
 
-  const handleComplete = (id: string) => {
-    const completedKey = `completedWorkouts_${user?.uid}`
-    let updatedCompleted: string[] = []
-    if (completedWorkouts.includes(id)) {
-      updatedCompleted = completedWorkouts.filter(exId => exId !== id)
-    } else updatedCompleted = [...completedWorkouts, id]
+		fetchProfile()
+	}, [user])
 
-    setCompletedWorkouts(updatedCompleted)
-    localStorage.setItem(completedKey, JSON.stringify(updatedCompleted))
+	const handleComplete = (id: string) => {
+		const completedKey = `completedWorkouts_${user?.uid}`
+		let updatedCompleted: string[] = []
+		if (completedWorkouts.includes(id)) {
+			updatedCompleted = completedWorkouts.filter(
+				(exId) => exId !== id
+			)
+		} else updatedCompleted = [...completedWorkouts, id]
 
-    const percentage = Math.round((updatedCompleted.length / exercises.length) * 100)
-    setProgress(percentage)
-    console.log("Workout completed for:", user?.uid, updatedCompleted)
-  }
+		setCompletedWorkouts(updatedCompleted)
+		localStorage.setItem(
+			completedKey,
+			JSON.stringify(updatedCompleted)
+		)
 
-  const handleDelete = async (id: string) => {
-    try {
-      if (!token) throw new Error ("No token available")
-      const updated = await deleteExerciseFromPlan(id, token)
+		const percentage = Math.round(
+			(updatedCompleted.length / exercises.length) * 100
+		)
+		setProgress(percentage)
+		console.log("Workout completed for:", user?.uid, updatedCompleted)
+	}
 
-      console.log("updated exercises from backend", updated.exercises)
-      setExercises(updated.exercises)
+	const handleDelete = async (id: string) => {
+		try {
+			if (!token) throw new Error("No token available")
+			const updated = await deleteExerciseFromPlan(id, token)
 
-      const updatedCompleted = completedWorkouts.filter(exId => exId !== id)
-      setCompletedWorkouts(updatedCompleted)
-      localStorage.setItem(`completedWorkouts_${user?.uid}`, JSON.stringify(updatedCompleted))
+			console.log("updated exercises from backend", updated.exercises)
+			setExercises(updated.exercises)
 
-      const percentage = Math.round((updatedCompleted.length / updated.exercises.length) * 100)
-      setProgress(percentage)
-    } catch (err) {
-      console.error("Error deleting exercise:", err)
-      alert("Could not delete exercise from plan")
-    }
-  }
+			const updatedCompleted = completedWorkouts.filter(
+				(exId) => exId !== id
+			)
+			setCompletedWorkouts(updatedCompleted)
+			localStorage.setItem(
+				`completedWorkouts_${user?.uid}`,
+				JSON.stringify(updatedCompleted)
+			)
 
-  if (isLoading || !user) return <div>Loading user data...</div>
-  
-  const displayData = profile || data
+			const percentage = Math.round(
+				(updatedCompleted.length / updated.exercises.length) * 100
+			)
+			setProgress(percentage)
+		} catch (err) {
+			console.error("Error deleting exercise:", err)
+			alert("Could not delete exercise from plan")
+		}
+	}
 
-  return (
-    <div className="form-wrapper--dashboard">
-      <div className="form-page--dashboard">
-        <h1>Hey {displayData.name}!</h1> 
-        <h3>{getCustomWelcome(progress)}</h3>
-        <br />
-        <h2>Progress Tracker:</h2>
-        <br />
-        <div style={{ width: 200, margin: "2rem auto" }}>
-          <CircularProgressbar
-            value={progress}
-            text={`${progress}%`}
-            styles={buildStyles({
-              textSize: "16px",
-              pathColor: 
-                  progress >= 80 ? "#4caf50" :
-                  progress >= 50 ? "#f4c542" :
-                  "#00bcd4",
-              textColor: "#333",
-              trailColor: "#ddd",
-            })}
-          />
-        </div>
-        <br />
-        <h3>Tips for success:</h3>
-        <ul>
-          <li>Stay consistent with your workouts.</li>
-          <li>Focus on form over weight to avoid injury.</li>
-          <li>Eat a balanced diet to fuel your gains.</li>
-        </ul>
-        <br />
-        <h2>Your Workout Plan</h2>
-        {exercises.length > 0 ? (
-          <ul>
-            {exercises.map((exercise) => (
-              <li key={exercise._id} style={{ 
-                  opacity: completedWorkouts.includes(exercise._id) ? 0.5 : 1
-              }}>
-                {exercise.name}{" "}
-                <button className="mark-complete-button"
-                  onClick={() => handleComplete(exercise._id)}>
-                    {completedWorkouts.includes(exercise._id) ? "Undo" : "✅"}
-                </button>
-                <button
-                  onClick={() => handleDelete(exercise._id)}
-                  style={{
-                    marginLeft: "1rem",
-                    backgroundColor: "red",
-                    color: "white",
-                    border: "none",
-                    borderRadius: "4px",
-                    cursor: "pointer",
-                    padding: "0.3rem 0.5rem",
-                  }}
-                >
-                  ❌
-                </button>
-              </li>
-            ))}
-          </ul>
-        ) : (
-          <p>No workout plan available.</p>
-        )}
-      </div>
-    </div>
-  )
+	if (isLoading || !user) return <div>Loading user data...</div>
+
+	const displayData = profile || data
+
+	return (
+		<div className="form-wrapper--dashboard">
+			<div className="form-page--dashboard">
+				<h1>
+					Hey{" "}
+					<span style={{ color: "#1ed490" }}>{displayData.name}</span>
+					!
+				</h1>
+				<h3 style={{ color: "white" }}>
+					{getCustomWelcome(progress)}
+				</h3>
+				<br />
+				<h2>Progress Tracker:</h2>
+				<br />
+				<div style={{ width: 200, margin: "2rem auto" }}>
+					<CircularProgressbar
+						value={progress}
+						text={`${progress}%`}
+						styles={buildStyles({
+							textSize: "16px",
+							pathColor:
+								progress >= 80
+									? "#4caf50"
+									: progress >= 50
+									? "#f4c542"
+									: "#00bcd4",
+							textColor: "#333",
+							trailColor: "#ddd",
+						})}
+					/>
+				</div>
+				<br />
+				<h3 style={{ color: "#cfcfcf" }}>Tips for success:</h3>
+				<ul>
+					<li>Stay consistent with your workouts.</li>
+					<li>Focus on form over weight to avoid injury.</li>
+					<li>Eat a balanced diet to fuel your gains.</li>
+				</ul>
+				<br />
+				<h2>Your Workout Plan</h2>
+				{exercises.length > 0 ? (
+					<ul>
+						{exercises.map((exercise) => (
+							<li
+								className="workout-list--dashboard"
+								key={exercise._id}
+								style={{
+									opacity: completedWorkouts.includes(exercise._id)
+										? 0.5
+										: 1,
+								}}
+							>
+								{exercise.name}{" "}
+								<button
+									className="mark-complete-btn"
+									onClick={() => handleComplete(exercise._id)}
+								>
+									{completedWorkouts.includes(exercise._id)
+										? "Undo"
+										: "✅"}
+								</button>
+								<button onClick={() => handleDelete(exercise._id)}>
+									<FontAwesomeIcon
+										icon={faTrashCan}
+										size="sm"
+										color="grey"
+									/>
+								</button>
+							</li>
+						))}
+					</ul>
+				) : (
+					<p>No workout plan available.</p>
+				)}
+			</div>
+		</div>
+	)
 }
 
 export default Dashboard

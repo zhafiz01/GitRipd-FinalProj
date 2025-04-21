@@ -18,31 +18,3 @@ const ExerciseSchema = new Schema({
 })
 
 export default model("Exercise", ExerciseSchema)
-
-
-
-/*
-
-const MuscleGroups = [
-    "abs",
-    "quads",
-    "lats",
-    "calves",
-    "pectorals",
-    "glutes",
-    "hamstrings",
-    "adductors",
-    "triceps",
-    "cardiovascular system",
-    "spine", 
-    "upper back",
-    "biceps",
-    "delts",
-    "forearms",
-    "traps",
-    "serratus anterior",
-    "abductors",
-    "levator spaculae"
-]
-
-*/

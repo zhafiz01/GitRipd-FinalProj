@@ -15,7 +15,7 @@ const GoalForm = () => {
 		e.preventDefault()
 		if (!goal) return
 
-		const updatedData = {...data, goal}
+		const updatedData = { ...data, goal }
 		updateData(updatedData)
 
 		try {
@@ -41,11 +41,7 @@ const GoalForm = () => {
 				className="form-page"
 				onSubmit={handleSubmit}
 			>
-				<label
-					className="form-label"
-				>
-					What are your goals?
-				</label>
+				<label className="form-label">What are your goals?</label>
 				<br />
 				<div>
 					<input
@@ -123,7 +119,10 @@ const GoalForm = () => {
 							size="2x"
 						/>
 					</button>
-					<button className="submit-btn" type="submit">
+					<button
+						className="submit-btn"
+						type="submit"
+					>
 						Submit Your Results
 					</button>
 				</div>

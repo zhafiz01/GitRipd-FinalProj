@@ -5,27 +5,31 @@ const WelcomeScreen = () => {
 	return (
 		<div className="form-wrapper">
 			<div className="form-page--welcome">
-				<p style={{ fontSize: "56px", fontFamily: "Apex Mk2" }}>Welcome to GiTRiPD!</p>
+				<h1 style={{ fontSize: "60px" }}>Welcome to GiTRiPD!</h1>
 				<br />
-				<p style={{ fontSize: "36px" }}>
+				<h2 style={{ fontSize: "26px", color: "#cfcfcf" }}>
 					Ready to kick off your fitness journey in a new way?
-				</p>
+				</h2>
 				<br />
 				<br />
-				<p style={{ fontSize: "36px", fontStyle: "italic" }}>
+				<p style={{ fontSize: "22px", fontStyle: "italic" }}>
 					Let's get started!
 				</p>
 				<br />
 				<br />
 				<div className="user-selection">
 					<div className="btn-select">
-						<p style={{ fontSize: "18px" }}>Returning User?</p>
+						<p style={{ fontSize: "18px", color: "#cfcfcf" }}>
+							Returning User?
+						</p>
 						<NavLink to="/login">
 							<button className="welcome-btn">Log in</button>
 						</NavLink>
 					</div>
 					<div className="btn-select">
-						<p style={{ fontSize: "18px" }}>First Time?</p>
+						<p style={{ fontSize: "18px", color: "#cfcfcf" }}>
+							First Time?
+						</p>
 						<NavLink to="/signup">
 							<button className="welcome-btn">
 								Create an Account!
