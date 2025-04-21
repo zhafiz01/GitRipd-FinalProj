@@ -9,6 +9,7 @@ import "react-circular-progressbar/dist/styles.css"
 import { getUserWorkoutPlan } from "../services/workoutPlanService"
 import WorkoutPlan from "../interfaces/WorkoutPlan"
 import { useIntakeForm } from "../context/IntakeFormContext"
+import "./Dashboard.css"
 
 const Dashboard = () => {
 	const [exercises, setExercises] = useState<Exercise[]>([])
@@ -127,8 +128,8 @@ const Dashboard = () => {
   }
 
 	return (
-		<div className="form-wrapper">
-			<div className="form-page">
+		<div className="form-wrapper--dashboard">
+			<div className="form-page--dashboard">
 				<h1>
 					{userName} — {getCustomWelcome(progress)}
 				</h1>
@@ -169,7 +170,7 @@ const Dashboard = () => {
 					</li>
 				</ul>
 				<br />
-				<h2>Your Workout Plan</h2>
+				<h3>Your Workout Plan</h3>
 				{exercises.length > 0 ? (
 					<ul>
 						{exercises.map((exercise) => (
@@ -184,23 +185,12 @@ const Dashboard = () => {
 								{exercise.name}{" "}
 								{completedWorkouts.includes(exercise._id) && " ✅"}
 								<button
-									className="mark-complete-button"
+									className="mark-complete-btn"
 									onClick={() => handleComplete(exercise._id)}
 								>
 									Mark as Complete!
 								</button>
-								<button
-									onClick={() => handleDelete(exercise._id)}
-									style={{
-										marginLeft: "1rem",
-										backgroundColor: "red",
-										color: "white",
-										border: "none",
-										borderRadius: "4px",
-										cursor: "pointer",
-										padding: "0.3rem 0.5rem",
-									}}
-								>
+								<button onClick={() => handleDelete(exercise._id)}>
 									❌ Remove
 								</button>
 							</li>

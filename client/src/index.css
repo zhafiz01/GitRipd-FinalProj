@@ -25,7 +25,7 @@
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
-  color: white;
+  /* color: white; */
   letter-spacing: 1px;
 }
 
@@ -90,11 +90,22 @@ h1 {
 
 h2 {
   font-family: "Apex Mk2";
-  font-size: 28px;
+  font-size: 32px;
+  text-align: center;
+  margin: 10px 0px;
 }
 
+h3 {
+  font-family: "Apex Mk2";
+  font-size: 24px;
+  color: var(--off-black);
+}
 
 button svg {
+  cursor: pointer;
+}
+
+button {
   cursor: pointer;
 }
 

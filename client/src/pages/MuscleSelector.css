@@ -22,7 +22,7 @@
     color: var(--off-black);
   }
 
-  .muscle-selector {
+  .muscle-selector__svg {
     text-align: center;
   }
 
@@ -33,8 +33,15 @@
 
   .add-muscle__btn {
     background-color: var(--lime-green);
-    padding: 20px;
+    padding: 16px 30px;
     border-radius: 30px;
     color: var(--off-black);
+    font-size: 22px;
     /* border: 2px solid black; */
+  }
+
+  h6 {
+    color: var(--off-black);
+    text-align: center;
+    margin-top: 10px;
   }

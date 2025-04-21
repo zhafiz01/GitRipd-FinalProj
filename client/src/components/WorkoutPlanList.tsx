@@ -1,6 +1,7 @@
 import { FC } from "react"
 import WorkoutCard from "./WorkoutCard"
 import Exercise from "../interfaces/Exercise"
+import "./WorkoutCard.css"
 
 interface WorkoutPlanListProps {
 	exercises: Exercise[]
@@ -12,7 +13,7 @@ const WorkoutList: FC<WorkoutPlanListProps> = ({
 	addToCart,
 }) => {
 	return (
-		<div style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+		<div className="workout-plan--cards__list" style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
 			{exercises.map((exercise) => (
 				<WorkoutCard
 					key={exercise.id}

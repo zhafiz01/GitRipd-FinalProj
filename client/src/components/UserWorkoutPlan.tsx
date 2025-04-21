@@ -9,18 +9,18 @@ interface Exercise {
   videos: { title: string; link: string }[];
 }
 
-interface Props {
+interface UserWorkoutPlanProps {
   exercises: Exercise[];
   handleDelete: (id: number) => void;
   handleSave: () => void;
 }
 
-const UserWorkoutPlan: React.FC<Props> = ({ exercises, handleDelete, handleSave }) => {
+const UserWorkoutPlan: React.FC<UserWorkoutPlanProps> = ({ exercises, handleDelete, handleSave }) => {
   if (exercises.length === 0) return null;
 
   return (
     <div style={{ marginTop: "2rem" }}>
-      <h2>Your Workout Plan</h2>
+      <h3>Your Workout Plan</h3>
       <ul>
         {exercises.map((exercise) => (
           <li key={exercise.id}>

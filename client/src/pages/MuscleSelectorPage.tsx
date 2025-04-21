@@ -116,17 +116,17 @@ const MuscleSelectorPage = () => {
 				onSubmit={handleSubmit}
 			/>
 
-			<p>
+			<h6>
 				Selected:{" "}
 				{selectedTargets
 					.filter(
 						(m) => m !== "Front-Muscles" && m !== "Back-Muscles"
 					)
 					.join(", ")}
-			</p>
+			</h6>
 			{cart.length > 0 && (
 				<div className="workout-plan__list">
-					<h2>Your Workout Plan</h2>
+					<h3>Your Workout Plan</h3>
 					<ul>
 						{cart.map(exercise => (
 							<li key={exercise._id}>
@@ -144,10 +144,12 @@ const MuscleSelectorPage = () => {
 			{exercises.length > 0 && (
 				<div>
 					<h2>Exercise Results</h2>
+					<div>
 					<WorkoutPlanList
 						exercises={exercises}
 						addToCart={addToCart}
 					/>
+					</div>
 				</div>
 			)}
 		</div>
