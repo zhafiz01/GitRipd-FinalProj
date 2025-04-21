@@ -4,8 +4,8 @@ import Exercise from "../interfaces/Exercise"
 import "./WorkoutCard.css"
 
 interface WorkoutPlanListProps {
-	exercises: Exercise[]
-	addToCart: (exercise: Exercise) => void
+	exercises: Exercise[] // array of elements of type Exercise
+	addToCart: (exercise: Exercise) => void // function that has one param and returns nothing
 	showAddButton?: boolean
 }
 
@@ -15,9 +15,7 @@ const WorkoutPlanList: FC<WorkoutPlanListProps> = ({
 	showAddButton,
 }) => {
 	return (
-		<div
-			style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
-		>
+		<div className="workout--card__container">
 			{exercises.map((exercise) => (
 				<WorkoutCard
 					key={exercise.id}

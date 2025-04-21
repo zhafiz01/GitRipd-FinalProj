@@ -8,7 +8,10 @@ const WelcomeScreen = () => {
 				<h1 style={{ fontSize: "60px" }}>Welcome to GiTRiPD!</h1>
 				<br />
 				<h2 style={{ fontSize: "26px", color: "#cfcfcf" }}>
-					Ready to kick off your fitness journey in a new way?
+					Ready to kick off your fitness journey
+				</h2>
+				<h2 style={{ fontSize: "26px", color: "#cfcfcf", marginTop: "0" }}>
+					in a new way?
 				</h2>
 				<br />
 				<br />

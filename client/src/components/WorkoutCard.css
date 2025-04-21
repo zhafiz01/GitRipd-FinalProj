@@ -35,17 +35,10 @@
 }
 
 .workout--card__container {
-	border-radius: 8px;
-	padding: 1rem;
-	background-color: #fff;
-	/* width: 300px; */
-	color: #333;
-
-	max-width: 300px;
 	display: flex;
 	flex-direction: column;
-	flex: 1 0 30%;
-
+	gap: 1rem;
+	padding: 10px 50px 50px 50px;
 }
 
 .workout--card__image {
@@ -67,6 +60,7 @@
 	border-radius: 30px;
 	cursor: pointer;
 	margin-top: 16px;
+	text-align: center;
 }
 
 .workout-cards--list {
@@ -77,4 +71,15 @@
 
 .message-boxes {
 	text-align: center;
+}
+
+.save-workout-btn {
+	background-color: var(--lime-green);
+	color: var(--off-black);
+	padding: 8px 15px;
+	border-radius: 30px;
+	cursor: pointer;
+	font-size: 14px;
+	font-weight: 600;
+	margin-top: 8px;
 }

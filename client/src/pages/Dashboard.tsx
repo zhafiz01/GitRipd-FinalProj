@@ -34,7 +34,7 @@ const Dashboard = () => {
 				<>
 					Beast mode!
 					<>
-						<i style={{ color: "#024433" }}>Commit</i> to a break,
+						<i style={{ color: "#024433" }}> Commit</i> to a break,
 						you’ve earned it.
 					</>
 				</>
