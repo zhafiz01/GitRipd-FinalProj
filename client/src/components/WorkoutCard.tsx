@@ -60,8 +60,7 @@ const WorkoutCard: FC<WorkoutCardProps> = ({ exercise, addToCart, showAddButton 
 					</div>
 				)}
 			{showAddButton && (
-				<button
-          className="add-exercise-btn"
+				<button className="add-exercise-btn"
 					onClick={() => addToCart(exercise)}
 					style={{
 						backgroundColor: "#4CAF50",

@@ -14,7 +14,6 @@ const WhyHereForm = () => {
 	const navigate = useNavigate()
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
-		// what is FormEvent/HTMLFormElement?
 		e.preventDefault()
 		if (!whyHere) return
 
@@ -25,7 +24,6 @@ const WhyHereForm = () => {
 	const handleWhyHereChange = (
 		e: React.ChangeEvent<HTMLInputElement>
 	) => {
-		// what is React.ChangeEvent<HTMLInputElement>?
 		setWhyHere(e.target.value)
 	}
 
