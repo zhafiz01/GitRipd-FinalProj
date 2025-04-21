@@ -14,37 +14,42 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 	showAddButton,
 }) => {
 	return (
-		<div
+		<div className="workout-card"
 			style={{
 				borderRadius: "8px",
 				padding: "1rem",
-				width: "300px",
-				backgroundColor: "#fff",
-				color: "#333",
+				width: "100%",
+				backgroundColor: "#141414",
+				border: "5px solid var(--dark-green)",
+				boxShadow: "0px 0px 20px #024433",
+				color: "#fff",
 			}}
 		>
-			<h3>{exercise.name}</h3>
-			<img
-				src={exercise.gifUrl.trim()}
-				alt={exercise.name}
-				style={{
-					width: "100%",
-					height: "auto",
-					borderRadius: "4px",
-					marginBottom: "0.5rem",
-				}}
-			/>
-
-			<div className="workout--card">
-				<h6>
+			<h2 style={{paddingRight: "30px", width: "40%"}}>{exercise.name}</h2> 
+			<div>
+				<img
+					src={exercise.gifUrl.trim()}
+					alt={exercise.name}
+					style={{
+						width: "80%",
+						height: "auto",
+						borderRadius: "4px",
+						marginBottom: "0.5rem",
+					}}
+				/>
+			</div>
+			<div className="workout-card--description"
+				style={{width: "40%"}}
+			>
+				<h6 style={{color: "#fff"}}>
 					<strong>Target:</strong> {exercise.target}
 				</h6>
-				<h6>
+				<h6 style={{color: "#fff"}}>
 					<strong>Equipment:</strong> {exercise.equipment}
 				</h6>
 				{exercise.videos.length > 0 && (
 					<div>
-						<h6>
+						<h6 style={{color: "#fff"}}>
 							<strong>Videos:</strong>
 						</h6>
 						<ul style={{ paddingLeft: "1rem", marginTop: "5px" }}>
@@ -62,6 +67,8 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 						</ul>
 					</div>
 				)}
+			</div>
+			<div>
 				{showAddButton && (
 					<button
 						className="add-exercise-btn"

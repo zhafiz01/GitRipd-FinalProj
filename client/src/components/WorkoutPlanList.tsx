@@ -16,8 +16,7 @@ const WorkoutList: FC<WorkoutPlanListProps> = ({
 }) => {
 	return (
 		<div
-			className="workout-plan--cards__list"
-			style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}
+			style={{ display: "flex", flexDirection: "column", gap: "1rem" }}
 		>
 			{exercises.map((exercise) => (
 				<WorkoutCard

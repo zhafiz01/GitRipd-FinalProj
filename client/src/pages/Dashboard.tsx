@@ -210,48 +210,55 @@ const Dashboard = () => {
 					/>
 				</div>
 				<br />
-				<h3 style={{ color: "#cfcfcf" }}>Tips for success:</h3>
-				<ul>
-					<li>Stay consistent with your workouts.</li>
-					<li>Focus on form over weight to avoid injury.</li>
-					<li>Eat a balanced diet to fuel your gains.</li>
-				</ul>
+				<div className="message-boxes">
+					<h3 style={{ color: "#cfcfcf" }}>Tips for success:</h3>
+					<br />
+					<ul>
+						<li>Stay consistent with your workouts.</li>
+						<li>Focus on form over weight to avoid injury.</li>
+						<li>Eat a balanced diet to fuel your gains.</li>
+					</ul>
+				</div>
 				<br />
 				<h2>Your Workout Plan</h2>
-				{exercises.length > 0 ? (
-					<ul>
-						{exercises.map((exercise) => (
-							<li
-								className="workout-list--dashboard"
-								key={exercise._id}
-								style={{
-									opacity: completedWorkouts.includes(exercise._id)
-										? 0.5
-										: 1,
-								}}
-							>
-								{exercise.name}{" "}
-								<button
-									className="mark-complete-btn"
-									onClick={() => handleComplete(exercise._id)}
+				<div className="workout-plan--dashboard">
+					{exercises.length > 0 ? (
+						<ul>
+							{exercises.map((exercise) => (
+								<li
+									className="workout-list--dashboard"
+									key={exercise._id}
+									style={{
+										opacity: completedWorkouts.includes(exercise._id)
+											? 0.5
+											: 1,
+									}}
 								>
-									{completedWorkouts.includes(exercise._id)
-										? "Undo"
-										: "✅"}
-								</button>
-								<button onClick={() => handleDelete(exercise._id)}>
-									<FontAwesomeIcon
-										icon={faTrashCan}
-										size="sm"
-										color="grey"
-									/>
-								</button>
-							</li>
-						))}
-					</ul>
-				) : (
-					<p>No workout plan available.</p>
-				)}
+									{exercise.name}{" "}
+									<div className="dashboard-btns">
+									<button
+										className="dashboard-btns--mark-complete"
+										onClick={() => handleComplete(exercise._id)}
+									>
+										{completedWorkouts.includes(exercise._id)
+											? "↩️"
+											: "✅"}
+									</button>
+									<button onClick={() => handleDelete(exercise._id)}>
+										<FontAwesomeIcon
+											icon={faTrashCan}
+											size="sm"
+											color="grey"
+										/>
+									</button>
+									</div>
+								</li>
+							))}
+						</ul>
+					) : (
+						<p>No workout plan available.</p>
+					)}
+				</div>
 			</div>
 		</div>
 	)
