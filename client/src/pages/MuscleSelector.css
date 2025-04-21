@@ -1,54 +1,53 @@
 .form-wrapper {
-    position: relative;
-    top: 40px;
-    height: calc(100vh - 180px);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-  
-  .muscle-selector-page--wrapper {
-    display: flex;
-    flex-direction: column;
-    padding: 100px;
-    background-color: #cfcfcf;
-    height: 100%;
-    width: 100vw;
-    color: var(--off-black);
-  }
+  position: relative;
+  top: 40px;
+  height: calc(100vh - 180px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
 
-  .muscle-selector-page--cart {
-    color: var(--off-black);
-    background-color: #cfcfcf;
-    width: 100%;
-    margin: 50px 0px;
-  }
+.muscle-selector-page--wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 100px;
+  background-color: #cfcfcf;
+  height: 100%;
+  width: 100vw;
+  color: var(--off-black);
+}
 
-  .muscle-selector__svg {
-    text-align: center;
-  }
+.muscle-selector-page--cart {
+  color: var(--off-black);
+  background-color: #cfcfcf;
+  width: 100%;
+  margin: 50px 0px;
+}
 
-  .add-muscle__header {
-    font-size: 38px;
-    color: var(--off-black);
-  }
+.workout-delete-btn {
+  margin-left: 5px;
+}
 
-  .add-muscle__btn {
-    background-color: var(--lime-green);
-    padding: 16px 30px;
-    border-radius: 30px;
-    color: var(--off-black);
-    font-size: 22px;
-    margin-top: 10px;
-  }
+.muscle-selector__svg {
+  text-align: center;
+}
 
-  h6 {
-    color: var(--off-black);
-    text-align: center;
-    margin-top: 10px;
-  }
+.add-muscle__header {
+  font-size: 38px;
+  color: var(--off-black);
+}
 
-  .workout-cards--list {
-    width: 100%;
-  }
+.add-muscle__btn {
+  background-color: var(--lime-green);
+  padding: 16px 30px;
+  border-radius: 30px;
+  color: var(--off-black);
+  font-size: 22px;
+  margin-top: 10px;
+}
+
+h6 {
+  color: var(--off-black);
+  text-align: center;
+}

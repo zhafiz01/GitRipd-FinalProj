@@ -9,7 +9,7 @@ interface WorkoutPlanListProps {
 	showAddButton?: boolean
 }
 
-const WorkoutList: FC<WorkoutPlanListProps> = ({
+const WorkoutPlanList: FC<WorkoutPlanListProps> = ({
 	exercises,
 	addToCart,
 	showAddButton,
@@ -30,4 +30,4 @@ const WorkoutList: FC<WorkoutPlanListProps> = ({
 	)
 }
 
-export default WorkoutList
+export default WorkoutPlanList
