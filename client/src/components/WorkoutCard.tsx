@@ -14,28 +14,15 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 	showAddButton,
 }) => {
 	return (
-		<div
-			style={{
-				borderRadius: "8px",
-				padding: "1rem",
-				width: "300px",
-				backgroundColor: "#fff",
-				color: "#333",
-			}}
-		>
+		<div className="workout--card__container">
 			<h3>{exercise.name}</h3>
 			<img
 				src={exercise.gifUrl.trim()}
 				alt={exercise.name}
-				style={{
-					width: "100%",
-					height: "auto",
-					borderRadius: "4px",
-					marginBottom: "0.5rem",
-				}}
+				className="workout--card__image"
 			/>
 
-			<div className="workout--card">
+			<div className="workout--card__content">
 				<h6>
 					<strong>Target:</strong> {exercise.target}
 				</h6>
@@ -47,7 +34,7 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 						<h6>
 							<strong>Videos:</strong>
 						</h6>
-						<ul style={{ paddingLeft: "1rem", marginTop: "5px" }}>
+						<ul style={{ marginTop: "5px" }}>
 							{exercise.videos.slice(0, 2).map((vid, i) => (
 								<li key={i}>
 									<a
