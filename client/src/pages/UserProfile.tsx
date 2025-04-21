@@ -29,7 +29,9 @@ const Profile = () => {
 	return (
 		<div className="form-wrapper">
 			<div className="form-page">
-				<h2>Personal Profile</h2>
+				<h2 style={{ fontSize: 40, color: "#1ed490" }}>
+					Personal Profile
+				</h2>
 				<br />
 				<br />
 				<p>

@@ -130,22 +130,6 @@ const AgeForm = () => {
 						}
 					/>
 				</div>
-
-				{/* Show age if valid
-				{birthDate.day && birthDate.month && birthDate.year && (
-					<p>
-						You’re{" "}
-						{calculateAge(
-							new Date(
-								Number(birthDate.year),
-								months.indexOf(birthDate.month),
-								Number(birthDate.day)
-							)
-						)}{" "}
-						years old.
-					</p>
-				)}
-				 */}
 				<br />
 				<div className="arrow-btns">
 					<button

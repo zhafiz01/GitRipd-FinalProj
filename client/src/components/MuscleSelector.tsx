@@ -77,7 +77,12 @@ const MuscleSelector = ({
 					margin: "1rem auto",
 				}}
 			/>
-			<button className="add-muscle__btn" onClick={onSubmit}>Submit Selection</button>
+			<button
+				className="add-muscle__btn"
+				onClick={onSubmit}
+			>
+				Submit Selection
+			</button>
 		</div>
 	)
 }

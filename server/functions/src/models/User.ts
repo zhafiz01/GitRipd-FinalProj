@@ -1,5 +1,3 @@
-// SCHEMA FOR USER, TO BE USED DURING AUTHENTICATION
-
 import { model, Schema } from "mongoose"
 
 const UserSchema = new Schema(

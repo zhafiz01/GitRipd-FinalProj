@@ -1,8 +1,7 @@
-// CONTROLLER FUNCTIONS FOR ADDING A NEW USER TO THE SYSTEM - AUTHENTICATION STAGE
 import HTTPHandler from "../helpers/HTTPHandler"
 import User from "../models/User"
 
-// POST - save user profile data
+// POST save user profile data
 export const saveUserProfile: HTTPHandler = async (
 	req,
 	res

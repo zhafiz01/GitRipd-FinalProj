@@ -12,10 +12,13 @@ interface WorkoutPlanListProps {
 const WorkoutList: FC<WorkoutPlanListProps> = ({
 	exercises,
 	addToCart,
-	showAddButton
+	showAddButton,
 }) => {
 	return (
-		<div className="workout-plan--cards__list" style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}>
+		<div
+			className="workout-plan--cards__list"
+			style={{ display: "flex", flexWrap: "wrap", gap: "1rem" }}
+		>
 			{exercises.map((exercise) => (
 				<WorkoutCard
 					key={exercise.id}

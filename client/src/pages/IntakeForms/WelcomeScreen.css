@@ -4,16 +4,16 @@
     align-items: center;
     color: var(--lime-green);
     background-color: #141414;
-    border: 5px solid var(--lime-green);
-    padding: 100px;
+    border: 5px solid var(--dark-green);
+    padding: 80px;
     width: 900px;
-    box-shadow: 1px 1px 2px #cfcfcf;
+    box-shadow: 0px 0px 20px #024433;
     /* text-shadow: 1px 1px 2px rgb(56, 80, 43); */
 }
 
-.user-selection {
+/* .user-selection {
     display: flex;
-}
+} */
 
 .btn-select {
     display: flex;
@@ -23,11 +23,11 @@
 
 .welcome-btn {
     /* border: 3px solid rgb(255, 255, 255); */
-    color: #00c897;
+    color: var(--lime-green);
     background-color: #393838;
     font-size: 21px;
     font-weight: 700;
-    border-radius: 5px;
+    border-radius: 30px;
     padding: 16px 30px;
     text-shadow: none;
     margin: 10px;

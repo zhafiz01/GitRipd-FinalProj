@@ -1,4 +1,3 @@
-// ROUTER FOR USER AUTHENTICATION, IF NEEDED
 import express from "express"
 import { getUserProfile, saveUserProfile } from "../controllers/users"
 import checkAuth from "../middleware/auth"
