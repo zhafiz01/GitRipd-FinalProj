@@ -33,7 +33,7 @@ const SexForm = () => {
 				className="form-page"
 				onSubmit={handleSubmit}
 			>
-				<label className="form-label">What is your sex?</label>
+				<label className="form-label">How do you identify?</label>
 				<br />
 				<div>
 					<input
@@ -57,6 +57,16 @@ const SexForm = () => {
 					Female
 				</div>
 				<br />
+				<div>
+					<input
+						type="radio"
+						name="sex"
+						value="Other"
+						checked={sex === "Other"}
+						onChange={handleSexChange}
+					/>
+					Other
+				</div>
 				<br />
 				<div className="arrow-btns">
 					<button

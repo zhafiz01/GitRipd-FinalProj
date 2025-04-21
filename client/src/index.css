@@ -111,7 +111,6 @@ button svg {
   cursor: pointer;
 }
 
-button {
+button:hover {
   cursor: pointer;
 }
-

@@ -37,3 +37,26 @@
     size: 8px;
     padding-right: 10px;
   }
+
+  .to-select-btn {
+    color: var(--lime-green);
+    background-color: #393838;
+    font-size: 18px;
+    font-weight: 700;
+    border-radius: 30px;
+    padding: 8px 15px;
+    text-shadow: none;
+    margin: 10px;
+    cursor: pointer;
+  }
+
+  .no-plan {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .to-select-btn:hover {
+    color: #393838;
+    background-color: var(--lime-green);
+  }
