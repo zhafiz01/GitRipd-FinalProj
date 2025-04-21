@@ -25,7 +25,6 @@
   font-weight: 400;
   font-style: normal;
   font-size: 18px;
-  /* color: white; */
   letter-spacing: 1px;
 }
 
@@ -34,6 +33,7 @@ body {
   height: 100vh;
   --lime-green: #1ed490;
   --off-black: #0b0c0c;
+  --dark-green: #024433;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -83,7 +83,7 @@ table {
   border-spacing: 0;
 }
 
-h1 {
+h1, span {
   font-family: "Apex Mk2";
   font-size: 48px;
 }
@@ -95,7 +95,7 @@ h2 {
   margin: 10px 0px;
 }
 
-h3 {
+h3, i {
   font-family: "Apex Mk2";
   font-size: 24px;
   color: var(--off-black);

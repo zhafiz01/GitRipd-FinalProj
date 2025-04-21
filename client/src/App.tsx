@@ -33,7 +33,7 @@ const App = () => {
 						path="/login"
 						element={<LoginPage />}
 					/>
-					<Route 
+					<Route
 						path="/signup"
 						element={<Signup />}
 					/>
@@ -88,10 +88,7 @@ const App = () => {
 					<Route element={<ProtectedRoute />}>
 						<Route
 							path="/plans"
-							element={
-								<ViewWorkout
-								/>
-							}
+							element={<ViewWorkout />}
 						/>
 					</Route>
 					<Route element={<ProtectedRoute />}>

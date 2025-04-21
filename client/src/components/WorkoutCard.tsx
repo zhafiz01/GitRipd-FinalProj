@@ -8,8 +8,11 @@ interface WorkoutCardProps {
 	showAddButton?: boolean
 }
 
-const WorkoutCard: FC<WorkoutCardProps> = ({ exercise, addToCart, showAddButton }) => {
-
+const WorkoutCard: FC<WorkoutCardProps> = ({
+	exercise,
+	addToCart,
+	showAddButton,
+}) => {
 	return (
 		<div
 			style={{
@@ -42,7 +45,7 @@ const WorkoutCard: FC<WorkoutCardProps> = ({ exercise, addToCart, showAddButton 
 				{exercise.videos.length > 0 && (
 					<div>
 						<h6>
-						<strong>Videos:</strong>
+							<strong>Videos:</strong>
 						</h6>
 						<ul style={{ paddingLeft: "1rem", marginTop: "5px" }}>
 							{exercise.videos.slice(0, 2).map((vid, i) => (
@@ -59,21 +62,14 @@ const WorkoutCard: FC<WorkoutCardProps> = ({ exercise, addToCart, showAddButton 
 						</ul>
 					</div>
 				)}
-			{showAddButton && (
-				<button className="add-exercise-btn"
-					onClick={() => addToCart(exercise)}
-					style={{
-						backgroundColor: "#4CAF50",
-						color: "#fff",
-						padding: "0.5rem",
-						border: "none",
-						borderRadius: "4px",
-						cursor: "pointer",
-					}}
-				>
-					Add Exercise
-				</button>
-			)}
+				{showAddButton && (
+					<button
+						className="add-exercise-btn"
+						onClick={() => addToCart(exercise)}
+					>
+						Add Exercise
+					</button>
+				)}
 			</div>
 		</div>
 	)

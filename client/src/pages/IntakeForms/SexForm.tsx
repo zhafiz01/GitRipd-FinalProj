@@ -33,11 +33,7 @@ const SexForm = () => {
 				className="form-page"
 				onSubmit={handleSubmit}
 			>
-				<label
-					className="form-label"
-				>
-					What is your sex?
-				</label>
+				<label className="form-label">What is your sex?</label>
 				<br />
 				<div>
 					<input

@@ -1,8 +1,8 @@
 import { FormEvent, useState } from "react"
 import { signInWithEmailAndPassword } from "firebase/auth"
 import { auth } from "../utils/firebase"
-import { Link, useNavigate } from "react-router-dom"
-import "./IntakeForms/WelcomeScreen.css"
+import { NavLink, useNavigate } from "react-router-dom"
+import "./LoginPage.css"
 
 const Login = () => {
 	const [email, setEmail] = useState("")
@@ -23,27 +23,42 @@ const Login = () => {
 	return (
 		<div className="form-wrapper">
 			<div className="form-page">
-				<h3>Sign in to use the App</h3>
+				<h2>Sign in to use the App</h2>
 				<form onSubmit={handleSubmit}>
-					<label htmlFor="email">Email:</label>
-					<input
-						type="email"
-						placeholder="Email"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-					/>
-					<label htmlFor="password">Password:</label>
-					<input
-						type="password"
-						placeholder="Password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-					/>
-					<button type="submit">Login</button>
-					<p>
-						Don't have an account?{" "}
-						<Link to="/signup">Sign up here!</Link>
-					</p>
+					<div className="form-input--login">
+						<label htmlFor="email">Email:</label>
+						<input
+							className="form-input__box--login"
+							type="email"
+							placeholder="Email"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+					</div>
+					<div className="form-input--login">
+						<label htmlFor="password">Password:</label>
+						<input
+							className="form-input__box--login"
+							type="password"
+							placeholder="Password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+						/>
+					</div>
+					<div className="login-btn__form">
+						<button
+							className="login-btn"
+							type="submit"
+						>
+							Login
+						</button>
+					</div>
+					<div className="sign-up__link">
+						<h5>Don't have an account? </h5>
+						<NavLink to="/signup">
+							<button className="signup-btn">Sign up here!</button>
+						</NavLink>
+					</div>
 				</form>
 			</div>
 		</div>

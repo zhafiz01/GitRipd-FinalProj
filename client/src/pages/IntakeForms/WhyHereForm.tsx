@@ -33,11 +33,7 @@ const WhyHereForm = () => {
 				className="form-page"
 				onSubmit={handleSubmit}
 			>
-				<label
-					className="form-label"
-				>
-					Why are you here?
-				</label>
+				<label className="form-label">Why are you here?</label>
 				<br />
 				<div>
 					<input
@@ -82,17 +78,6 @@ const WhyHereForm = () => {
 					Personalized workout routine made for me without the hassle
 					of planning
 				</div>
-				{/* <br />
-            <div>
-				<input
-					type="radio"
-					name="whyHere"
-					value="reason4"
-					checked={whyHere === "reason4"}
-					onChange={handleWhyHereChange}
-				/>
-				reason 4
-			</div> */}
 				<br />
 				<div className="arrow-btns">
 					<button

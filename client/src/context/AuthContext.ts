@@ -10,6 +10,6 @@ interface ContextType {
 const AuthContext = createContext<ContextType>({
 	user: null,
 	token: null,
-	isLoading: true
+	isLoading: true,
 })
 export default AuthContext

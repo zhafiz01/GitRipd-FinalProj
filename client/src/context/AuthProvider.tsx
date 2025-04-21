@@ -1,14 +1,6 @@
-import {
-	User,
-	onAuthStateChanged
-} from "firebase/auth"
+import { User, onAuthStateChanged } from "firebase/auth"
 import AuthContext from "./AuthContext"
-import {
-	useState,
-	useEffect,
-	ReactNode,
-	FC
-} from "react"
+import { useState, useEffect, ReactNode, FC } from "react"
 import { auth } from "../utils/firebase"
 
 interface AuthProviderProps {
@@ -20,27 +12,21 @@ const AuthProvider: FC<AuthProviderProps> = ({ children }) => {
 	const [isLoading, setIsLoading] = useState<boolean>(true)
 
 	useEffect(() => {
-		const unsub = onAuthStateChanged(
-			auth,
-			async currentUser => {
-				setUser(currentUser)
-				if (currentUser) {
-					const idToken =
-						await currentUser.getIdToken()
-					setToken(idToken)
-				} else {
-					setToken(null)
-				}
-				setIsLoading(false)
+		const unsub = onAuthStateChanged(auth, async (currentUser) => {
+			setUser(currentUser)
+			if (currentUser) {
+				const idToken = await currentUser.getIdToken()
+				setToken(idToken)
+			} else {
+				setToken(null)
 			}
-		)
+			setIsLoading(false)
+		})
 		return () => unsub()
 	})
 
 	return (
-		<AuthContext.Provider
-			value={{ user, token, isLoading }}
-		>
+		<AuthContext.Provider value={{ user, token, isLoading }}>
 			{children}
 		</AuthContext.Provider>
 	)

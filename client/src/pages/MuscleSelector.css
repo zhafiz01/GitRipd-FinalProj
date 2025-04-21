@@ -37,7 +37,6 @@
     border-radius: 30px;
     color: var(--off-black);
     font-size: 22px;
-    /* border: 2px solid black; */
   }
 
   h6 {
@@ -45,3 +44,5 @@
     text-align: center;
     margin-top: 10px;
   }
+
+  
