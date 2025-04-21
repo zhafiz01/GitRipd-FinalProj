@@ -146,11 +146,11 @@ const MuscleSelectorPage = () => {
 							</li>
 						))}
 					</ul>
-					<button onClick={handleSave}>Save to Workout Plan</button>
+					<button className="save-plan-btn" onClick={handleSave}>Save to Workout Plan</button>
 				</div>
 			)}
 			<div className="workout-cards--list">
-				<h2>Exercise Results</h2>
+				<h2 style={{padding: "10px"}}>Exercise Results</h2>
 				{exercises.length > 0 && (
 					<WorkoutPlanList
 						exercises={exercises}

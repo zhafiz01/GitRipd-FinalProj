@@ -33,50 +33,48 @@ const WhyHereForm = () => {
 				className="form-page"
 				onSubmit={handleSubmit}
 			>
-				<label className="form-label">Why are you here?</label>
+				<label className="form-label">What brings you here?</label>
 				<br />
 				<div>
 					<input
 						type="radio"
 						name="whyHere"
-						value="Build a solid workout routine that helps me feel the difference"
+						value="I want to build a routine with intention — not pressure."
 						checked={
 							whyHere ===
-							"Build a solid workout routine that helps me feel the difference"
+							"I want to build a routine with intention — not pressure."
 						}
 						onChange={handleWhyHereChange}
 					/>
-					Build a solid workout routine that helps me feel the
-					difference
+					{""} I want to build a routine with intention — not pressure.
 				</div>
 				<br />
 				<div>
 					<input
 						type="radio"
 						name="whyHere"
-						value="Long-term accountability on my fitness journey"
+						value="I’m not sure where to begin, but I’m ready to feel better and move more."
 						checked={
 							whyHere ===
-							"Long-term accountability on my fitness journey"
+							"I’m not sure where to begin, but I’m ready to feel better and move more."
 						}
 						onChange={handleWhyHereChange}
 					/>
-					Long-term accountability on my fitness journey
+					  {""} I’m not sure where to begin, but I’m ready to feel stronger and move more.
 				</div>
 				<br />
 				<div>
 					<input
 						type="radio"
 						name="whyHere"
-						value="Personalized workout routine made for me without the hassle of planning"
+						value="Not trying to be an athlete, just want to keep up with life (and stairs)."
 						checked={
 							whyHere ===
-							"Personalized workout routine made for me without the hassle of planning"
+							"Not trying to be an athlete, just want to keep up with life (and stairs)."
 						}
 						onChange={handleWhyHereChange}
 					/>
-					Personalized workout routine made for me without the hassle
-					of planning
+					{""} Not trying to be an athlete, just want to keep up with life (and stairs).
 				</div>
 				<br />
 				<div className="arrow-btns">
