@@ -128,7 +128,7 @@ const MuscleSelectorPage = () => {
 			</h6>
 			{cart.length > 0 && (
 				<div className="muscle-selector-page--cart">
-					<h3>Add New Exercises to your Workout Plan!</h3>
+					<h3 style={{ marginBottom: "8px" }}>Add New Exercises to your Workout Plan!</h3>
 					<ul>
 						{cart.map((exercise) => (
 							<li key={exercise._id}>
