@@ -1,9 +1,24 @@
-.form-wrapper--dashboard {
+/* .form-wrapper--dashboard {
   height: 100vh;
   overflow-y: auto;
   padding-top: 130px;
   padding-bottom: 150px;
   box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+} */
+
+.form-wrapper--dashboard {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  padding-top: 130px;
+  padding-bottom: 150px;
+  box-sizing: border-box;
+
+  overflow-y: auto;
   scrollbar-width: none;
   -ms-overflow-style: none;
 }

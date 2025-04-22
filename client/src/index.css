@@ -1,20 +1,20 @@
 @font-face {
   font-family: "Apex Mk2";
-  src: url("./assets/fonts/apex-mk2/Apex Mk2/ApexMk2-Regular.otf") format("opentype");
+  src: url("./assets/fonts/apex-mk2/ApexMk2-Regular.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Apex Mk2";
-  src: url("./assets/fonts/apex-mk2/Apex Mk2/ApexMk2-LightCondensed.otf") format("opentype");
+  src: url("./assets/fonts/apex-mk2/ApexMk2-LightCondensed.otf") format("opentype");
   font-weight: 300;
   font-style: normal;
 }
 
 @font-face {
   font-family: "Apex Mk2";
-  src: url("./assets/fonts/apex-mk2/Apex Mk2/ApexMk2-BoldExtended.otf") format("opentype");
+  src: url("./assets/fonts/apex-mk2/ApexMk2-BoldExtended.otf") format("opentype");
   font-weight: 700;
   font-style: normal;
 }
