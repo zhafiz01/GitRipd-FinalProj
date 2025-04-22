@@ -1,4 +1,3 @@
-
 import { useContext, useEffect, useState } from "react"
 import Exercise from "../interfaces/Exercise"
 import WorkoutCard from "../components/WorkoutCard"
@@ -9,8 +8,12 @@ import "./ViewWorkout.css"
 
 const ViewWorkout = () => {
 	const [workoutPlan, setWorkoutPlan] = useState<Exercise[]>([])
-	const [completedWorkouts, setCompletedWorkouts] = useState<string[]>([])
-	const [setsReps, setSetsReps] = useState<Record<string, { sets: string; reps: string }>>({})
+	const [completedWorkouts, setCompletedWorkouts] = useState<
+		string[]
+	>([])
+	const [setsReps, setSetsReps] = useState<
+		Record<string, { sets: string; reps: string }>
+	>({})
 	const { user } = useContext(AuthContext)
 
 	useEffect(() => {
@@ -37,8 +40,11 @@ const ViewWorkout = () => {
 				if (plans.length > 0) {
 					setWorkoutPlan(plans[0].exercises)
 
-					const initialSetsReps: Record<string, { sets: string; reps: string }> = {}
-					plans[0].exercises.forEach(ex => {
+					const initialSetsReps: Record<
+						string,
+						{ sets: string; reps: string }
+					> = {}
+					plans[0].exercises.forEach((ex) => {
 						initialSetsReps[ex._id] = { sets: "", reps: "" }
 					})
 					setSetsReps(initialSetsReps)
@@ -56,26 +62,34 @@ const ViewWorkout = () => {
 		const completedKey = `completedWorkouts_${user?.uid}`
 		let updatedCompleted: string[] = []
 		if (completedWorkouts.includes(id)) {
-			updatedCompleted = completedWorkouts.filter(exId => exId !== id)
+			updatedCompleted = completedWorkouts.filter(
+				(exId) => exId !== id
+			)
 		} else {
 			updatedCompleted = [...completedWorkouts, id]
 		}
 		setCompletedWorkouts(updatedCompleted)
-		localStorage.setItem(completedKey, JSON.stringify(updatedCompleted))
+		localStorage.setItem(
+			completedKey,
+			JSON.stringify(updatedCompleted)
+		)
 	}
 
-	const handleSetsRepsChange = (id: string, field: "sets" | "reps", value: string) => {
-		setSetsReps(prev => ({
+	const handleSetsRepsChange = (
+		id: string,
+		field: "sets" | "reps",
+		value: string
+	) => {
+		setSetsReps((prev) => ({
 			...prev,
 			[id]: {
 				...prev[id],
-				[field]: value
-			}
+				[field]: value,
+			},
 		}))
 	}
 
 	return (
-
 		<div className="view-workout--wrapper">
 			<div className="message-boxes">
 				<h1>Your Workout Plan</h1>
@@ -107,26 +121,17 @@ const ViewWorkout = () => {
 								position: "relative",
 							}}
 						>
-								<WorkoutCard
-									exercise={exercise}
-									addToCart={() => {}}
-									showAddButton={false}
-									sets={setsReps[exercise._id]?.sets || ""}
-									reps={setsReps[exercise._id]?.reps || ""}
-									onSetsRepsChange={handleSetsRepsChange}
-								/>
+							<WorkoutCard
+								exercise={exercise}
+								addToCart={() => {}}
+								showAddButton={false}
+								sets={setsReps[exercise._id]?.sets || ""}
+								reps={setsReps[exercise._id]?.reps || ""}
+								onSetsRepsChange={handleSetsRepsChange}
+							/>
 							<button
+								className="complete-workout-btn"
 								onClick={() => handleComplete(exercise._id)}
-								style={{
-									position: "absolute",
-									top: "10px",
-									right: "10px",
-									color: "#fff",
-									border: "none",
-									borderRadius: "4px",
-									padding: "0.3rem 0.5rem",
-									cursor: "pointer",
-								}}
 							>
 								{completedWorkouts.includes(exercise._id)
 									? "↩️"
