@@ -4,8 +4,8 @@ import Exercise from "../interfaces/Exercise"
 import "./WorkoutCard.css"
 
 interface WorkoutPlanListProps {
-	exercises: Exercise[] // array of elements of type Exercise
-	addToCart: (exercise: Exercise) => void // function that has one param and returns nothing
+	exercises: Exercise[]
+	addToCart: (exercise: Exercise) => void
 	showAddButton?: boolean
 }
 

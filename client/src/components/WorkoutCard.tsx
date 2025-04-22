@@ -15,23 +15,26 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 }) => {
 	return (
 		<div className="workout-card">
-			<h2 style={{paddingRight: "30px", width: "40%"}}>{exercise.name}</h2> 
+			<h2 style={{ paddingRight: "30px", width: "40%" }}>
+				{exercise.name}
+			</h2>
 			<div>
 				<img
 					className="workout--card__image"
 					src={exercise.gifUrl.trim()}
-					alt={exercise.name} />
+					alt={exercise.name}
+				/>
 			</div>
 			<div className="workout-card--description">
-				<h6 style={{color: "#fff"}}>
+				<h6 style={{ color: "#fff" }}>
 					<strong>Target:</strong> {exercise.target}
 				</h6>
-				<h6 style={{color: "#fff"}}>
+				<h6 style={{ color: "#fff" }}>
 					<strong>Equipment:</strong> {exercise.equipment}
 				</h6>
 				{exercise.videos.length > 0 && (
 					<div>
-						<h6 style={{color: "#fff"}}>
+						<h6 style={{ color: "#fff" }}>
 							<strong>Videos:</strong>
 						</h6>
 						<ul style={{ marginTop: "5px" }}>

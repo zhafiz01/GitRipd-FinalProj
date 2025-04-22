@@ -1,0 +1,25 @@
+.view-workout--wrapper {
+    display: flex;
+    flex-direction: column;
+    padding: 120px 120px;
+    color: white;
+    overflow-y: auto;
+    max-height: 100vh;
+  }
+
+  .message-boxes {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+
+  .workout-cards--list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .no-workout-txt {
+    margin-top: 200px;
+    text-align: center;
+    font-size: 34px;
+  }
