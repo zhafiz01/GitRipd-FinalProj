@@ -171,7 +171,6 @@ const MuscleSelectorPage = () => {
 				</div>
 			)}
 			<div className="workout-cards--list">
-				<h2 style={{ marginTop: "30px" }}>Exercise Results</h2>
 				{exercises.length > 0 && (
 					<WorkoutPlanList
 						exercises={exercises}

@@ -2,7 +2,10 @@ import { useContext } from "react"
 import { NavLink, useNavigate } from "react-router-dom"
 import "./Header.css"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faUser, faSignOutAlt } from "@fortawesome/free-solid-svg-icons"
+import {
+	faUser,
+	faSignOutAlt,
+} from "@fortawesome/free-solid-svg-icons"
 import AuthContext from "../context/AuthContext"
 import { signOut } from "firebase/auth"
 import { auth } from "../utils/firebase"
