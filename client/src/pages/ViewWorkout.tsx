@@ -1,7 +1,7 @@
+
 import { useContext, useEffect, useState } from "react"
 import Exercise from "../interfaces/Exercise"
 import WorkoutCard from "../components/WorkoutCard"
-import "react-circular-progressbar/dist/styles.css"
 import AuthContext from "../context/AuthContext"
 import { getUserWorkoutPlan } from "../services/workoutPlanService"
 import WorkoutPlan from "../interfaces/WorkoutPlan"
@@ -9,9 +9,8 @@ import "./ViewWorkout.css"
 
 const ViewWorkout = () => {
 	const [workoutPlan, setWorkoutPlan] = useState<Exercise[]>([])
-	const [completedWorkouts, setCompletedWorkouts] = useState<
-		string[]
-	>([])
+	const [completedWorkouts, setCompletedWorkouts] = useState<string[]>([])
+	const [setsReps, setSetsReps] = useState<Record<string, { sets: string; reps: string }>>({})
 	const { user } = useContext(AuthContext)
 
 	useEffect(() => {
@@ -21,7 +20,6 @@ const ViewWorkout = () => {
 		const savedDate = localStorage.getItem(dateKey)
 
 		if (savedDate !== today) {
-			console.log("New day — resetting workout completion")
 			localStorage.setItem(dateKey, today)
 			localStorage.removeItem(completedKey)
 			setCompletedWorkouts([])
@@ -38,6 +36,12 @@ const ViewWorkout = () => {
 				const plans: WorkoutPlan[] = await getUserWorkoutPlan()
 				if (plans.length > 0) {
 					setWorkoutPlan(plans[0].exercises)
+
+					const initialSetsReps: Record<string, { sets: string; reps: string }> = {}
+					plans[0].exercises.forEach(ex => {
+						initialSetsReps[ex._id] = { sets: "", reps: "" }
+					})
+					setSetsReps(initialSetsReps)
 				}
 			} catch (err) {
 				console.error("Error fetching workout plan:", err)
@@ -52,20 +56,26 @@ const ViewWorkout = () => {
 		const completedKey = `completedWorkouts_${user?.uid}`
 		let updatedCompleted: string[] = []
 		if (completedWorkouts.includes(id)) {
-			updatedCompleted = completedWorkouts.filter(
-				(exId) => exId !== id
-			)
-		} else updatedCompleted = [...completedWorkouts, id]
-
+			updatedCompleted = completedWorkouts.filter(exId => exId !== id)
+		} else {
+			updatedCompleted = [...completedWorkouts, id]
+		}
 		setCompletedWorkouts(updatedCompleted)
-		localStorage.setItem(
-			completedKey,
-			JSON.stringify(updatedCompleted)
-		)
-		console.log("Workout completed for:", user?.uid, updatedCompleted)
+		localStorage.setItem(completedKey, JSON.stringify(updatedCompleted))
+	}
+
+	const handleSetsRepsChange = (id: string, field: "sets" | "reps", value: string) => {
+		setSetsReps(prev => ({
+			...prev,
+			[id]: {
+				...prev[id],
+				[field]: value
+			}
+		}))
 	}
 
 	return (
+
 		<div className="view-workout--wrapper">
 			<div className="message-boxes">
 				<h1>Your Workout Plan</h1>
@@ -97,11 +107,14 @@ const ViewWorkout = () => {
 								position: "relative",
 							}}
 						>
-							<WorkoutCard
-								exercise={exercise}
-								addToCart={() => {}}
-								showAddButton={false}
-							/>
+								<WorkoutCard
+									exercise={exercise}
+									addToCart={() => {}}
+									showAddButton={false}
+									sets={setsReps[exercise._id]?.sets || ""}
+									reps={setsReps[exercise._id]?.reps || ""}
+									onSetsRepsChange={handleSetsRepsChange}
+								/>
 							<button
 								onClick={() => handleComplete(exercise._id)}
 								style={{
