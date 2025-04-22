@@ -65,12 +65,10 @@ type IntakeFormContextType = {
 	updateData: (newData: Partial<IntakeFormData>) => void
 }
 
-// 1. Create the context
 const IntakeFormContext = createContext<
 	IntakeFormContextType | undefined
 >(undefined)
 
-// 2. Create the provider
 const IntakeFormProvider = ({
 	children,
 }: {
@@ -89,7 +87,6 @@ const IntakeFormProvider = ({
 	)
 }
 
-// 3. Create the hook to use the context
 const useIntakeForm = () => {
 	const context = useContext(IntakeFormContext)
 	if (!context) {

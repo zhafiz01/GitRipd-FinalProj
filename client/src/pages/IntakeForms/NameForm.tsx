@@ -18,7 +18,7 @@ const NameForm = () => {
 
 		if (!name.trim()) return
 
-		updateData({ name }) // calls method inside context
+		updateData({ name })
 		navigate("/age")
 	}
 
@@ -26,7 +26,7 @@ const NameForm = () => {
 		<div className="form-wrapper">
 			<form
 				className="form-page"
-				onSubmit={handleSubmit} // "prop" that accepts handleSubmit function
+				onSubmit={handleSubmit}
 			>
 				<label
 					className="form-label"
@@ -39,8 +39,8 @@ const NameForm = () => {
 					className="form-input"
 					id="name"
 					type="text"
-					value={name} // state value
-					onChange={(e) => setName(e.target.value)} // state is updated
+					value={name}
+					onChange={(e) => setName(e.target.value)}
 					placeholder="Enter your name"
 				/>
 				<br />
@@ -53,7 +53,7 @@ const NameForm = () => {
 							icon={faCircleArrowLeft}
 							size="2x"
 						/>
-					</button> 
+					</button>
 					{/* when clicked, called onSubmit */}
 					<button type="submit">
 						<FontAwesomeIcon

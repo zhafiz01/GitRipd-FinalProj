@@ -5,7 +5,7 @@ import WorkoutCard from "../components/WorkoutCard"
 import AuthContext from "../context/AuthContext"
 import { getUserWorkoutPlan } from "../services/workoutPlanService"
 import WorkoutPlan from "../interfaces/WorkoutPlan"
-import "../components/WorkoutCard.css"
+import "./ViewWorkout.css"
 
 const ViewWorkout = () => {
 	const [workoutPlan, setWorkoutPlan] = useState<Exercise[]>([])
@@ -75,29 +75,38 @@ const ViewWorkout = () => {
 	}
 
 	return (
-		<div className="form-wrapper">
-			<div className="form-page">
-				<div className="message-boxes">
-					<h2 style={{ padding: "5px" }}>Today's Focus:</h2>
-					<ul>
-						<li><u>Strength Training</u>: follow the 12-10-8 rep rule!</li>
-						<li><u>Cardio</u>: Aim for at least 20 minutes of cardio.</li>
-						<li><u>Stretching</u>: Don’t forget to warm up AND cool down.</li>
-					</ul>
-				</div>
 
-				<h3>Your Workout Plan</h3>
-				{workoutPlan.length > 0 ? (
-					<div className="workout-cards--list">
-						{workoutPlan.map((exercise) => (
-							<div
-								key={exercise._id}
-								style={{
-									opacity: completedWorkouts.includes(exercise._id) ? 0.5 : 1,
-									position: "relative",
-									paddingBottom: "20px"
-								}}
-							>
+		<div className="view-workout--wrapper">
+			<div className="message-boxes">
+				<h1>Your Workout Plan</h1>
+				<h2 style={{ color: "#1ed490" }}>Today's Focus:</h2>
+				<ul>
+					<li style={{ padding: "5px" }}>
+						<u>Strength Training</u>: follow the 12-10-8 rep rule! As
+						move through your sets, add a little weight each time!
+					</li>
+					<li style={{ padding: "5px" }}>
+						<u>Cardio</u>: Aim for at least 20 minutes of cardio.
+						Focus on your breath.
+					</li>
+					<li style={{ padding: "5px" }}>
+						<u>Stretching</u>: Don’t forget to warm up AND cool down
+						with stretches.
+					</li>
+				</ul>
+			</div>
+			{workoutPlan.length > 0 ? (
+				<div className="workout-cards--list">
+					{workoutPlan.map((exercise) => (
+						<div
+							key={exercise._id}
+							style={{
+								opacity: completedWorkouts.includes(exercise._id)
+									? 0.5
+									: 1,
+								position: "relative",
+							}}
+						>
 								<WorkoutCard
 									exercise={exercise}
 									addToCart={() => {}}
@@ -106,28 +115,29 @@ const ViewWorkout = () => {
 									reps={setsReps[exercise._id]?.reps || ""}
 									onSetsRepsChange={handleSetsRepsChange}
 								/>
-								<button
-									onClick={() => handleComplete(exercise._id)}
-									style={{
-										position: "absolute",
-										top: "10px",
-										right: "10px",
-										color: "#fff",
-										border: "none",
-										borderRadius: "4px",
-										padding: "0.3rem 0.5rem",
-										cursor: "pointer",
-									}}
-								>
-									{completedWorkouts.includes(exercise._id) ? "↩️" : "✅"}
-								</button>
-							</div>
-						))}
-					</div>
-				) : (
-					<p>No workout plan available.</p>
-				)}
-			</div>
+							<button
+								onClick={() => handleComplete(exercise._id)}
+								style={{
+									position: "absolute",
+									top: "10px",
+									right: "10px",
+									color: "#fff",
+									border: "none",
+									borderRadius: "4px",
+									padding: "0.3rem 0.5rem",
+									cursor: "pointer",
+								}}
+							>
+								{completedWorkouts.includes(exercise._id)
+									? "↩️"
+									: "✅"}
+							</button>
+						</div>
+					))}
+				</div>
+			) : (
+				<p className="no-workout-txt">No workout plan available.</p>
+			)}
 		</div>
 	)
 }

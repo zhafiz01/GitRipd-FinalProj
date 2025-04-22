@@ -1,13 +1,13 @@
 .form-wrapper--dashboard {
-    position: relative;
-    top: 40px;
-    height: calc(100vh - 180px);
+    height: 100vh;
+    overflow-y: auto;
+    padding-top: 120px;
+    padding-bottom: 140px;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
-    align-items: center;
-    overflow: hidden;
   }
-  
+
   .form-page--dashboard {
     display: flex;
     flex-direction: column;

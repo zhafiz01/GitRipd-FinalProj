@@ -191,7 +191,7 @@ const Dashboard = () => {
 					<span style={{ color: "#1ed490" }}>{displayData.name}</span>
 					!
 				</h1>
-				<h3 style={{ color: "white" }}>
+				<h3>
 					{getCustomWelcome(progress)}
 				</h3>
 				<br />
@@ -216,7 +216,7 @@ const Dashboard = () => {
 				</div>
 				<br />
 				<div className="message-boxes">
-					<h3 style={{ color: "#cfcfcf" }}>Tips for success:</h3>
+					<h3>Tips for success:</h3>
 					<br />
 					<ul>
 						<li>Stay consistent with your workouts.</li>

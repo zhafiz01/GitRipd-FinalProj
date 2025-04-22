@@ -41,6 +41,7 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 
 	return (
 		<div className="workout-card">
+
 			<div style={{ width: "40%", paddingRight: "30px" }}>
 				<h2>{exercise.name}</h2>
 				<div style={{ marginTop: "16px", display: "flex", gap: "20px" }}>
