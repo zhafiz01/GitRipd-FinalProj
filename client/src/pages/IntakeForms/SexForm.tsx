@@ -61,8 +61,8 @@ const SexForm = () => {
 					<input
 						type="radio"
 						name="sex"
-						value="Other"
-						checked={sex === "Other"}
+						value="other"
+						checked={sex === "other"}
 						onChange={handleSexChange}
 					/>
 					Other

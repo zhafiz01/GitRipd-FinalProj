@@ -4,5 +4,5 @@ export default interface User {
     sex: string
     weight: number
     whyHere: string
-    goal: string 
+    goal: string
 }

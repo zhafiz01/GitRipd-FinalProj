@@ -33,42 +33,39 @@ const Dashboard = () => {
 	const getCustomWelcome = (progress: number) => {
 		if (progress === 100)
 			return (
-				<>
-					Beast mode!
-					<>
-						<i style={{ color: "#024433" }}> Commit</i> to a break,
+				<h2>
+					Beast mode!{" "}
+						<span style={{ color: "#0e6b53", fontSize: "35px" }}>Commit</span> to a break,
 						you’ve earned it.
-					</>
-				</>
+				</h2>
 			)
 		if (progress >= 80)
 			return (
-				<>
-					<i style={{ color: "#024433" }}>Push</i> a little further -
+				<h2>
+					<span style={{ color: "#0e6b53", fontSize: "35px" }}>Push</span> a little further -
 					you're crushing it!
-				</>
+				</h2>
 			)
 		if (progress >= 50)
 			return (
-				<>
-					You're halfway there and already looking{" "}
-					<i style={{ color: "#024433" }}>full-stack</i>
-					ed!
-				</>
+				<h2>
+					You're halfway there and already looking 
+					<span style={{ color: "#0e6b53", fontSize: "35px" }}> full-stack</span>ed!
+				</h2>
 			)
 		if (progress >= 30)
 			return (
-				<>
-					<i style={{ color: "#024433" }}>Compile</i> that energy and
+				<h2>
+					<span style={{ color: "#0e6b53", fontSize: "35px" }}>Compile</span> that energy and
 					keep at it!
-				</>
+				</h2>
 			)
 		else
 			return (
-				<>
-					Ready? <i style={{ color: "#024433" }}>Get setter? </i>Git
+				<h2>
+					Ready? <span style={{ color: "#0e6b53", fontSize: "35px" }}>Get setter? </span>Git
 					RiPD!
-				</>
+				</h2>
 			)
 	}
 
@@ -191,13 +188,14 @@ const Dashboard = () => {
 					<span style={{ color: "#1ed490" }}>{displayData.name}</span>
 					!
 				</h1>
-				<h3 style={{ color: "white" }}>
+				<h2 className="custom-message" 
+					style={{ color: "white" }}>
 					{getCustomWelcome(progress)}
-				</h3>
+				</h2>
 				<br />
 				<h2>Progress Tracker:</h2>
 				<br />
-				<div style={{ width: 200, margin: "2rem auto" }}>
+				<div style={{ width: "200px", margin: "2rem auto" }}>
 					<CircularProgressbar
 						value={progress}
 						text={`${progress}%`}
