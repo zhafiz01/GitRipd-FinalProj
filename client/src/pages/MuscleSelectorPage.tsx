@@ -148,12 +148,26 @@ const MuscleSelectorPage = () => {
 							</li>
 						))}
 					</ul>
-					<button
+					<div style={{ display: "flex", justifyContent: "center" }}>
+						<button
+							className="save-plan-btn"
+							onClick={handleSave}
+						>
+							Save to Workout Plan
+						</button>
+						<button
+							className="clear-cart-btn"
+							onClick={() => setCart([])}
+						>
+							Clear All
+						</button>
+					</div>
+					{/* <button
 						className="save-plan-btn"
 						onClick={handleSave}
 					>
 						Save to Workout Plan
-					</button>
+					</button> */}
 				</div>
 			)}
 			<div className="workout-cards--list">
