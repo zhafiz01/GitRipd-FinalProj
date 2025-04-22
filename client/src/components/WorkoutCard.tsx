@@ -6,6 +6,9 @@ interface WorkoutCardProps {
 	exercise: Exercise
 	addToCart: (exercise: Exercise) => void
 	showAddButton?: boolean
+	sets?: string
+	reps?: string
+	onSetsRepsChange?: (id: string, field: "sets" | "reps", value: string) => void
 }
 
 const WorkoutCard: FC<WorkoutCardProps> = ({
@@ -44,7 +47,7 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 
 			<div style={{ width: "40%", paddingRight: "30px" }}>
 				<h2>{exercise.name}</h2>
-				<div style={{ marginTop: "16px", display: "flex", gap: "20px" }}>
+				<div className="sets-reps-wrapper">
 					<label style={{ color: "#fff" }}>
 						Sets:
 						<input
@@ -69,7 +72,7 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 								marginLeft: "8px",
 								padding: "4px 8px",
 								borderRadius: "5px",
-								width: "60px",
+								width: "60px"
 							}}
 						/>
 					</label>

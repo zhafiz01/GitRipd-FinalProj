@@ -1,70 +1,69 @@
 .form-wrapper--dashboard {
-    height: 100vh;
-    overflow-y: auto;
-    padding-top: 120px;
-    padding-bottom: 140px;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-  }
-
-  .form-page--dashboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: #141414;
-    border: 5px solid var(--dark-green);
-    box-shadow: 0px 0px 20px #024433;
-    padding: 100px;
-    color: white;
-  }
-
-  .custom-message {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 500px;
-    padding: 10px;
-  }
-
-  .workout-plan--dashboard {
-    width: 100%;
-  }
-
-  .workout-list--dashboard {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    justify-content: space-between;
-    margin-bottom: 10px;
-    font-size: 22px;
-    color: var(--lime-green);
+  height: 100vh;
+  overflow-y: auto;
+  padding-top: 130px;
+  padding-bottom: 150px;
+  box-sizing: border-box;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-  .dashboard-btns--mark-complete {
-    size: 8px;
-    padding-right: 10px;
-  }
+.form-wrapper--dashboard::-webkit-scrollbar {
+	display: none;
+}
 
-  .to-select-btn {
-    color: var(--lime-green);
-    background-color: #393838;
-    font-size: 18px;
-    font-weight: 700;
-    border-radius: 30px;
-    padding: 8px 15px;
-    text-shadow: none;
-    margin: 10px;
-    cursor: pointer;
-  }
+.form-page--dashboard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #141414;
+  border: 5px solid var(--dark-green);
+  box-shadow: 0 0 20px #024433;
+  padding: 80px;
+  color: white;
+  max-width: 800px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
 
-  .no-plan {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-  }
+.workout-plan--dashboard {
+	width: 100%;
+}
 
-  .to-select-btn:hover {
-    color: #393838;
-    background-color: var(--lime-green);
-  }
+.workout-list--dashboard {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-end;
+	justify-content: space-between;
+	margin-bottom: 10px;
+	font-size: 22px;
+	color: var(--lime-green);
+}
+
+.dashboard-btns--mark-complete {
+	size: 8px;
+	padding-right: 10px;
+}
+
+.to-select-btn {
+	color: var(--lime-green);
+	background-color: #393838;
+	font-size: 18px;
+	font-weight: 700;
+	border-radius: 30px;
+	padding: 8px 15px;
+	text-shadow: none;
+	margin: 10px;
+	cursor: pointer;
+}
+
+.no-plan {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.to-select-btn:hover {
+	color: #393838;
+	background-color: var(--lime-green);
+}
