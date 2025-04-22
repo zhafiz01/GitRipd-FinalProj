@@ -6,12 +6,14 @@ import AuthContext from "../context/AuthContext"
 import { getUserWorkoutPlan } from "../services/workoutPlanService"
 import WorkoutPlan from "../interfaces/WorkoutPlan"
 import "./ViewWorkout.css"
+import { useNavigate } from "react-router-dom"
 
 const ViewWorkout = () => {
 	const [workoutPlan, setWorkoutPlan] = useState<Exercise[]>([])
 	const [completedWorkouts, setCompletedWorkouts] = useState<string[]>([])
 	const [setsReps, setSetsReps] = useState<Record<string, { sets: string; reps: string }>>({})
 	const { user } = useContext(AuthContext)
+	const navigate = useNavigate()
 
 	useEffect(() => {
 		const today = new Date().toDateString()
@@ -39,7 +41,7 @@ const ViewWorkout = () => {
 
 					const initialSetsReps: Record<string, { sets: string; reps: string }> = {}
 					plans[0].exercises.forEach(ex => {
-						initialSetsReps[ex._id] = { sets: "", reps: "" }
+						initialSetsReps[ex._id] = { sets: "4", reps: "12" }
 					})
 					setSetsReps(initialSetsReps)
 				}
@@ -74,11 +76,16 @@ const ViewWorkout = () => {
 		}))
 	}
 
+	const handleClick = () => {
+		navigate("/select")
+	}
+
 	return (
 
 		<div className="view-workout--wrapper">
 			<div className="message-boxes">
-				<h1>Your Workout Plan</h1>
+				<h1>Your future self will thank you for the work you put in today!</h1>
+				<br />
 				<h2 style={{ color: "#1ed490" }}>Today's Focus:</h2>
 				<ul>
 					<li style={{ padding: "5px" }}>
@@ -111,8 +118,9 @@ const ViewWorkout = () => {
 									exercise={exercise}
 									addToCart={() => {}}
 									showAddButton={false}
-									sets={setsReps[exercise._id]?.sets || ""}
-									reps={setsReps[exercise._id]?.reps || ""}
+									showSetsReps={true}
+									sets={setsReps[exercise._id]?.sets || "4"}
+									reps={setsReps[exercise._id]?.reps || "12"}
 									onSetsRepsChange={handleSetsRepsChange}
 								/>
 							<button
@@ -136,7 +144,10 @@ const ViewWorkout = () => {
 					))}
 				</div>
 			) : (
-				<p className="no-workout-txt">No workout plan available.</p>
+				<div className="no-plan">
+					<button className="to-select-btn" onClick={handleClick}>Click Here</button>
+					<p>to start building your own workout routine!</p>
+				</div>
 			)}
 		</div>
 	)

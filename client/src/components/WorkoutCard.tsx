@@ -6,17 +6,22 @@ interface WorkoutCardProps {
 	exercise: Exercise
 	addToCart: (exercise: Exercise) => void
 	showAddButton?: boolean
+	showSetsReps?: boolean
+	sets?: string
+  	reps?: string
+  	onSetsRepsChange?: (id: string, field: "sets" | "reps", value: string) => void
 }
 
 const WorkoutCard: FC<WorkoutCardProps> = ({
 	exercise,
 	addToCart,
 	showAddButton,
+	showSetsReps
 }) => {
 	const storageKey = `setsReps_${exercise._id}`
 
-	const [sets, setSets] = useState("")
-	const [reps, setReps] = useState("")
+	const [sets, setSets] = useState("4")
+	const [reps, setReps] = useState("12")
 
 	useEffect(() => {
 		const saved = localStorage.getItem(storageKey)
@@ -41,11 +46,12 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 
 	return (
 		<div className="workout-card">
-
 			<div style={{ width: "40%", paddingRight: "30px" }}>
 				<h2>{exercise.name}</h2>
-				<div style={{ marginTop: "16px", display: "flex", gap: "20px" }}>
-					<label style={{ color: "#fff" }}>
+				<div>
+					{showSetsReps && (
+						<div className="sets-reps-wrapper">
+						<label style={{ color: "#fff" }}>
 						Sets:
 						<input
 							type="number"
@@ -73,6 +79,8 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 							}}
 						/>
 					</label>
+					</div>
+					)}
 				</div>
 			</div>
 			<div>
