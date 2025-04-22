@@ -6,10 +6,9 @@ interface WorkoutCardProps {
 	exercise: Exercise
 	addToCart: (exercise: Exercise) => void
 	showAddButton?: boolean
-	showSetsReps?: boolean
 	sets?: string
-  	reps?: string
-  	onSetsRepsChange?: (id: string, field: "sets" | "reps", value: string) => void
+	reps?: string
+	onSetsRepsChange?: (id: string, field: "sets" | "reps", value: string) => void
 }
 
 const WorkoutCard: FC<WorkoutCardProps> = ({
@@ -75,7 +74,7 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 								marginLeft: "8px",
 								padding: "4px 8px",
 								borderRadius: "5px",
-								width: "60px",
+								width: "60px"
 							}}
 						/>
 					</label>

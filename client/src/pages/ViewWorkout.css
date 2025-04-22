@@ -1,25 +1,42 @@
 .view-workout--wrapper {
-    display: flex;
-    flex-direction: column;
-    padding: 120px 120px;
-    color: white;
-    overflow-y: auto;
-    max-height: 100vh;
-  }
+	display: flex;
+	flex-direction: column;
+	padding: 120px 120px;
+	color: white;
+	overflow-y: auto;
+	max-height: 100vh;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
 
-  .message-boxes {
-    text-align: center;
-    margin-bottom: 20px;
-  }
+.view-workout--wrapper::-webkit-scrollbar {
+	display: none;
+}
 
-  .workout-cards--list {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-  }
+.message-boxes {
+	text-align: center;
+	margin-bottom: 20px;
+}
 
-  .no-workout-txt {
-    margin-top: 200px;
-    text-align: center;
-    font-size: 34px;
-  }
+.workout-cards--list {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.no-workout-txt {
+	margin-top: 200px;
+	text-align: center;
+	font-size: 34px;
+}
+
+.complete-workout-btn {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #fff;
+	border: none;
+	border-radius: 4px;
+	padding: 0.3rem 0.5rem;
+	cursor: pointer;
+}
