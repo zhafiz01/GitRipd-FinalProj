@@ -6,6 +6,7 @@ interface WorkoutCardProps {
 	exercise: Exercise
 	addToCart: (exercise: Exercise) => void
 	showAddButton?: boolean
+	showSetsReps?: boolean
 	sets?: string
 	reps?: string
 	onSetsRepsChange?: (id: string, field: "sets" | "reps", value: string) => void
