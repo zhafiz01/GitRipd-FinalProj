@@ -7,12 +7,14 @@ interface WorkoutPlanListProps {
 	exercises: Exercise[]
 	addToCart: (exercise: Exercise) => void
 	showAddButton?: boolean
+	showSetsReps?: boolean
 }
 
 const WorkoutPlanList: FC<WorkoutPlanListProps> = ({
 	exercises,
 	addToCart,
 	showAddButton,
+	showSetsReps
 }) => {
 	return (
 		<div className="workout--card__container">
@@ -22,6 +24,7 @@ const WorkoutPlanList: FC<WorkoutPlanListProps> = ({
 					exercise={exercise}
 					addToCart={addToCart}
 					showAddButton={showAddButton}
+					showSetsReps={showSetsReps}
 				/>
 			))}
 		</div>

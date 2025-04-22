@@ -57,11 +57,11 @@
 	cursor: pointer;
 }
 
-.no-plan {
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
+  .no-plan {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 
 .to-select-btn:hover {
 	color: #393838;

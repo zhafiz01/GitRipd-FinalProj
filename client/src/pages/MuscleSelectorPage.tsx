@@ -177,6 +177,7 @@ const MuscleSelectorPage = () => {
 						exercises={exercises}
 						addToCart={addToCart}
 						showAddButton={true}
+						showSetsReps={false}
 					/>
 				)}
 			</div>
