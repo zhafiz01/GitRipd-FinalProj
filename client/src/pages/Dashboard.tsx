@@ -33,39 +33,52 @@ const Dashboard = () => {
 	const getCustomWelcome = (progress: number) => {
 		if (progress === 100)
 			return (
-				<h2>
+				<>
 					Beast mode!{" "}
-						<span style={{ color: "#0e6b53", fontSize: "35px" }}>Commit</span> to a break,
-						you’ve earned it.
-				</h2>
+					<span style={{ color: "#0e6b53", fontSize: "35px" }}>
+						Commit
+					</span>{" "}
+					to a break, you’ve earned it.
+				</>
 			)
 		if (progress >= 80)
 			return (
-				<h2>
-					<span style={{ color: "#0e6b53", fontSize: "35px" }}>Push</span> a little further -
-					you're crushing it!
-				</h2>
+				<>
+					<span style={{ color: "#0e6b53", fontSize: "35px" }}>
+						Push
+					</span>{" "}
+					a little further - you're crushing it!
+				</>
 			)
 		if (progress >= 50)
 			return (
-				<h2>
-					You're halfway there and already looking 
-					<span style={{ color: "#0e6b53", fontSize: "35px" }}> full-stack</span>ed!
-				</h2>
+				<>
+					You're halfway there and already looking
+					<span style={{ color: "#0e6b53", fontSize: "35px" }}>
+						{" "}
+						full-stack
+					</span>
+					ed!
+				</>
 			)
 		if (progress >= 30)
 			return (
-				<h2>
-					<span style={{ color: "#0e6b53", fontSize: "35px" }}>Compile</span> that energy and
-					keep at it!
-				</h2>
+				<>
+					<span style={{ color: "#0e6b53", fontSize: "35px" }}>
+						Compile
+					</span>{" "}
+					that energy and keep at it!
+				</>
 			)
 		else
 			return (
-				<h2>
-					Ready? <span style={{ color: "#0e6b53", fontSize: "35px" }}>Get setter? </span>Git
-					RiPD!
-				</h2>
+				<>
+					Ready?{" "}
+					<span style={{ color: "#0e6b53", fontSize: "35px" }}>
+						Get setter?{" "}
+					</span>
+					Git RiPD!
+				</>
 			)
 	}
 
@@ -154,7 +167,7 @@ const Dashboard = () => {
 			setExercises(updated.exercises)
 
 			const updatedCompleted = completedWorkouts.filter(
-				exId => exId !== id
+				(exId) => exId !== id
 			)
 			setCompletedWorkouts(updatedCompleted)
 			localStorage.setItem(
