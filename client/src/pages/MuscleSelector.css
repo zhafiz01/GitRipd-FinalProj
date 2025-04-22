@@ -37,8 +37,9 @@
 	text-align: center;
 }
 
-.add-muscle__header {
-	color: var(--off-black);
+.add-muscle__header { 
+  font-size: 38px;
+  color: var(--off-black);
 }
 
 .add-muscle__btn {
