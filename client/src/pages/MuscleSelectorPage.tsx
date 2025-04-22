@@ -118,7 +118,7 @@ const MuscleSelectorPage = () => {
 				onSubmit={handleSubmit}
 			/>
 
-			<h6 style={{backgroundColor: "#cfcfcf"}}>
+			<h6 style={{ backgroundColor: "#cfcfcf" }}>
 				Selected:{" "}
 				{selectedTargets
 					.filter(
@@ -128,7 +128,9 @@ const MuscleSelectorPage = () => {
 			</h6>
 			{cart.length > 0 && (
 				<div className="muscle-selector-page--cart">
-					<h3 style={{ marginBottom: "8px" }}>Add New Exercises to your Workout Plan!</h3>
+					<h3 style={{ color: "#0b0c0c", marginBottom: "8px" }}>
+						Add New Exercises to your Workout Plan!
+					</h3>
 					<ul>
 						{cart.map((exercise) => (
 							<li key={exercise._id}>
@@ -146,16 +148,21 @@ const MuscleSelectorPage = () => {
 							</li>
 						))}
 					</ul>
-					<button className="save-plan-btn" onClick={handleSave}>Save to Workout Plan</button>
+					<button
+						className="save-plan-btn"
+						onClick={handleSave}
+					>
+						Save to Workout Plan
+					</button>
 				</div>
 			)}
 			<div className="workout-cards--list">
-				<h2 style={{padding: "10px"}}>Exercise Results</h2>
+				<h2 style={{ marginTop: "30px" }}>Exercise Results</h2>
 				{exercises.length > 0 && (
 					<WorkoutPlanList
 						exercises={exercises}
 						addToCart={addToCart}
-						showAddButton={true} 
+						showAddButton={true}
 					/>
 				)}
 			</div>

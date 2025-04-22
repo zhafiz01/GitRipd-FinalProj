@@ -1,4 +1,4 @@
-import { FC } from "react"
+import { FC, useEffect, useState } from "react"
 import Exercise from "../interfaces/Exercise"
 import "./WorkoutCard.css"
 
@@ -13,25 +13,85 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 	addToCart,
 	showAddButton,
 }) => {
+	const storageKey = `setsReps_${exercise._id}`
+
+	const [sets, setSets] = useState("")
+	const [reps, setReps] = useState("")
+
+	useEffect(() => {
+		const saved = localStorage.getItem(storageKey)
+		if (saved) {
+			const parsed = JSON.parse(saved)
+			setSets(parsed.sets || "")
+			setReps(parsed.reps || "")
+		}
+	}, [exercise._id])
+
+	const handleChange = (type: "sets" | "reps", value: string) => {
+		if (type === "sets") setSets(value)
+		else setReps(value)
+
+		
+		const setSetsReps = {
+			sets: type === "sets" ? value : sets,
+			reps: type === "reps" ? value : reps,
+		}
+		localStorage.setItem(storageKey, JSON.stringify(setSetsReps))
+	}
+
 	return (
 		<div className="workout-card">
-			<h2 style={{paddingRight: "30px", width: "40%"}}>{exercise.name}</h2> 
+
+			<div style={{ width: "40%", paddingRight: "30px" }}>
+				<h2>{exercise.name}</h2>
+				<div style={{ marginTop: "16px", display: "flex", gap: "20px" }}>
+					<label style={{ color: "#fff" }}>
+						Sets:
+						<input
+							type="number"
+							value={sets}
+							onChange={(e) => handleChange("sets", e.target.value)}
+							style={{
+								marginLeft: "8px",
+								padding: "4px 8px",
+								borderRadius: "5px",
+								width: "60px",
+							}}
+						/>
+					</label>
+					<label style={{ color: "#fff" }}>
+						Reps:
+						<input
+							type="number"
+							value={reps}
+							onChange={(e) => handleChange("reps", e.target.value)}
+							style={{
+								marginLeft: "8px",
+								padding: "4px 8px",
+								borderRadius: "5px",
+								width: "60px",
+							}}
+						/>
+					</label>
+				</div>
+			</div>
 			<div>
 				<img
 					className="workout--card__image"
 					src={exercise.gifUrl.trim()}
-					alt={exercise.name} />
+					alt={exercise.name}
+				/>
 			</div>
 			<div className="workout-card--description">
-				<h6 style={{color: "#fff"}}>
+				<h6 style={{ color: "#fff" }}>
 					<strong>Target:</strong> {exercise.target}
 				</h6>
-				<h6 style={{color: "#fff"}}>
+				<h6 style={{ color: "#fff" }}>
 					<strong>Equipment:</strong> {exercise.equipment}
 				</h6>
 				{exercise.videos.length > 0 && (
 					<div>
-						<h6 style={{color: "#fff"}}>
+						<h6 style={{ color: "#fff" }}>
 							<strong>Videos:</strong>
 						</h6>
 						<ul style={{ marginTop: "5px" }}>

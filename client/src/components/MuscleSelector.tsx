@@ -7,7 +7,6 @@ interface MuscleSelectorProps {
 	onSubmit: () => void
 }
 
-// Block these IDs from being selectable
 const blockedIds = new Set([
 	"Front",
 	"Back",
@@ -121,7 +120,7 @@ const MuscleSelector = ({
 	return (
 
 		<div className="muscle-selector__svg">
-			<h2 className="add-muscle__header">Select Muscle Groups</h2>
+			<h1 className="add-muscle__header">Select Muscle Groups</h1>
 			<div style={{ textAlign: "center", padding: "1rem" }}>
 				<div
 					ref={containerRef}
