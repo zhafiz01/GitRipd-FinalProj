@@ -1,8 +1,9 @@
 .workout-card {
 	display: flex;
 	flex-direction: row;
+	justify-content: space-evenly;
 	align-items: center;
-	height: 300px;
+	height: 250px;
 	border-radius: 8px;
 	margin-bottom: 20px;
 	padding: 10px;
@@ -14,14 +15,14 @@
 }
 
 .workout--card__image {
-	width: 70%;
+	width: 125px;
 	height: auto;
 	border-radius: 4px;
 }
 
 .workout-card--description {
 	text-align: center;
-	width: 40%;
+	width: 30%;
 }
 
 .add-exercise-btn {
@@ -40,20 +41,76 @@
     background-color: #393838;
 }
 
+.name-sets-reps {
+	width: 30%;
+	padding-right: 30px; 
+	text-align: center;
+}
+
 .sets-reps-wrapper {
 	margin-top: 16px;
     display: flex;
     gap: 20px;
-    justify-content: center;
+	align-items: center;
 }
 
-/* .save-workout-btn {
-	background-color: var(--lime-green);
-	color: var(--off-black);
-	padding: 8px 15px;
-	border-radius: 30px;
-	cursor: pointer;
+.workout-card--description {
+	width: 300px;
+}
+
+.vid-list a {
+	font-size: 12px;
+	width: 150px;
+	display: inline-block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.vid-list a:hover {
+	color: #fff;
+}
+
+p {
 	font-size: 14px;
-	font-weight: 600;
-	margin-top: 8px;
-} */
+	color: #fff;
+}
+
+p strong {
+	font-size: 14px;
+}
+
+@media screen and (min-width: 1025px) {
+	.workout-card {
+		height: 300px;
+		margin-bottom: 20px;
+		padding: 10px;
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.workout--card__image {
+		width: 250px;
+		height: auto;
+	}
+
+	.name-sets-reps {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.vid-list a {
+		font-size: 18px;
+	}
+	
+	p {
+		font-size: 20px;
+		color: #fff;
+	}
+	
+	p strong {
+		font-size: 20px;
+	}
+}

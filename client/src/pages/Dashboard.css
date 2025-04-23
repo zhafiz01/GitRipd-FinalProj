@@ -1,13 +1,3 @@
-/* .form-wrapper--dashboard {
-  height: 100vh;
-  overflow-y: auto;
-  padding-top: 130px;
-  padding-bottom: 150px;
-  box-sizing: border-box;
-  scrollbar-width: none;
-  -ms-overflow-style: none;
-} */
-
 .form-wrapper--dashboard {
   min-height: 100vh;
   display: flex;
@@ -20,7 +10,7 @@
 
   overflow-y: auto;
   scrollbar-width: none;
-  -ms-overflow-style: none;
+	-ms-overflow-style: none;
 }
 
 .form-wrapper--dashboard::-webkit-scrollbar {
@@ -35,9 +25,10 @@
   background-color: #141414;
   border: 5px solid var(--dark-green);
   box-shadow: 0 0 20px #024433;
-  padding: 80px;
+  padding: 40px;
   color: white;
   max-width: 800px;
+  width: 100%;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -82,4 +73,8 @@
 .to-select-btn:hover {
 	color: #393838;
 	background-color: var(--lime-green);
+}
+
+.message-boxes {
+  width: 100%;
 }

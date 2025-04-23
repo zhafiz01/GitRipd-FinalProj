@@ -6,6 +6,7 @@ import { getUserWorkoutPlan } from "../services/workoutPlanService"
 import WorkoutPlan from "../interfaces/WorkoutPlan"
 import "./ViewWorkout.css"
 import { useNavigate } from "react-router-dom"
+import fitnessSilhouette from "../assets/images/fitness-silhouette-m-dg.png"
 
 const ViewWorkout = () => {
 	const [workoutPlan, setWorkoutPlan] = useState<Exercise[]>([])
@@ -97,26 +98,28 @@ const ViewWorkout = () => {
 			<div className="message-boxes">
 				<h1>Your future self will thank you for the work you put in today!</h1>
 				<br />
-				<h2 style={{ color: "#1ed490" }}>Today's Focus:</h2>
-				<ul>
-					<li style={{ padding: "5px" }}>
-						<u>Strength Training</u>: follow the 12-10-8 rep rule! As
-						move through your sets, add a little weight each time!
-					</li>
-					<li style={{ padding: "5px" }}>
-						<u>Cardio</u>: Aim for at least 20 minutes of cardio.
-						Focus on your breath.
-					</li>
-					<li style={{ padding: "5px" }}>
-						<u>Stretching</u>: Don’t forget to warm up AND cool down
-						with stretches.
-					</li>
-				</ul>
 			</div>
 			{workoutPlan.length > 0 ? (
-				<div className="workout-cards--list">
+				<div>
+					<div className="message-boxes">
+						<h2 style={{ color: "#1ed490" }}>Today's Focus:</h2>
+						<ul>
+							<li style={{ padding: "5px" }}>
+								<u>Strength Training</u>: follow the 12-10-8 rep rule! As
+								you go, decrease reps and increase weight!
+							</li>
+							<li style={{ padding: "5px" }}>
+								<u>Cardio</u>: Warm up with at least 20 minutes of cardio.
+								Focus on your breath.
+							</li>
+							<li style={{ padding: "5px" }}>
+								<u>Stretching</u>: Don’t forget to warm up AND cool down
+								with stretches.
+							</li>
+						</ul>
+					</div>
 					{workoutPlan.map((exercise) => (
-						<div
+						<div className="workout-cards--list"
 							key={exercise._id}
 							style={{
 								opacity: completedWorkouts.includes(exercise._id)
@@ -147,8 +150,13 @@ const ViewWorkout = () => {
 				</div>
 			) : (
 				<div className="no-plan">
-					<button className="to-select-btn" onClick={handleClick}>Click Here</button>
-					<p>to start building your own workout routine!</p>
+					<img className="fitness-graphic"
+						src={fitnessSilhouette}
+						alt="vw-graphic"
+						style={{ height: "200px", width: "auto" }}
+					/>
+					<br />
+					<p><button className="to-select-btn" onClick={handleClick}>Click Here</button>to build your own workout routine!</p>
 				</div>
 			)}
 		</div>

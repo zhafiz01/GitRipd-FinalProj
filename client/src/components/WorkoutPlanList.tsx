@@ -14,11 +14,10 @@ const WorkoutPlanList: FC<WorkoutPlanListProps> = ({
 	exercises,
 	addToCart,
 	showAddButton,
-	showSetsReps,
+	showSetsReps
 }) => {
 	return (
 		<div className="workout--card__container">
-			<h2 style={{ marginTop: "30px" }}>Exercise Results</h2>
 			{exercises.map((exercise) => (
 				<WorkoutCard
 					key={exercise.id}

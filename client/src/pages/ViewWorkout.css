@@ -1,12 +1,14 @@
 .view-workout--wrapper {
 	display: flex;
 	flex-direction: column;
-	padding: 120px 120px;
+	padding-top: 250px;
+	padding-bottom: 250px;
 	color: white;
 	overflow-y: auto;
 	max-height: 100vh;
 	scrollbar-width: none;
 	-ms-overflow-style: none;
+	width: 100%;
 }
 
 .view-workout--wrapper::-webkit-scrollbar {
@@ -16,18 +18,32 @@
 .message-boxes {
 	text-align: center;
 	margin-bottom: 20px;
+	padding: 0px 80px;
 }
 
 .workout-cards--list {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	padding: 0px 10px;
 }
 
-.no-workout-txt {
-	margin-top: 200px;
+.no-plan {
+	display: flex;
+	flex-direction: column;
 	text-align: center;
-	font-size: 34px;
+	justify-content: space-evenly;
+}
+
+.to-select-btn {
+	background-color: #0b0c0c;
+	padding: 0;
+	color: #024433;
+}
+
+.to-select-btn:hover {
+	background-color: #0b0c0c;
+	color: var(--lime-green)
 }
 
 .complete-workout-btn {
@@ -39,4 +55,10 @@
 	border-radius: 4px;
 	padding: 0.3rem 0.5rem;
 	cursor: pointer;
+}
+
+@media screen and (min-width: 1025px) {
+	.view-workout--wrapper {
+		padding: 250px 120px;
+	}
 }
