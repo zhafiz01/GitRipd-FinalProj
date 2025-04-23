@@ -103,7 +103,7 @@ const MuscleSelectorPage = () => {
 		try {
 			await saveUserWorkoutPlan(cart)
 			console.log("✅ Workout plan saved!")
-			navigate("/dashboard")
+			navigate("/plans")
 		} catch (err) {
 			console.error("Save error:", err)
 			alert("Could not save workout plan.")
@@ -118,7 +118,7 @@ const MuscleSelectorPage = () => {
 				onSubmit={handleSubmit}
 			/>
 
-			<h6 style={{ backgroundColor: "#cfcfcf" }}>
+			<h6 style={{ backgroundColor: "#cfcfcf", paddingBottom: "20px" }}>
 				Selected:{" "}
 				{selectedTargets
 					.filter(
@@ -162,15 +162,9 @@ const MuscleSelectorPage = () => {
 							Clear All
 						</button>
 					</div>
-					{/* <button
-						className="save-plan-btn"
-						onClick={handleSave}
-					>
-						Save to Workout Plan
-					</button> */}
 				</div>
 			)}
-			<div className="workout-cards--list">
+			<div className="workout-cards--container">
 				{exercises.length > 0 && (
 					<WorkoutPlanList
 						exercises={exercises}

@@ -113,3 +113,8 @@ button svg {
 button:hover {
   cursor: pointer;
 }
+
+.fitness-graphic {
+  height: 125px;
+  width: auto;
+}

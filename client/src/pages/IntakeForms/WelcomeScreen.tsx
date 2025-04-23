@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom"
 import "./WelcomeScreen.css"
+import fitnessSilhouette from "../../assets/images/fitness-silhouette-f-w.png"
 
 const WelcomeScreen = () => {
 	return (
@@ -7,6 +8,10 @@ const WelcomeScreen = () => {
 			<div className="form-page--welcome">
 				<h1 style={{ fontSize: "60px" }}>Welcome to GiTRiPD!</h1>
 				<br />
+				<img className="fitness-graphic"
+					src={fitnessSilhouette}
+					alt="welcome-graphic"
+				/>
 				<h2 style={{ fontSize: "26px", color: "#cfcfcf" }}>
 					Ready to kick off your fitness journey
 				</h2>

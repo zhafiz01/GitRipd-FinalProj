@@ -46,7 +46,7 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 
 	return (
 		<div className="workout-card">
-			<div style={{ width: "40%", paddingRight: "30px" }}>
+			<div className="name-sets-reps" style={{ width: "40%", paddingRight: "30px", textAlign: "center" }}>
 				<h2>{exercise.name}</h2>
 				<div>
 					{showSetsReps && (
@@ -91,18 +91,20 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 				/>
 			</div>
 			<div className="workout-card--description">
-				<h6 style={{ color: "#fff" }}>
+				<p>
 					<strong>Target:</strong> {exercise.target}
-				</h6>
-				<h6 style={{ color: "#fff" }}>
+				</p>
+				<br />
+				<p>
 					<strong>Equipment:</strong> {exercise.equipment}
-				</h6>
+				</p>
+				<br />
 				{exercise.videos.length > 0 && (
-					<div>
-						<h6 style={{ color: "#fff" }}>
+					<div className="video-urls">
+						<p>
 							<strong>Videos:</strong>
-						</h6>
-						<ul style={{ marginTop: "5px" }}>
+						</p>
+						<ul className="vid-list" style={{ marginTop: "5px" }}>
 							{exercise.videos.slice(0, 2).map((vid, i) => (
 								<li key={i}>
 									<a
@@ -114,6 +116,7 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 									</a>
 								</li>
 							))}
+							<br />
 						</ul>
 					</div>
 				)}

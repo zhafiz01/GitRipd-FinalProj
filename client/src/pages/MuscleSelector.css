@@ -1,7 +1,7 @@
 .muscle-selector-page--wrapper {
 	display: flex;
 	flex-direction: column;
-	padding: 100px;
+	padding: 100px 0px;
 	background-color: #cfcfcf;
 	height: calc(100vh - 100px);
 	color: var(--off-black);
@@ -45,9 +45,6 @@
 	padding-bottom: 10px;
 }
 
-/* .muscle-selector-page--cart li {
-	padding-bottom: 5px;
-} */
 
 .workout-delete-btn {
 	margin-left: 5px;
@@ -110,4 +107,17 @@ h6 {
 .save-plan-btn:hover {
 	color: var(--lime-green);
 	background-color: #393838;
+}
+
+.workout-cards--container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 0px 10px;
+}
+
+@media screen and (min-width: 1025px) {
+  .muscle-selector-page--wrapper {
+    padding: 100px;
+  }
 }
