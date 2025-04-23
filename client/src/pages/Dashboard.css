@@ -30,6 +30,7 @@
 .form-page--dashboard {
   display: flex;
   flex-direction: column;
+  text-align: center;
   align-items: center;
   background-color: #141414;
   border: 5px solid var(--dark-green);
