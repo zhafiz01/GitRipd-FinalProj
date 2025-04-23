@@ -5,12 +5,12 @@ const WelcomeScreen = () => {
 	return (
 		<div className="form-wrapper">
 			<div className="form-page--welcome">
-				<h1 style={{ fontSize: "60px" }}>Welcome to GiTRiPD!</h1>
-				<br />
+				<h1 style={{ fontSize: "48px" }}>Welcome to</h1>
+				<h1 style={{ fontSize: "86px"}}>Commit2Fit</h1>
 				<h2 style={{ fontSize: "26px", color: "#cfcfcf" }}>
 					Ready to kick off your fitness journey
 				</h2>
-				<h2 style={{ fontSize: "26px", color: "#cfcfcf", marginTop: "0" }}>
+				<h2 style={{ fontSize: "26px", color: "#cfcfcf", marginTop: "0", marginBottom: "0" }}>
 					in a new way?
 				</h2>
 				<br />
