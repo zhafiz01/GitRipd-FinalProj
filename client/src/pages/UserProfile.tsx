@@ -50,7 +50,7 @@ const Profile = () => {
 				<p>
 					<strong>Current Weight:</strong>{" "}
 					{displayData.weight
-						? `${displayData.weight} kg`
+						? `${displayData.weight} lbs`
 						: "Not provided"}
 				</p>
 				<br />

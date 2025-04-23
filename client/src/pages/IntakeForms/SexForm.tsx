@@ -43,7 +43,7 @@ const SexForm = () => {
 						checked={sex === "male"}
 						onChange={handleSexChange}
 					/>
-					Male
+					{""} Male
 				</div>
 				<br />
 				<div>
@@ -54,7 +54,7 @@ const SexForm = () => {
 						checked={sex === "female"}
 						onChange={handleSexChange}
 					/>
-					Female
+					{""} Female
 				</div>
 				<br />
 				<div>
@@ -65,7 +65,7 @@ const SexForm = () => {
 						checked={sex === "other"}
 						onChange={handleSexChange}
 					/>
-					Other
+					{""} Other
 				</div>
 				<br />
 				<div className="arrow-btns">
