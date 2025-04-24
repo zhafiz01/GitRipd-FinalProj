@@ -126,6 +126,14 @@ h6 {
 	padding: 0px 10px;
 }
 
+.treadmill-loader {
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin-left: 37px;
+}
+
 @media screen and (min-width: 1025px) {
   .muscle-selector-page--wrapper {
     padding: 100px;
