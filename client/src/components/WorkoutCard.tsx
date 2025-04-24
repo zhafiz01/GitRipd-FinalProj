@@ -80,10 +80,10 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 			</div>
 			<div className="workout-card--description">
 				<p className="workout-info">
-					<strong>Target:</strong> {exercise.target}
+					<strong style={{ fontWeight: "800" }}>Target:</strong> {exercise.target}
 				</p>
 				<p className="workout-info">
-					<strong>Equipment:</strong> {exercise.equipment}
+					<strong style={{ fontWeight: "800" }}>Equipment:</strong> {exercise.equipment}
 				</p>
 			<div>
 				{showAddButton ? (
@@ -97,7 +97,7 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 					exercise.videos.length > 0 && (
 						<div className="video-urls">
 							<p>
-								<strong>Videos:</strong>
+								<strong style={{ fontWeight: "800" }}>Videos:</strong>
 							</p>
 							<ul className="vid-list" style={{ marginTop: "5px" }}>
 								{exercise.videos.slice(0, 2).map((vid, i) => (

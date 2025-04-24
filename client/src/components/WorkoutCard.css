@@ -16,7 +16,6 @@
 
 .name-sets-reps {
 	width: 30%;
-	padding-right: 10px; 
 	text-align: center;
 }
 
@@ -30,7 +29,6 @@
 	margin-top: 16px;
     display: flex;
     gap: 20px;
-	align-items: center;
 }
 
 .sets-reps-wrapper label {
@@ -39,8 +37,8 @@
 }
 
 .sets-reps-wrapper input {
-	width: 38px;
-	font-size: 14px;
+	width: 50px;
+	font-size: 12px;
 	height: auto;
 	padding: 4px 8px;
 	border-radius: 5px;
@@ -142,6 +140,7 @@ p strong {
 	.sets-reps-wrapper input {
 		width: 20px;
 		height: auto;
+		font-size: 18px;
 		margin-left: 8px;
 		padding: 4px 8px;
 		border-radius: 5px;
