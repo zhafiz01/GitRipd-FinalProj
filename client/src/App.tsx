@@ -21,80 +21,80 @@ const App = () => {
 	return (
 		<>
 			<Header />
-				<Routes>
+			<Routes>
+				<Route
+					path="/"
+					element={<WelcomeScreen />}
+				/>
+				<Route
+					path="/login"
+					element={<LoginPage />}
+				/>
+				<Route
+					path="/signup"
+					element={<Signup />}
+				/>
+				<Route element={<ProtectedRoute />}>
 					<Route
-						path="/"
-						element={<WelcomeScreen />}
+						path="/name"
+						element={<NameForm />}
 					/>
+				</Route>
+				<Route element={<ProtectedRoute />}>
 					<Route
-						path="/login"
-						element={<LoginPage />}
+						path="/age"
+						element={<AgeForm />}
 					/>
+				</Route>
+				<Route element={<ProtectedRoute />}>
 					<Route
-						path="/signup"
-						element={<Signup />}
+						path="/sex"
+						element={<SexForm />}
 					/>
-					<Route element={<ProtectedRoute />}>
-						<Route
-							path="/name"
-							element={<NameForm />}
-						/>
-					</Route>
-					<Route element={<ProtectedRoute />}>
-						<Route
-							path="/age"
-							element={<AgeForm />}
-						/>
-					</Route>
-					<Route element={<ProtectedRoute />}>
-						<Route
-							path="/sex"
-							element={<SexForm />}
-						/>
-					</Route>
-					<Route element={<ProtectedRoute />}>
-						<Route
-							path="/weight"
-							element={<WeightForm />}
-						/>
-					</Route>
-					<Route element={<ProtectedRoute />}>
-						<Route
-							path="/why"
-							element={<WhyHereForm />}
-						/>
-					</Route>
-					<Route element={<ProtectedRoute />}>
-						<Route
-							path="/goal"
-							element={<GoalForm />}
-						/>
-					</Route>
-					<Route element={<ProtectedRoute />}>
-						<Route
-							path="/profile"
-							element={<Profile />}
-						/>
-					</Route>
-					<Route element={<ProtectedRoute />}>
-						<Route
-							path="/dashboard"
-							element={<Dashboard />}
-						/>
-					</Route>
-					<Route element={<ProtectedRoute />}>
-						<Route
-							path="/plans"
-							element={<ViewWorkout />}
-						/>
-					</Route>
-					<Route element={<ProtectedRoute />}>
-						<Route
-							path="/select"
-							element={<MuscleSelectorPage />}
-						/>
-					</Route>
-				</Routes>
+				</Route>
+				<Route element={<ProtectedRoute />}>
+					<Route
+						path="/weight"
+						element={<WeightForm />}
+					/>
+				</Route>
+				<Route element={<ProtectedRoute />}>
+					<Route
+						path="/why"
+						element={<WhyHereForm />}
+					/>
+				</Route>
+				<Route element={<ProtectedRoute />}>
+					<Route
+						path="/goal"
+						element={<GoalForm />}
+					/>
+				</Route>
+				<Route element={<ProtectedRoute />}>
+					<Route
+						path="/profile"
+						element={<Profile />}
+					/>
+				</Route>
+				<Route element={<ProtectedRoute />}>
+					<Route
+						path="/dashboard"
+						element={<Dashboard />}
+					/>
+				</Route>
+				<Route element={<ProtectedRoute />}>
+					<Route
+						path="/plans"
+						element={<ViewWorkout />}
+					/>
+				</Route>
+				<Route element={<ProtectedRoute />}>
+					<Route
+						path="/select"
+						element={<MuscleSelectorPage />}
+					/>
+				</Route>
+			</Routes>
 			<NavBar />
 		</>
 	)

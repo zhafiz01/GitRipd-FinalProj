@@ -245,13 +245,13 @@ const Dashboard = () => {
 							</h3>
 							<ul>
 								<li className="tips">
-									Stay consistent with your workouts.
+									• Stay consistent with your workouts.
 								</li>
 								<li className="tips">
-									Focus on form over weight to avoid injury.
+									• Focus on form over weight to avoid injury.
 								</li>
 								<li className="tips">
-									Eat a balanced diet to fuel your gains.
+									• Eat a balanced diet to fuel your gains.
 								</li>
 							</ul>
 						</div>

@@ -12,23 +12,26 @@
 }
 
 .form-wrapper--dashboard::-webkit-scrollbar {
+	width: 0px;
+	height: 0px;
+	background: transparent;
 	display: none;
 }
 
 .form-page--dashboard {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  background-color: #141414;
-  border: 5px solid var(--dark-green);
-  box-shadow: none;
-  padding: 20px;
-  color: white;
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	background-color: #141414;
+	border: 5px solid var(--dark-green);
+	box-shadow: none;
+	padding: 20px;
+	color: white;
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+	box-sizing: border-box;
 }
 
 .workout-plan--dashboard {
@@ -51,7 +54,7 @@
 }
 
 .to-select-btn {
-	color: var(--dark-green);
+	color: var(--lime-green);
 	font-size: 18px;
 	font-weight: 700;
 	border-radius: 30px;
@@ -64,13 +67,17 @@
 	align-items: center;
 }
 
+.no-plan p {
+font-size: 14px;
+}
+
 .to-select-btn:hover {
-	color: var(--lime-green);
+	color: white;
 }
 
 .custom-message {
-  color: white;
-  margin-bottom: 25px;
+	color: white;
+	margin-bottom: 25px;
 }
 
 .message-boxes {
@@ -78,20 +85,20 @@
 }
 
 .tips {
-  margin-top: 6px;
-}
-
-  width: 100%;
+	margin-top: 6px;
 }
 
 @media screen and (min-width: 768px) {
-  .form-page--dashboard {
-    padding: 100px;
-    box-shadow: 0 0 20px #024433;
-  }
+	.form-page--dashboard {
+		padding: 100px;
+		box-shadow: 0 0 20px #024433;
+	}
 
-  .workout-list--dashboard {
-    font-size: 22px;
-  }
+	.workout-list--dashboard {
+		font-size: 22px;
+	}
 
+	.no-plan p {
+		font-size: 18px;
+	}
 }

@@ -19,7 +19,7 @@
 	margin: 20px auto;
 	padding: 20px;
 	color: var(--off-black);
-  background-color: #edeaeadb;
+	background-color: #edeaeadb;
 	border: 4px solid var(--dark-green);
 	text-align: center;
 }
@@ -38,18 +38,18 @@
 
 .muscle-selector-page--cart li {
 	display: flex;
-  justify-content: space-between;
-  align-items: center;
+	justify-content: space-between;
+	align-items: center;
 	break-inside: avoid;
-  text-align: left;
-  background-color: #cfcfcf;
-  padding: 5px;
-  border-radius: 10px;
+	text-align: left;
+	background-color: #cfcfcf;
+	padding: 5px;
+	border-radius: 10px;
 }
 
 .muscle-selector-page--cart p {
-  font-size: 14px;
-  color: #0b0c0c;
+	font-size: 14px;
+	color: #0b0c0c;
 }
 
 .muscle-selector-page--cart h3 {
@@ -135,17 +135,17 @@ h6 {
 }
 
 @media screen and (min-width: 1025px) {
-  .muscle-selector-page--wrapper {
-    padding: 100px;
-  }
+	.muscle-selector-page--wrapper {
+		padding: 100px;
+	}
 
-  .save-plan-btn {
-    padding: 12px 20px;
-    font-size: 18px;
-  }
+	.save-plan-btn {
+		padding: 12px 20px;
+		font-size: 18px;
+	}
 
-  .clear-cart-btn {
-    padding: 12px 20px;
-    font-size: 18px;
-  }
+	.clear-cart-btn {
+		padding: 12px 20px;
+		font-size: 18px;
+	}
 }

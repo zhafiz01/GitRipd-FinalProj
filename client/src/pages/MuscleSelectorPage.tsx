@@ -127,7 +127,9 @@ const MuscleSelectorPage = () => {
 				onSubmit={handleSubmit}
 			/>
 
-			<h6 style={{ backgroundColor: "#cfcfcf", paddingBottom: "20px" }}>
+			<h6
+				style={{ backgroundColor: "#cfcfcf", paddingBottom: "20px" }}
+			>
 				Selected:{" "}
 				{selectedTargets
 					.filter(
@@ -144,7 +146,13 @@ const MuscleSelectorPage = () => {
 
 			{cart.length > 0 && (
 				<div className="muscle-selector-page--cart">
-					<h3 style={{ color: "#0b0c0c", marginBottom: "8px", textDecoration: "underline" }}>
+					<h3
+						style={{
+							color: "#0b0c0c",
+							marginBottom: "8px",
+							textDecoration: "underline",
+						}}
+					>
 						Your Exercises
 					</h3>
 					<ul>

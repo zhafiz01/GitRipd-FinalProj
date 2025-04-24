@@ -30,32 +30,43 @@ const Profile = () => {
 	return (
 		<div className="form-wrapper">
 			<div className="form-page">
-				<h2 style={{ fontSize: 40, color: "#1ed490", marginBottom: "30px" }}>
+				<h2
+					style={{
+						fontSize: 40,
+						color: "#1ed490",
+						marginBottom: "30px",
+					}}
+				>
 					Personal Profile
 				</h2>
 				<p className="profile-details">
-					<strong>Name:</strong> {displayData.name || "Not provided"}
+					<strong className="profile-details">Name:</strong>{" "}
+					{displayData.name || "Not provided"}
 				</p>
 				<p className="profile-details">
-					<strong>Age:</strong>{" "}
+					<strong className="profile-details">Age:</strong>{" "}
 					{displayData.age + " years old" || "Not provided"}
 				</p>
 				<p className="profile-details">
-					<strong>Sex:</strong> {displayData.sex || "Not provided"}
+					<strong className="profile-details">Sex:</strong>{" "}
+					{displayData.sex || "Not provided"}
 				</p>
 				<p className="profile-details">
-					<strong>Current Weight:</strong>{" "}
+					<strong className="profile-details">Current Weight:</strong>{" "}
 					{displayData.weight
 						? `${displayData.weight} lbs`
 						: "Not provided"}
 				</p>
 				<p className="profile-details">
-					<strong>Why you're here:</strong>{" "}
+					<strong className="profile-details">
+						Why you're here:
+					</strong>{" "}
 					{displayData.whyHere || "Not provided"}
 				</p>
 				<p className="profile-details">
-					<strong>Goal:</strong>{" "}
-					{Array.isArray(displayData.goal) && displayData.goal.length > 0 
+					<strong className="profile-details">Goal:</strong>{" "}
+					{Array.isArray(displayData.goal) &&
+					displayData.goal.length > 0
 						? displayData.goal.join(", ")
 						: "Not provided"}
 				</p>

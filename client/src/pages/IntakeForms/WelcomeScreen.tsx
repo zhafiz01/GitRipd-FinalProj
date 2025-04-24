@@ -6,8 +6,8 @@ const WelcomeScreen = () => {
 	return (
 		<div className="form-wrapper">
 			<div className="form-page--welcome">
-				<h1 style={{ fontSize: "54px" }}>Welcome to</h1>
-				<h1 style={{ fontSize: "76px" }}>Commit2Fit!</h1>
+				<h1 className="welcome-text">Welcome to</h1>
+				<h1 className="app-name-text">Commit2Fit!</h1>
 				<img
 					className="fitness-graphic"
 					src={fitnessSilhouette}
