@@ -40,31 +40,31 @@ const Profile = () => {
 					Personal Profile
 				</h2>
 				<p className="profile-details">
-					<strong className="profile-details">Name:</strong>{" "}
+					<strong style={{ color: "#1ed490", fontWeight: "800" }} className="profile-details">Name:</strong>{" "}
 					{displayData.name || "Not provided"}
 				</p>
 				<p className="profile-details">
-					<strong className="profile-details">Age:</strong>{" "}
+					<strong style={{ color: "#1ed490", fontWeight: "800" }} className="profile-details">Age:</strong>{" "}
 					{displayData.age + " years old" || "Not provided"}
 				</p>
 				<p className="profile-details">
-					<strong className="profile-details">Sex:</strong>{" "}
+					<strong style={{ color: "#1ed490", fontWeight: "800" }} className="profile-details">Sex:</strong>{" "}
 					{displayData.sex || "Not provided"}
 				</p>
 				<p className="profile-details">
-					<strong className="profile-details">Current Weight:</strong>{" "}
+					<strong style={{ color: "#1ed490", fontWeight: "800" }} className="profile-details">Current Weight:</strong>{" "}
 					{displayData.weight
 						? `${displayData.weight} lbs`
 						: "Not provided"}
 				</p>
 				<p className="profile-details">
-					<strong className="profile-details">
+					<strong style={{ color: "#1ed490", fontWeight: "800" }} className="profile-details">
 						Why you're here:
 					</strong>{" "}
 					{displayData.whyHere || "Not provided"}
 				</p>
 				<p className="profile-details">
-					<strong className="profile-details">Goal:</strong>{" "}
+					<strong style={{ color: "#1ed490", fontWeight: "800" }} className="profile-details">Goal:</strong>{" "}
 					{Array.isArray(displayData.goal) &&
 					displayData.goal.length > 0
 						? displayData.goal.join(", ")
