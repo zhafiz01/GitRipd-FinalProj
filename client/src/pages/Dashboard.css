@@ -1,15 +1,13 @@
 .form-wrapper--dashboard {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding-top: 130px;
-  padding-bottom: 150px;
-  box-sizing: border-box;
-
-  overflow-y: auto;
-  scrollbar-width: none;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 130px;
+	padding-bottom: 150px;
+	box-sizing: border-box;
+	overflow-y: auto;
+	scrollbar-width: none;
 	-ms-overflow-style: none;
 }
 
@@ -18,19 +16,19 @@
 }
 
 .form-page--dashboard {
-  display: flex;
-  flex-direction: column;
-  text-align: center;
-  align-items: center;
-  background-color: #141414;
-  border: 5px solid var(--dark-green);
-  box-shadow: 0 0 20px #024433;
-  padding: 40px;
-  color: white;
-  max-width: 800px;
-  width: 100%;
-  margin: 0 auto;
-  box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	background-color: var(--dark-gray);
+	border: 5px solid var(--dark-green);
+	box-shadow: 0 0 20px var(--dark-green);
+	padding: 40px;
+	color: white;
+	max-width: 800px;
+	width: 100%;
+	margin: 0 auto;
+	box-sizing: border-box;
 }
 
 .workout-plan--dashboard {
@@ -53,28 +51,32 @@
 }
 
 .to-select-btn {
-	color: var(--lime-green);
-	background-color: #393838;
+	color: var(--dark-green);
 	font-size: 18px;
 	font-weight: 700;
 	border-radius: 30px;
-	padding: 8px 15px;
-	text-shadow: none;
-	margin: 10px;
 	cursor: pointer;
 }
 
-  .no-plan {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.no-plan {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 
 .to-select-btn:hover {
-	color: #393838;
-	background-color: var(--lime-green);
+	color: var(--lime-green);
+}
+
+.custom-message {
+  color: white;
+  margin-bottom: 25px;
 }
 
 .message-boxes {
-  width: 100%;
+	width: 100%;
+}
+
+.tips {
+  margin-top: 6px;
 }

@@ -35,15 +35,13 @@
 	justify-content: space-evenly;
 }
 
-.to-select-btn {
-	background-color: #0b0c0c;
-	padding: 0;
-	color: #024433;
+.plans-to-select-btn {
+	padding-right: 5px;
+	color: var(--dark-green);
 }
 
-.to-select-btn:hover {
-	background-color: #0b0c0c;
-	color: var(--lime-green)
+.plans-to-select-btn:hover {
+	color: var(--lime-green);
 }
 
 .complete-workout-btn {
@@ -55,6 +53,12 @@
 	border-radius: 4px;
 	padding: 0.3rem 0.5rem;
 	cursor: pointer;
+}
+
+.fitness-graphic__view {
+	height: 200px;
+	width: auto;
+	margin-bottom: 40px;
 }
 
 @media screen and (min-width: 1025px) {

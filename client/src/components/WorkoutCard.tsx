@@ -91,14 +91,12 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 				/>
 			</div>
 			<div className="workout-card--description">
-				<p>
+				<p className="workout-info">
 					<strong>Target:</strong> {exercise.target}
 				</p>
-				<br />
-				<p>
+				<p className="workout-info">
 					<strong>Equipment:</strong> {exercise.equipment}
 				</p>
-				<br />
 				{exercise.videos.length > 0 && (
 					<div className="video-urls">
 						<p>
@@ -116,7 +114,6 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 									</a>
 								</li>
 							))}
-							<br />
 						</ul>
 					</div>
 				)}
