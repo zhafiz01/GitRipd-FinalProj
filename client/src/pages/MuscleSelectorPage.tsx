@@ -7,6 +7,8 @@ import { saveUserWorkoutPlan } from "../services/workoutPlanService"
 import "./MuscleSelector.css"
 import { faTrashCan } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+import Lottie from "lottie-react"
+import treadmillAnimation from "../assets/animations/treadmill.json"
 
 const targetIdToZylaName: Record<string, string> = {
 	Pectorals: "pectorals",
@@ -31,6 +33,7 @@ const MuscleSelectorPage = () => {
 	const [selectedTargets, setSelectedTargets] = useState<string[]>([])
 	const [exercises, setExercises] = useState<Exercise[]>([])
 	const [cart, setCart] = useState<Exercise[]>([])
+	const [isLoading, setIsLoading] = useState(false)
 	const navigate = useNavigate()
 
 	const toggleMuscle = (target: string) => {
@@ -49,6 +52,8 @@ const MuscleSelectorPage = () => {
 		setExercises([])
 
 		if (translatedTargets.length === 0) return
+
+		setIsLoading(true)
 
 		try {
 			const allExercises: Exercise[] = []
@@ -70,10 +75,14 @@ const MuscleSelectorPage = () => {
 				allExercises.push(...filtered.slice(0, 8))
 			}
 
-			setExercises(allExercises)
-			console.log("✅ Fetched exercises:", allExercises)
+			setTimeout(() => {
+				setExercises(allExercises)
+				setIsLoading(false)
+				console.log("✅ Fetched exercises:", allExercises)
+			}, 1500)
 		} catch (error) {
 			console.error("❌ Error fetching exercises:", error)
+			setIsLoading(false)
 		}
 	}
 
@@ -128,6 +137,13 @@ const MuscleSelectorPage = () => {
 					)
 					.join(", ")}
 			</h6>
+
+			{isLoading && (
+				<div className="treadmill-loader">
+					<Lottie animationData={treadmillAnimation} loop={true} style={{ width: 300 }} />
+				</div>
+			)}
+
 			{cart.length > 0 && (
 				<div className="muscle-selector-page--cart">
 					<h3
@@ -142,7 +158,7 @@ const MuscleSelectorPage = () => {
 					<ul>
 						{cart.map((exercise) => (
 							<li key={exercise._id}>
-								<p>{exercise.name}</p>
+								{exercise.name}
 								<button
 									className="workout-delete-btn"
 									onClick={() => handleDelete(exercise._id)}
@@ -157,21 +173,16 @@ const MuscleSelectorPage = () => {
 						))}
 					</ul>
 					<div style={{ display: "flex", justifyContent: "center" }}>
-						<button
-							className="save-plan-btn"
-							onClick={handleSave}
-						>
+						<button className="save-plan-btn" onClick={handleSave}>
 							Save to Workout Plan
 						</button>
-						<button
-							className="clear-cart-btn"
-							onClick={() => setCart([])}
-						>
+						<button className="clear-cart-btn" onClick={() => setCart([])}>
 							Clear All
 						</button>
 					</div>
 				</div>
 			)}
+
 			<div className="workout-cards--container">
 				{exercises.length > 0 && (
 					<WorkoutPlanList
