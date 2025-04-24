@@ -19,7 +19,7 @@
 	margin: 20px auto;
 	padding: 20px;
 	color: var(--off-black);
-    background-color: #edeaeadb;
+  background-color: #edeaeadb;
 	border: 4px solid var(--dark-green);
 	text-align: center;
 }
@@ -37,8 +37,19 @@
 }
 
 .muscle-selector-page--cart li {
-	display: block;
+	display: flex;
+  justify-content: space-between;
+  align-items: center;
 	break-inside: avoid;
+  text-align: left;
+  background-color: #cfcfcf;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.muscle-selector-page--cart p {
+  font-size: 14px;
+  color: #0b0c0c;
 }
 
 .muscle-selector-page--cart h3 {
@@ -74,10 +85,10 @@
 
 .clear-cart-btn {
 	background-color: var(--lime-green);
-	padding: 12px 20px;
+	padding: 6px 12px;
 	border-radius: 30px;
 	color: #393838;
-	font-size: 18px;
+	font-size: 16px;
 	margin-top: 10px;
 	margin-left: 10px;
 	cursor: pointer;
@@ -96,10 +107,10 @@ h6 {
 
 .save-plan-btn {
 	background-color: var(--lime-green);
-	padding: 12px 20px;
+	padding: 6px 12px;
 	border-radius: 30px;
 	color: #393838;
-	font-size: 18px;
+	font-size: 16px;
 	margin-top: 10px;
 }
 
@@ -118,5 +129,15 @@ h6 {
 @media screen and (min-width: 1025px) {
   .muscle-selector-page--wrapper {
     padding: 100px;
+  }
+
+  .save-plan-btn {
+    padding: 12px 20px;
+    font-size: 18px;
+  }
+
+  .clear-cart-btn {
+    padding: 12px 20px;
+    font-size: 18px;
   }
 }

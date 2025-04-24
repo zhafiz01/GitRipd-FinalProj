@@ -30,7 +30,7 @@ const SexForm = () => {
 	return (
 		<div className="form-wrapper">
 			<form
-				className="form-page"
+				className="form-page--forms"
 				onSubmit={handleSubmit}
 			>
 				<label className="form-label">How do you identify?</label>

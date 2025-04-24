@@ -16,19 +16,19 @@
 }
 
 .form-page--dashboard {
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-	align-items: center;
-	background-color: var(--dark-gray);
-	border: 5px solid var(--dark-green);
-	box-shadow: 0 0 20px var(--dark-green);
-	padding: 40px;
-	color: white;
-	max-width: 800px;
-	width: 100%;
-	margin: 0 auto;
-	box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  align-items: center;
+  background-color: #141414;
+  border: 5px solid var(--dark-green);
+  box-shadow: none;
+  padding: 20px;
+  color: white;
+  max-width: 800px;
+  width: 100%;
+  margin: 0 auto;
+  box-sizing: border-box;
 }
 
 .workout-plan--dashboard {
@@ -41,7 +41,7 @@
 	align-items: flex-end;
 	justify-content: space-between;
 	margin-bottom: 10px;
-	font-size: 22px;
+	font-size: 16px;
 	color: var(--lime-green);
 }
 
@@ -79,4 +79,19 @@
 
 .tips {
   margin-top: 6px;
+}
+
+  width: 100%;
+}
+
+@media screen and (min-width: 768px) {
+  .form-page--dashboard {
+    padding: 100px;
+    box-shadow: 0 0 20px #024433;
+  }
+
+  .workout-list--dashboard {
+    font-size: 22px;
+  }
+
 }

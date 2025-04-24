@@ -54,7 +54,10 @@ const Profile = () => {
 					{displayData.whyHere || "Not provided"}
 				</p>
 				<p className="profile-details">
-					<strong>Goal:</strong> {displayData.goal || "Not provided"}
+					<strong>Goal:</strong>{" "}
+					{Array.isArray(displayData.goal) && displayData.goal.length > 0 
+						? displayData.goal.join(", ")
+						: "Not provided"}
 				</p>
 			</div>
 		</div>

@@ -1,8 +1,8 @@
 .view-workout--wrapper {
 	display: flex;
 	flex-direction: column;
-	padding-top: 250px;
-	padding-bottom: 250px;
+	padding-top: 125px;
+	padding-bottom: 125px;
 	color: white;
 	overflow-y: auto;
 	max-height: 100vh;
@@ -19,6 +19,14 @@
 	text-align: center;
 	margin-bottom: 20px;
 	padding: 0px 80px;
+}
+
+.message-boxes h1 {
+	font-size: 34px;
+}
+
+.message-boxes h2 {
+	font-size: 26px;
 }
 
 .workout-cards--list {
@@ -61,8 +69,16 @@
 	margin-bottom: 40px;
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 768px) {
 	.view-workout--wrapper {
 		padding: 250px 120px;
+	}
+
+	.message-boxes h1 {
+		font-size: 46px;
+	}
+
+	.message-boxes h2 {
+		font-size: 32px;
 	}
 }

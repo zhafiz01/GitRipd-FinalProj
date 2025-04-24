@@ -77,7 +77,7 @@ const Dashboard = () => {
 					<span style={{ color: "#0e6b53", fontSize: "35px" }}>
 						Get setter?{" "}
 					</span>
-					Git RiPD!
+					Let's Git It!
 				</>
 			)
 	}

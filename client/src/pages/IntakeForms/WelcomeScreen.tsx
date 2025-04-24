@@ -34,7 +34,7 @@ const WelcomeScreen = () => {
 				</p>
 				<div className="user-selection">
 					<div className="btn-select">
-						<p style={{ fontSize: "18px", color: "#cfcfcf" }}>
+						<p>
 							Returning User?
 						</p>
 						<NavLink to="/login">
@@ -42,7 +42,7 @@ const WelcomeScreen = () => {
 						</NavLink>
 					</div>
 					<div className="btn-select">
-						<p style={{ fontSize: "18px", color: "#cfcfcf" }}>
+						<p>
 							First Time?
 						</p>
 						<NavLink to="/signup">
