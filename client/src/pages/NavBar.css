@@ -1,21 +1,21 @@
 .navbar {
-    position: fixed;
-    display: flex;
-    bottom: 0; 
-    left: 0;
-    background-color: #022d22;
-    justify-content: space-around;
-    align-items: center; 
-    height: 100px;
-    width: 100vw;
-    font-size: 20px;
-    z-index: 9999;
+	position: fixed;
+	display: flex;
+	bottom: 0;
+	left: 0;
+	background-color: #022d22;
+	justify-content: space-around;
+	align-items: center;
+	height: 100px;
+	width: 100vw;
+	font-size: 20px;
+	z-index: 9999;
 }
 
 .navlink {
-    color: #ffffff;
+	color: #ffffff;
 }
 
 .navlink-active {
-    color: var(--lime-green);
+	color: var(--lime-green);
 }

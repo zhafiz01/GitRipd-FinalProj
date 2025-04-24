@@ -46,6 +46,19 @@ body {
   --dark-gray: #141414;
 }
 
+html, body {
+	height: 100%;
+	overflow-x: hidden;
+	scrollbar-width: none;
+	-ms-overflow-style: none;
+}
+
+body::-webkit-scrollbar {
+	display: none;
+	width: 0;
+	background: transparent;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -102,7 +115,6 @@ h2 {
   font-family: "Apex Mk2";
   font-size: 32px;
   text-align: center;
-  /* margin: 10px 0px; */
 }
 
 h3, i {
