@@ -196,28 +196,32 @@ const Dashboard = () => {
 	return (
 		<div className="form-wrapper--dashboard">
 			<div className="form-page--dashboard">
-				<h1>
+				<h1 style={{ marginBottom: "15px" }}>
 					Hey{" "}
 					<span style={{ color: "#1ed490" }}>{displayData.name}</span>
 					!
 				</h1>
-				<br />
 				{exercises.length === 0 ? (
 					<div className="no-plan">
-						<h3>You’ve already made the decision to start, and that’s what matters!</h3>
-						<br />
-						<button className="to-select-btn" onClick={handleClick}>Click Here</button>
+						<h3 style={{ marginBottom: "15px" }}>
+							You’ve already made the decision to start, and that’s
+							what matters!
+						</h3>
+
+						<button
+							className="to-select-btn"
+							onClick={handleClick}
+						>
+							Click Here
+						</button>
 						<p>to start building your own workout routine!</p>
 					</div>
 				) : (
 					<div>
-						<h2 className="custom-message" 
-							style={{ color: "white" }}>
+						<h2 className="custom-message">
 							{getCustomWelcome(progress)}
 						</h2>
-						<br />
 						<h2>Progress Tracker:</h2>
-						<br />
 						<div style={{ width: "200px", margin: "2rem auto" }}>
 							<CircularProgressbar
 								value={progress}
@@ -235,21 +239,25 @@ const Dashboard = () => {
 								})}
 							/>
 						</div>
-						<br />
 						<div className="message-boxes">
-							<h3>Tips for success:</h3>
-							<br />
+							<h3 style={{ textDecoration: "underline" }}>
+								Tips for success:
+							</h3>
 							<ul>
-								<li>Stay consistent with your workouts.</li>
-								<br />
-								<li>Focus on form over weight to avoid injury.</li>
-								<br />
-								<li>Eat a balanced diet to fuel your gains.</li>
+								<li className="tips">
+									Stay consistent with your workouts.
+								</li>
+								<li className="tips">
+									Focus on form over weight to avoid injury.
+								</li>
+								<li className="tips">
+									Eat a balanced diet to fuel your gains.
+								</li>
 							</ul>
-							<br />
 						</div>
-						<br />
-						<h2>Your Workout Plan</h2>
+						<h2 style={{ marginBottom: "10px" }}>
+							Your Workout Plan
+						</h2>
 						<div className="workout-plan--dashboard">
 							<ul>
 								{exercises.map((exercise) => (
@@ -257,7 +265,9 @@ const Dashboard = () => {
 										className="workout-list--dashboard"
 										key={exercise._id}
 										style={{
-											opacity: completedWorkouts.includes(exercise._id)
+											opacity: completedWorkouts.includes(
+												exercise._id
+											)
 												? 0.5
 												: 1,
 										}}
@@ -272,7 +282,9 @@ const Dashboard = () => {
 													? "↩️"
 													: "✅"}
 											</button>
-											<button onClick={() => handleDelete(exercise._id)}>
+											<button
+												onClick={() => handleDelete(exercise._id)}
+											>
 												<FontAwesomeIcon
 													icon={faTrashCan}
 													size="sm"

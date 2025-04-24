@@ -1,15 +1,13 @@
 .form-wrapper--dashboard {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  padding-top: 130px;
-  padding-bottom: 150px;
-  box-sizing: border-box;
-
-  overflow-y: auto;
-  scrollbar-width: none;
+	min-height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-top: 130px;
+	padding-bottom: 150px;
+	box-sizing: border-box;
+	overflow-y: auto;
+	scrollbar-width: none;
 	-ms-overflow-style: none;
 }
 
@@ -53,29 +51,36 @@
 }
 
 .to-select-btn {
-	color: var(--lime-green);
-	background-color: #393838;
+	color: var(--dark-green);
 	font-size: 18px;
 	font-weight: 700;
 	border-radius: 30px;
-	padding: 8px 15px;
-	text-shadow: none;
-	margin: 10px;
 	cursor: pointer;
 }
 
-  .no-plan {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+.no-plan {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
 
 .to-select-btn:hover {
-	color: #393838;
-	background-color: var(--lime-green);
+	color: var(--lime-green);
+}
+
+.custom-message {
+  color: white;
+  margin-bottom: 25px;
 }
 
 .message-boxes {
+	width: 100%;
+}
+
+.tips {
+  margin-top: 6px;
+}
+
   width: 100%;
 }
 

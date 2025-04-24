@@ -23,7 +23,7 @@ const Login = () => {
 	return (
 		<div className="form-wrapper">
 			<div className="form-page">
-				<h2>Sign in to use the App</h2>
+				<h2 style={{ marginBottom: "20px" }}>Sign in to use the App</h2>
 				<form onSubmit={handleSubmit}>
 					<div className="form-input--login">
 						<label htmlFor="email">Email:</label>

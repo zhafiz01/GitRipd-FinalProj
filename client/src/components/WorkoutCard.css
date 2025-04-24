@@ -8,7 +8,7 @@
 	margin-bottom: 20px;
 	padding: 10px;
 	width: 100%;
-	background-color: #141414;
+	background-color: var(--dark-gray);
 	border: 5px solid var(--dark-green);
 	color: #fff;
 	position: relative;
@@ -100,7 +100,12 @@ p strong {
 	font-size: 12px;
 }
 
+.workout-info {
+	margin-bottom: 6px;
+}
+
 @media screen and (min-width: 768px) {
+
 	.workout-card {
 		height: 300px;
 		margin-bottom: 20px;
@@ -160,4 +165,5 @@ p strong {
 		padding: 16px 30px;
 		margin: 10px;
 	}
+  
 }
