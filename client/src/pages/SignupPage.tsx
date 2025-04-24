@@ -23,7 +23,7 @@ const Signup = () => {
 	return (
 		<div className="form-wrapper">
 			<div className="form-page">
-				<h2>Sign Up</h2>
+				<h2 style={{ marginBottom: "20px" }}>Sign Up</h2>
 				<form onSubmit={handleSignup}>
 					<div className="form-input--signup">
 						<label>Email:</label>

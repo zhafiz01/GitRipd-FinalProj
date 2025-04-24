@@ -8,7 +8,7 @@ const UserSchema = new Schema(
         sex: { type: String, enum: ["male", "female", "other"], required: true },
         weight: { type: Number, required: true },
         whyHere: { type: String, required: true },
-        goal: { type: String, required: true },
+        goal: { type: [String], required: true },
         target: { type: [String], default: [] },
     }, 
     { timestamps: true }

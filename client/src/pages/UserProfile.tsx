@@ -2,6 +2,7 @@ import { useEffect, useState } from "react"
 import { useIntakeForm } from "../context/IntakeFormContext"
 import User from "../interfaces/User"
 import { getUserProfile } from "../services/userService"
+import "./UserProfile.css"
 
 const Profile = () => {
 	const { data } = useIntakeForm()
@@ -29,40 +30,35 @@ const Profile = () => {
 	return (
 		<div className="form-wrapper">
 			<div className="form-page">
-				<h2 style={{ fontSize: 40, color: "#1ed490" }}>
+				<h2 style={{ fontSize: 40, color: "#1ed490", marginBottom: "30px" }}>
 					Personal Profile
 				</h2>
-				<br />
-				<br />
-				<p>
+				<p className="profile-details">
 					<strong>Name:</strong> {displayData.name || "Not provided"}
 				</p>
-				<br />
-				<p>
+				<p className="profile-details">
 					<strong>Age:</strong>{" "}
 					{displayData.age + " years old" || "Not provided"}
 				</p>
-				<br />
-				<p>
+				<p className="profile-details">
 					<strong>Sex:</strong> {displayData.sex || "Not provided"}
 				</p>
-				<br />
-				<p>
+				<p className="profile-details">
 					<strong>Current Weight:</strong>{" "}
 					{displayData.weight
 						? `${displayData.weight} lbs`
 						: "Not provided"}
 				</p>
-				<br />
-				<p>
+				<p className="profile-details">
 					<strong>Why you're here:</strong>{" "}
 					{displayData.whyHere || "Not provided"}
 				</p>
-				<br />
-				<p>
-					<strong>Goal:</strong> {displayData.goal || "Not provided"}
+				<p className="profile-details">
+					<strong>Goal:</strong>{" "}
+					{Array.isArray(displayData.goal) && displayData.goal.length > 0 
+						? displayData.goal.join(", ")
+						: "Not provided"}
 				</p>
-				<br />
 			</div>
 		</div>
 	)

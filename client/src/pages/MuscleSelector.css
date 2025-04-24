@@ -1,7 +1,7 @@
 .muscle-selector-page--wrapper {
 	display: flex;
 	flex-direction: column;
-	padding: 100px;
+	padding: 100px 0px;
 	background-color: #cfcfcf;
 	height: calc(100vh - 100px);
 	color: var(--off-black);
@@ -19,7 +19,7 @@
 	margin: 20px auto;
 	padding: 20px;
 	color: var(--off-black);
-    background-color: #edeaeadb;
+  background-color: #edeaeadb;
 	border: 4px solid var(--dark-green);
 	text-align: center;
 }
@@ -28,7 +28,7 @@
 	display: grid;
 	grid-auto-flow: column;
 	grid-auto-rows: min-content;
-	grid-template-rows: repeat(5, auto); /* 5 rows max per column */
+	grid-template-rows: repeat(5, auto);
 	gap: 12px;
 	justify-content: center;
 	list-style: none;
@@ -37,17 +37,24 @@
 }
 
 .muscle-selector-page--cart li {
-	display: block;
+	display: flex;
+  justify-content: space-between;
+  align-items: center;
 	break-inside: avoid;
+  text-align: left;
+  background-color: #cfcfcf;
+  padding: 5px;
+  border-radius: 10px;
+}
+
+.muscle-selector-page--cart p {
+  font-size: 14px;
+  color: #0b0c0c;
 }
 
 .muscle-selector-page--cart h3 {
 	padding-bottom: 10px;
 }
-
-/* .muscle-selector-page--cart li {
-	padding-bottom: 5px;
-} */
 
 .workout-delete-btn {
 	margin-left: 5px;
@@ -78,10 +85,10 @@
 
 .clear-cart-btn {
 	background-color: var(--lime-green);
-	padding: 12px 20px;
+	padding: 6px 12px;
 	border-radius: 30px;
 	color: #393838;
-	font-size: 18px;
+	font-size: 16px;
 	margin-top: 10px;
 	margin-left: 10px;
 	cursor: pointer;
@@ -100,14 +107,37 @@ h6 {
 
 .save-plan-btn {
 	background-color: var(--lime-green);
-	padding: 12px 20px;
+	padding: 6px 12px;
 	border-radius: 30px;
 	color: #393838;
-	font-size: 18px;
+	font-size: 16px;
 	margin-top: 10px;
 }
 
 .save-plan-btn:hover {
 	color: var(--lime-green);
 	background-color: #393838;
+}
+
+.workout-cards--container {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+	padding: 0px 10px;
+}
+
+@media screen and (min-width: 1025px) {
+  .muscle-selector-page--wrapper {
+    padding: 100px;
+  }
+
+  .save-plan-btn {
+    padding: 12px 20px;
+    font-size: 18px;
+  }
+
+  .clear-cart-btn {
+    padding: 12px 20px;
+    font-size: 18px;
+  }
 }

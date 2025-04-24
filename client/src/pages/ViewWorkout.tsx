@@ -6,6 +6,7 @@ import { getUserWorkoutPlan } from "../services/workoutPlanService"
 import WorkoutPlan from "../interfaces/WorkoutPlan"
 import "./ViewWorkout.css"
 import { useNavigate } from "react-router-dom"
+import fitnessSilhouette from "../assets/images/fitness-silhouette-m-dg.png"
 
 const ViewWorkout = () => {
 	const [workoutPlan, setWorkoutPlan] = useState<Exercise[]>([])
@@ -42,8 +43,11 @@ const ViewWorkout = () => {
 				if (plans.length > 0) {
 					setWorkoutPlan(plans[0].exercises)
 
-					const initialSetsReps: Record<string, { sets: string; reps: string }> = {}
-					plans[0].exercises.forEach(ex => {
+					const initialSetsReps: Record<
+						string,
+						{ sets: string; reps: string }
+					> = {}
+					plans[0].exercises.forEach((ex) => {
 						initialSetsReps[ex._id] = { sets: "4", reps: "12" }
 					})
 					setSetsReps(initialSetsReps)
@@ -95,28 +99,35 @@ const ViewWorkout = () => {
 	return (
 		<div className="view-workout--wrapper">
 			<div className="message-boxes">
-				<h1>Your future self will thank you for the work you put in today!</h1>
-				<br />
-				<h2 style={{ color: "#1ed490" }}>Today's Focus:</h2>
-				<ul>
-					<li style={{ padding: "5px" }}>
-						<u>Strength Training</u>: follow the 12-10-8 rep rule! As
-						move through your sets, add a little weight each time!
-					</li>
-					<li style={{ padding: "5px" }}>
-						<u>Cardio</u>: Aim for at least 20 minutes of cardio.
-						Focus on your breath.
-					</li>
-					<li style={{ padding: "5px" }}>
-						<u>Stretching</u>: Don’t forget to warm up AND cool down
-						with stretches.
-					</li>
-				</ul>
+				<h1>
+					Your future self will thank you for the work you put in
+					today!
+				</h1>
 			</div>
 			{workoutPlan.length > 0 ? (
-				<div className="workout-cards--list">
+				<div>
+					<div className="message-boxes">
+						<h2 style={{ color: "#1ed490", marginBottom: "20px" }}>
+							Today's Focus:
+						</h2>
+						<ul>
+							<li style={{ padding: "5px" }}>
+								<u>Strength Training</u>: follow the 12-10-8 rep rule!
+								As you go, decrease reps and increase weight!
+							</li>
+							<li style={{ padding: "5px" }}>
+								<u>Cardio</u>: Warm up with at least 20 minutes of
+								cardio. Focus on your breath.
+							</li>
+							<li style={{ padding: "5px" }}>
+								<u>Stretching</u>: Don’t forget to warm up AND cool
+								down with stretches.
+							</li>
+						</ul>
+					</div>
 					{workoutPlan.map((exercise) => (
 						<div
+							className="workout-cards--list"
 							key={exercise._id}
 							style={{
 								opacity: completedWorkouts.includes(exercise._id)
@@ -125,15 +136,15 @@ const ViewWorkout = () => {
 								position: "relative",
 							}}
 						>
-								<WorkoutCard
-									exercise={exercise}
-									addToCart={() => {}}
-									showAddButton={false}
-									showSetsReps={true}
-									sets={setsReps[exercise._id]?.sets || "4"}
-									reps={setsReps[exercise._id]?.reps || "12"}
-									onSetsRepsChange={handleSetsRepsChange}
-								/>
+							<WorkoutCard
+								exercise={exercise}
+								addToCart={() => {}}
+								showAddButton={false}
+								showSetsReps={true}
+								sets={setsReps[exercise._id]?.sets || "4"}
+								reps={setsReps[exercise._id]?.reps || "12"}
+								onSetsRepsChange={handleSetsRepsChange}
+							/>
 							<button
 								className="complete-workout-btn"
 								onClick={() => handleComplete(exercise._id)}
@@ -147,8 +158,20 @@ const ViewWorkout = () => {
 				</div>
 			) : (
 				<div className="no-plan">
-					<button className="to-select-btn" onClick={handleClick}>Click Here</button>
-					<p>to start building your own workout routine!</p>
+					<img
+						className="fitness-graphic__view"
+						src={fitnessSilhouette}
+						alt="vw-graphic"
+					/>
+					<p>
+						<button
+							className="plans-to-select-btn"
+							onClick={handleClick}
+						>
+							Click Here
+						</button>
+						to build your own workout routine!
+					</p>
 				</div>
 			)}
 		</div>

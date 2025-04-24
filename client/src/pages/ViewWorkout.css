@@ -1,12 +1,14 @@
 .view-workout--wrapper {
 	display: flex;
 	flex-direction: column;
-	padding: 120px 120px;
+	padding-top: 125px;
+	padding-bottom: 125px;
 	color: white;
 	overflow-y: auto;
 	max-height: 100vh;
 	scrollbar-width: none;
 	-ms-overflow-style: none;
+	width: 100%;
 }
 
 .view-workout--wrapper::-webkit-scrollbar {
@@ -16,18 +18,38 @@
 .message-boxes {
 	text-align: center;
 	margin-bottom: 20px;
+	padding: 0px 80px;
+}
+
+.message-boxes h1 {
+	font-size: 34px;
+}
+
+.message-boxes h2 {
+	font-size: 26px;
 }
 
 .workout-cards--list {
 	display: flex;
 	flex-direction: column;
 	width: 100%;
+	padding: 0px 10px;
 }
 
-.no-workout-txt {
-	margin-top: 200px;
+.no-plan {
+	display: flex;
+	flex-direction: column;
 	text-align: center;
-	font-size: 34px;
+	justify-content: space-evenly;
+}
+
+.plans-to-select-btn {
+	padding-right: 5px;
+	color: var(--dark-green);
+}
+
+.plans-to-select-btn:hover {
+	color: var(--lime-green);
 }
 
 .complete-workout-btn {
@@ -39,4 +61,24 @@
 	border-radius: 4px;
 	padding: 0.3rem 0.5rem;
 	cursor: pointer;
+}
+
+.fitness-graphic__view {
+	height: 200px;
+	width: auto;
+	margin-bottom: 40px;
+}
+
+@media screen and (min-width: 768px) {
+	.view-workout--wrapper {
+		padding: 250px 120px;
+	}
+
+	.message-boxes h1 {
+		font-size: 46px;
+	}
+
+	.message-boxes h2 {
+		font-size: 32px;
+	}
 }

@@ -43,6 +43,7 @@ body {
   --lime-green: #1ed490;
   --off-black: #0b0c0c;
   --dark-green: #024433;
+  --dark-gray: #141414;
 }
 
 html, body, div, span, applet, object, iframe,
@@ -101,7 +102,7 @@ h2 {
   font-family: "Apex Mk2";
   font-size: 32px;
   text-align: center;
-  margin: 10px 0px;
+  /* margin: 10px 0px; */
 }
 
 h3, i {

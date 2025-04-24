@@ -1,28 +1,40 @@
 import { NavLink } from "react-router-dom"
 import "./WelcomeScreen.css"
+import fitnessSilhouette from "../../assets/images/fitness-silhouette-f-w.png"
 
 const WelcomeScreen = () => {
 	return (
 		<div className="form-wrapper">
 			<div className="form-page--welcome">
-				<h1 style={{ fontSize: "48px" }}>Welcome to</h1>
-				<h1 style={{ fontSize: "86px"}}>Commit2Fit</h1>
-				<h2 style={{ fontSize: "26px", color: "#cfcfcf" }}>
-					Ready to kick off your fitness journey
+				<h1 style={{ fontSize: "54px" }}>Welcome to</h1>
+				<h1 style={{ fontSize: "76px" }}>Commit2Fit!</h1>
+				<img
+					className="fitness-graphic"
+					src={fitnessSilhouette}
+					alt="welcome-graphic"
+				/>
+				<h2
+					style={{
+						fontSize: "26px",
+						color: "#cfcfcf",
+						maxWidth: "575px",
+						marginBottom: "20px",
+					}}
+				>
+					Ready to kick off your fitness journey in a new way?
 				</h2>
-				<h2 style={{ fontSize: "26px", color: "#cfcfcf", marginTop: "0", marginBottom: "0" }}>
-					in a new way?
-				</h2>
-				<br />
-				<br />
-				<p style={{ fontSize: "22px", fontStyle: "italic" }}>
+				<p
+					style={{
+						fontSize: "22px",
+						fontStyle: "italic",
+						marginBottom: "30px",
+					}}
+				>
 					Let's get started!
 				</p>
-				<br />
-				<br />
 				<div className="user-selection">
 					<div className="btn-select">
-						<p style={{ fontSize: "18px", color: "#cfcfcf" }}>
+						<p>
 							Returning User?
 						</p>
 						<NavLink to="/login">
@@ -30,7 +42,7 @@ const WelcomeScreen = () => {
 						</NavLink>
 					</div>
 					<div className="btn-select">
-						<p style={{ fontSize: "18px", color: "#cfcfcf" }}>
+						<p>
 							First Time?
 						</p>
 						<NavLink to="/signup">
