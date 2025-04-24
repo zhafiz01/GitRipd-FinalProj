@@ -30,7 +30,7 @@ const WhyHereForm = () => {
 	return (
 		<div className="form-wrapper">
 			<form
-				className="form-page"
+				className="form-page--forms"
 				onSubmit={handleSubmit}
 			>
 				<label className="form-label">What brings you here?</label>

@@ -3,7 +3,7 @@
 	flex-direction: row;
 	justify-content: space-evenly;
 	align-items: center;
-	height: 250px;
+	height: 175px;
 	border-radius: 8px;
 	margin-bottom: 20px;
 	padding: 10px;
@@ -14,21 +14,58 @@
 	position: relative;
 }
 
+.name-sets-reps {
+	width: 30%;
+	padding-right: 10px; 
+	text-align: center;
+}
+
+.name-sets-reps h2 {
+	font-size: 16px;
+	padding: 0;
+	width: 100px;
+}
+
+.sets-reps-wrapper {
+	margin-top: 16px;
+    display: flex;
+    gap: 20px;
+	align-items: center;
+}
+
+.sets-reps-wrapper label {
+	font-size: 14px;
+	color: #fff;
+}
+
+.sets-reps-wrapper input {
+	width: 38px;
+	font-size: 14px;
+	height: auto;
+	padding: 4px 8px;
+	border-radius: 5px;
+}
+
 .workout--card__image {
-	width: 125px;
+	width: 90px;
 	height: auto;
 	border-radius: 4px;
 }
 
 .workout-card--description {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	text-align: center;
 	width: 30%;
+	padding-left: 10px;
 }
 
 .add-exercise-btn {
 	background-color: var(--lime-green);
 	color: #393838;
-	padding: 16px 30px;
+	font-size: 14px;
+	padding: 8px 15px;
 	text-align: center;
 	border-radius: 30px;
 	cursor: pointer;
@@ -41,25 +78,8 @@
     background-color: #393838;
 }
 
-.name-sets-reps {
-	width: 30%;
-	padding-right: 30px; 
-	text-align: center;
-}
-
-.sets-reps-wrapper {
-	margin-top: 16px;
-    display: flex;
-    gap: 20px;
-	align-items: center;
-}
-
-.workout-card--description {
-	width: 300px;
-}
-
 .vid-list a {
-	font-size: 12px;
+	font-size: 10px;
 	width: 150px;
 	display: inline-block;
 	white-space: nowrap;
@@ -72,15 +92,15 @@
 }
 
 p {
-	font-size: 14px;
+	font-size: 12px;
 	color: #fff;
 }
 
 p strong {
-	font-size: 14px;
+	font-size: 12px;
 }
 
-@media screen and (min-width: 1025px) {
+@media screen and (min-width: 768px) {
 	.workout-card {
 		height: 300px;
 		margin-bottom: 20px;
@@ -95,10 +115,32 @@ p strong {
 		height: auto;
 	}
 
+	.workout-card--description {
+		width: 300px;
+	}
+
 	.name-sets-reps {
 		display: flex;
 		flex-direction: column;
 		align-items: center;
+	}
+
+	.name-sets-reps h2 {
+		font-size: 32px;
+		width: 100%;
+	}
+
+	.sets-reps-wrapper label {
+		font-size: 22px;
+	}
+
+	.sets-reps-wrapper input {
+		width: 20px;
+		height: auto;
+		margin-left: 8px;
+		padding: 4px 8px;
+		border-radius: 5px;
+		width: 60px;
 	}
 
 	.vid-list a {
@@ -112,5 +154,10 @@ p strong {
 	
 	p strong {
 		font-size: 20px;
+	}
+
+	.add-exercise-btn {
+		padding: 16px 30px;
+		margin: 10px;
 	}
 }

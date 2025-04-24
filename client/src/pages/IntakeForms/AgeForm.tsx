@@ -66,19 +66,20 @@ const AgeForm = () => {
 	return (
 		<div className="form-wrapper">
 			<form
-				className="form-page"
+				className="form-page--forms"
 				onSubmit={handleSubmit}
 			>
 				<label
 					className="form-label"
 					htmlFor="birthday"
+					style={{ textAlign: "center" }}
 				>
 					When is your birthday?
 				</label>
 				<br />
 				<div className="date-selectors">
 					<select
-						className="form-input"
+						className="form-input--month"
 						id="birthday"
 						value={birthDate.month}
 						onChange={(e) =>

@@ -134,7 +134,7 @@ const MuscleSelectorPage = () => {
 					<ul>
 						{cart.map((exercise) => (
 							<li key={exercise._id}>
-								{exercise.name}
+								<p>{exercise.name}</p>
 								<button
 									className="workout-delete-btn"
 									onClick={() => handleDelete(exercise._id)}
