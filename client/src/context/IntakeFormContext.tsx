@@ -7,7 +7,7 @@ type IntakeFormData = {
 	sex?: string
 	weight?: number
 	whyHere?: string
-	goal?: string
+	goal?: string[]
 	targetMuscle?: string
 }
 

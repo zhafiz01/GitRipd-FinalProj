@@ -6,16 +6,16 @@ const WelcomeScreen = () => {
 	return (
 		<div className="form-wrapper">
 			<div className="form-page--welcome">
-				<h1 style={{ fontSize: "60px" }}>Welcome to GiTRiPD!</h1>
+				<h1>Welcome to GiTRiPD!</h1>
 				<br />
 				<img className="fitness-graphic"
 					src={fitnessSilhouette}
 					alt="welcome-graphic"
 				/>
-				<h2 style={{ fontSize: "26px", color: "#cfcfcf" }}>
+				<h2 >
 					Ready to kick off your fitness journey
 				</h2>
-				<h2 style={{ fontSize: "26px", color: "#cfcfcf", marginTop: "0" }}>
+				<h2>
 					in a new way?
 				</h2>
 				<br />
@@ -27,7 +27,7 @@ const WelcomeScreen = () => {
 				<br />
 				<div className="user-selection">
 					<div className="btn-select">
-						<p style={{ fontSize: "18px", color: "#cfcfcf" }}>
+						<p>
 							Returning User?
 						</p>
 						<NavLink to="/login">
@@ -35,7 +35,7 @@ const WelcomeScreen = () => {
 						</NavLink>
 					</div>
 					<div className="btn-select">
-						<p style={{ fontSize: "18px", color: "#cfcfcf" }}>
+						<p>
 							First Time?
 						</p>
 						<NavLink to="/signup">

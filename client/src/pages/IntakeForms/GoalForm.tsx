@@ -8,7 +8,7 @@ import { saveUserProfile } from "../../services/userService"
 
 const GoalForm = () => {
 	const { data, updateData } = useIntakeForm()
-	const [goal, setGoal] = useState(data.goal || "")
+	const [goal, setGoal] = useState(data.goal || [])
 	const navigate = useNavigate()
 
 	const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -29,26 +29,26 @@ const GoalForm = () => {
 		}
 	}
 
-	const handleGoalChange = (
-		e: React.ChangeEvent<HTMLInputElement>
-	) => {
-		setGoal(e.target.value)
+	const handleGoalChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		const value = e.target.value
+		if (e.target.checked) setGoal((prev) => [...prev, value])
+		else setGoal((prev) => prev.filter((g) => g !== value))
 	}
 
 	return (
 		<div className="form-wrapper">
 			<form
-				className="form-page"
+				className="form-page--forms"
 				onSubmit={handleSubmit}
 			>
-				<label className="form-label">What are your goals?</label>
+				<label className="form-label">What goals speak to you? (No limit)</label>
 				<br />
 				<div>
 					<input
-						type="radio"
+						type="checkbox"
 						name="goal"
 						value="Weight Loss"
-						checked={goal === "Weight Loss"}
+						checked={goal.includes("Weight Loss")}
 						onChange={handleGoalChange}
 					/>
 					{""} Weight Loss
@@ -56,10 +56,10 @@ const GoalForm = () => {
 				<br />
 				<div>
 					<input
-						type="radio"
+						type="checkbox"
 						name="goal"
 						value="Muscle Gain"
-						checked={goal === "Muscle Gain"}
+						checked={goal.includes("Muscle Gain")}
 						onChange={handleGoalChange}
 					/>
 					{""} Muscle Gain
@@ -67,10 +67,10 @@ const GoalForm = () => {
 				<br />
 				<div>
 					<input
-						type="radio"
+						type="checkbox"
 						name="goal"
 						value="Strength Training"
-						checked={goal === "Strength Training"}
+						checked={goal.includes("Strength Training")}
 						onChange={handleGoalChange}
 					/>
 					{""} Strength Training
@@ -78,10 +78,10 @@ const GoalForm = () => {
 				<br />
 				<div>
 					<input
-						type="radio"
+						type="checkbox"
 						name="goal"
 						value="Flexibility"
-						checked={goal === "Flexibility"}
+						checked={goal.includes("Flexibility")}
 						onChange={handleGoalChange}
 					/>
 					{""} Flexibility
@@ -89,10 +89,10 @@ const GoalForm = () => {
 				<br />
 				<div>
 					<input
-						type="radio"
+						type="checkbox"
 						name="goal"
 						value="Cardiovascular Endurance"
-						checked={goal === "Cardiovascular Endurance"}
+						checked={goal.includes("Cardiovascular Endurance")}
 						onChange={handleGoalChange}
 					/>
 					{""} Cardiovascular Endurance
@@ -100,10 +100,10 @@ const GoalForm = () => {
 				<br />
 				<div>
 					<input
-						type="radio"
+						type="checkbox"
 						name="goal"
 						value="General Fitness"
-						checked={goal === "General Fitness"}
+						checked={goal.includes("General Fitness")}
 						onChange={handleGoalChange}
 					/>
 					{""} General Fitness

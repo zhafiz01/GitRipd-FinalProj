@@ -46,37 +46,25 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 
 	return (
 		<div className="workout-card">
-			<div className="name-sets-reps" style={{ width: "40%", paddingRight: "30px", textAlign: "center" }}>
+			<div className="name-sets-reps">
 				<h2>{exercise.name}</h2>
 				<div>
 					{showSetsReps && (
 						<div className="sets-reps-wrapper">
-						<label style={{ color: "#fff" }}>
+						<label>
 						Sets:
 						<input
 							type="number"
 							value={sets}
 							onChange={(e) => handleChange("sets", e.target.value)}
-							style={{
-								marginLeft: "8px",
-								padding: "4px 8px",
-								borderRadius: "5px",
-								width: "60px",
-							}}
 						/>
 					</label>
-					<label style={{ color: "#fff" }}>
+					<label>
 						Reps:
 						<input
 							type="number"
 							value={reps}
 							onChange={(e) => handleChange("reps", e.target.value)}
-							style={{
-								marginLeft: "8px",
-								padding: "4px 8px",
-								borderRadius: "5px",
-								width: "60px"
-							}}
 						/>
 					</label>
 					</div>
@@ -99,37 +87,39 @@ const WorkoutCard: FC<WorkoutCardProps> = ({
 					<strong>Equipment:</strong> {exercise.equipment}
 				</p>
 				<br />
-				{exercise.videos.length > 0 && (
-					<div className="video-urls">
-						<p>
-							<strong>Videos:</strong>
-						</p>
-						<ul className="vid-list" style={{ marginTop: "5px" }}>
-							{exercise.videos.slice(0, 2).map((vid, i) => (
-								<li key={i}>
-									<a
-										href={vid.link}
-										target="_blank"
-										rel="noopener noreferrer"
-									>
-										{vid.title}
-									</a>
-								</li>
-							))}
-							<br />
-						</ul>
-					</div>
-				)}
-			</div>
+			
 			<div>
-				{showAddButton && (
+				{showAddButton ? (
 					<button
 						className="add-exercise-btn"
 						onClick={() => addToCart(exercise)}
 					>
 						Add Exercise
 					</button>
+				) : (
+					exercise.videos.length > 0 && (
+						<div className="video-urls">
+							<p>
+								<strong>Videos:</strong>
+							</p>
+							<ul className="vid-list" style={{ marginTop: "5px" }}>
+								{exercise.videos.slice(0, 2).map((vid, i) => (
+									<li key={i}>
+										<a
+											href={vid.link}
+											target="_blank"
+											rel="noopener noreferrer"
+										>
+											{vid.title}
+										</a>
+									</li>
+								))}
+								<br />
+							</ul>
+						</div>
+					)
 				)}
+			</div>
 			</div>
 		</div>
 	)
